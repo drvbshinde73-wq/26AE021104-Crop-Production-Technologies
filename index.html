@@ -119,12 +119,31 @@ footer{background:var(--deep);color:#e9dccd;font-size:15px}footer a{color:var(--
 @media(max-width:600px){table{font-size:14px}.hero::before{width:56px;height:56px;top:20px}.hero .txt p{font-size:17px}.pager{grid-template-columns:1fr}.pager .nx{grid-column:1}
 .stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--muted);font-weight:600}.stack td:empty{display:none}.brand small{display:none}.top{position:static}}
 @media(prefers-reduced-motion:no-preference){.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}}}
+
+.hook{background:var(--deep);color:#f1e7dc;border-radius:18px;padding:22px 24px;margin:0 0 28px;position:relative;overflow:hidden}
+.hook h3{color:#fff;font-size:24px;margin:.2em 0 .4em}.hook p{max-width:none}.hook strong{color:var(--gold)}
+.hook .lab{color:var(--gold)}
+.hook::after{content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,#e9b94933,transparent 70%)}
+.lab{font-weight:700;font-size:14px;letter-spacing:.02em;margin:0 0 6px!important}
+.xp{margin:22px 0;padding:16px 20px;border-radius:14px;border-left:6px solid var(--c);background:color-mix(in srgb,var(--c) 10%,var(--bg))}
+.xp .lab{color:var(--c)}.xp p:last-child,.xp ul:last-child{margin-bottom:0}
+.xp.ex{--c:#2f7fb5}.xp.field{--c:var(--leaf)}.xp.mist{--c:#c0392b}.xp.try{--c:#b26a00}
+.qz{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--card)}
+.qz summary{cursor:pointer;padding:14px 16px;font-weight:600;min-height:44px;list-style:none}
+.qz summary::-webkit-details-marker{display:none}.qz summary span{color:var(--soil)}
+.qz summary::after{content:"Show answer";float:right;font-size:13px;color:var(--leaf);font-weight:700;margin-left:10px}
+.qz[open] summary::after{content:"Hide"}
+.qz p{margin:0;padding:0 16px 14px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+.terms{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));margin:0}
+.terms div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.terms dt{font-weight:700;color:var(--soil)}.terms dd{margin:4px 0 0;font-size:15px}
+@media(prefers-reduced-motion:no-preference){.qz[open] p{animation:rise .35s ease both}}
 /* ---------- motion (only when the viewer allows it) ---------- */
 .card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 @media(prefers-reduced-motion:no-preference){
 .card:hover,.gal button:hover,.pager a:hover{transform:translateY(-4px);box-shadow:0 12px 28px #3e271622}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}.unit.off.rv.in{opacity:.75}
+.rv.vis{opacity:1;transform:none}.unit.off.rv.vis{opacity:.75}
 .hero h1{animation:rise .8s ease both}.hero .chips{animation:rise .8s .15s ease both}.hero .txt p{animation:rise .8s .3s ease both}
 .scene .sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 3.2s ease-in-out infinite alternate}
 @keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
@@ -138,18 +157,18 @@ footer{background:var(--deep);color:#e9dccd;font-size:15px}footer a{color:var(--
 .flow .arrow{animation:fade .5s both;animation-delay:calc(var(--i,0)*.18s + .3s)}
 @keyframes pop{from{transform:scale(.4);opacity:0}}@keyframes fade{from{opacity:0}}
 .bar i{animation:grow 1.2s cubic-bezier(.2,.7,.2,1) both}@keyframes grow{from{width:0}}
-figure.in .fa,figure.in .fw{stroke-dasharray:9 6;animation:flow 1.1s linear infinite}
+figure.vis .fa,figure.vis .fw{stroke-dasharray:9 6;animation:flow 1.1s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-15}}
-figure.in .ion{transform-box:fill-box;transform-origin:center;animation:bob 2.4s ease-in-out infinite alternate;animation-delay:var(--d)}
+figure.vis .ion{transform-box:fill-box;transform-origin:center;animation:bob 2.4s ease-in-out infinite alternate;animation-delay:var(--d)}
 @keyframes bob{from{transform:translate(0,-3px)}to{transform:translate(0,3px) scale(1.06)}}
-figure.in .spin{transform-box:fill-box;transform-origin:center;animation:spin 4s linear infinite}
+figure.vis .spin{transform-box:fill-box;transform-origin:center;animation:spin 4s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 figure .stg,figure .pop{opacity:0}
-figure.in .stg{animation:rise .7s ease both;animation-delay:var(--d)}
-figure.in .pop{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:var(--d)}
-figure.in .salt{animation:sink 3s ease-in infinite;animation-delay:var(--d)}
+figure.vis .stg{animation:rise .7s ease both;animation-delay:var(--d)}
+figure.vis .pop{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:var(--d)}
+figure.vis .salt{animation:sink 3s ease-in infinite;animation-delay:var(--d)}
 @keyframes sink{0%{transform:translateY(0);opacity:1}80%{opacity:.8}100%{transform:translateY(120px);opacity:0}}
-figure.in .dif{animation:dif 2.2s ease-in-out infinite;animation-delay:var(--d)}
+figure.vis .dif{animation:dif 2.2s ease-in-out infinite;animation-delay:var(--d)}
 @keyframes dif{50%{transform:translateX(-14px)}}
 figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .lesson .n{transition:transform .3s}.lesson:hover .n{transform:rotate(-6deg) scale(1.08)}
@@ -334,10 +353,10 @@ addEventListener('scroll',()=>{const h=document.documentElement;document.getElem
 
 let rvo;
 function reveal(){
- if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.notes figure').forEach(f=>f.classList.add('in'));return}
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.notes figure').forEach(f=>f.classList.add('vis'));return}
  if(rvo){}
- rvo=rvo||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvo.unobserve(e.target);const b=e.target.querySelector('b[data-n]:not([data-done])');if(b){b.dataset.done=1;countUp(b)}}}),{rootMargin:'0px 0px -8% 0px'});
- document.querySelectorAll('#app .card,#app .gal button,#app h2,.notes p,.notes ul,.notes ol,.notes figure,.notes .table-wrap,.notes .callout,.notes .equation').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.transitionDelay=(el.matches('.card,.gal button')?(i%4)*80:0)+'ms';rvo.observe(el)})}
+ rvo=rvo||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvo.unobserve(e.target);const b=e.target.querySelector('b[data-n]:not([data-done])');if(b){b.dataset.done=1;countUp(b)}}}),{rootMargin:'0px 0px -8% 0px'});
+ document.querySelectorAll('#app .card,#app .gal button,#app h2,.notes p,.notes ul,.notes ol,.notes figure,.notes .table-wrap,.notes .callout,.notes .equation,.notes .xp,.notes .hook,.notes .qz').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.transitionDelay=(el.matches('.card,.gal button')?(i%4)*80:0)+'ms';rvo.observe(el)})}
 function countUp(b){const n=+b.dataset.n,suf=b.dataset.s||'',t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1000);b.textContent=Math.round(n*(1-(1-k)**3))+suf;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
 new MutationObserver(()=>{clearTimeout(window.__rv);window.__rv=setTimeout(reveal,30)}).observe(document.getElementById('app'),{childList:true,subtree:true});
 addEventListener('hashchange',route);
