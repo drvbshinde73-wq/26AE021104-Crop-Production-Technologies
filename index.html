@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crop Production Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a teacher's field notebook – warm, plain-spoken, exam-ready.
+   IDEA: a soil pit cut open – the page reads top-down like horizons in a profile.
+   PICTURE: a full-width soil cross-section under a crop field, horizons O–R labelled.
+   COLOUR and TYPE: soil brown dominant, crop green support, ripe-wheat gold accent; Zilla Slab titles, Source Sans 3 text.
+   LAYOUT: sticky top bar, hero scene, then bands; lessons get a sticky contents rail and a reading column. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#17110c);--ink:light-dark(#2a1d13,#f1e7dc);--muted:light-dark(#6e5a49,#c2ae9b);
+--soil:light-dark(#6b4226,#c48a5c);--deep:light-dark(#3e2716,#0e0906);--leaf:light-dark(#2e7d32,#7cc47f);--gold:#e9b949;
+--line:light-dark(#e8ddd2,#3a2c21);--card:light-dark(#faf6f1,#211810);--band:light-dark(#f4ece3,#1e1610);
+--sky1:light-dark(#cfe8f4,#0f1a2a);--sky2:light-dark(#f7f1e4,#1d2534)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Sans 3",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.brand b{font-family:"Zilla Slab",Georgia,serif;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5vw,52px)}h2{font-size:clamp(26px,3vw,34px)}h3{font-size:21px}
+a{color:var(--leaf)}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}.in{max-width:1240px;margin:0 auto}
+.alt{background:var(--band)}
+html{scroll-padding-top:72px}
+pre,.scroll{overflow-x:auto}.scroll a{flex:none}code{overflow-wrap:anywhere}
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;gap:16px;padding:8px max(3vw,12px);flex-wrap:wrap}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand svg{width:36px;height:36px}.brand b{font-size:18px;margin:0;display:block}.brand small{display:block;color:var(--muted);font-size:13px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{padding:10px 14px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.main a.on{background:var(--soil);color:var(--bg)}
+nav.main a:hover:not(.on){background:var(--band)}
+.search{position:relative}
+.search input{font:16px inherit;font-family:inherit;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);width:220px;min-height:44px}
+.search input:focus,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.results{position:absolute;right:0;top:50px;width:min(420px,92vw);background:var(--bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 40px #0003;max-height:60vh;overflow:auto;display:none}
+.results.show{display:block}.results a{display:block;padding:10px 14px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+.results a:hover{background:var(--band)}.results small{display:block;color:var(--muted);font-size:14px}.results mark{background:var(--gold);color:#2a1d13}
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2) 70%)}
+.hero svg.scene{display:block;width:100%;height:clamp(230px,26vw,330px);margin-top:0}
+.hero::before{content:"";position:absolute;right:8%;top:40px;width:84px;height:84px;border-radius:50%;background:#f5c64a;opacity:.9;box-shadow:0 0 60px #f5c64a88}
+.hero .txt{position:relative;max-width:1240px;margin:0 auto;padding:44px max(5vw,16px) 0}
+.hero .txt p{max-width:560px;font-size:19px;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-weight:600;font-size:15px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:10px 20px;border-radius:999px;background:var(--leaf);color:var(--bg);font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700}
+.btn.ghost{background:var(--bg);color:var(--ink);border:2px solid var(--soil)}
+.hz{font:700 15px "Zilla Slab",serif}
+/* grids & cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.stat b{display:block;font:700 clamp(30px,4vw,42px) "Zilla Slab",serif;color:var(--soil)}.stat span{color:var(--muted)}
+.unit{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);border-top:8px solid var(--c)}
+.unit .w{font:700 30px "Zilla Slab",serif;color:var(--c)}
+.unit.off{opacity:.75}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--band);color:var(--muted)}
+.lesson{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;text-decoration:none;color:var(--ink);align-items:start}
+.lesson .n{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font:700 22px "Zilla Slab",serif;color:#fff;background:var(--soil)}
+.lesson:hover{border-color:var(--soil)}
+.lesson p{margin:.3em 0 0;color:var(--muted);font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--band);font-weight:700}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.unitrow td{background:color-mix(in srgb,var(--c) 16%,var(--bg));font-weight:700}
+.mx td,.mx th{text-align:center;padding:7px}.mx td:first-child{text-align:left;font-weight:700}
+.m3{background:color-mix(in srgb,var(--leaf) 45%,var(--bg))}.m2{background:color-mix(in srgb,var(--gold) 40%,var(--bg))}.m1{background:color-mix(in srgb,var(--soil) 14%,var(--bg))}
+.bar{height:14px;border-radius:7px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:var(--c)}
+/* gallery & slides */
+.gal{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.gal button{all:unset;cursor:pointer;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.gal img{width:100%;height:150px;object-fit:contain;background:#fff}.gal span{padding:8px 10px;font-size:14px;color:#2a1d13;background:#faf6f1}
+.deck{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;border-radius:14px;background:var(--deep);padding:12px}
+.deck img{flex:0 0 100%;width:100%;scroll-snap-align:center;border-radius:8px;aspect-ratio:16/9;object-fit:contain;background:#000}
+.deckbar{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.deckbar button{min-width:44px;min-height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tabs button{min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}.tabs button.on .muted{color:inherit;opacity:.85}.tabs button.on{background:var(--soil);color:var(--bg);border-color:var(--soil)}
+/* lesson reader */
+.phead{background:var(--deep);color:#f1e7dc;position:relative;overflow:hidden}
+.phead .crumb{font-size:15px;opacity:.85}.phead .crumb a{color:var(--gold)}
+.phead h1{color:#fff;margin-top:8px}
+.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;max-width:1240px;margin:0 auto;padding:32px max(5vw,16px)}
+.toc{position:sticky;top:84px;align-self:start;font-size:15px}
+.toc summary{cursor:pointer;min-height:32px;list-style:none}.toc summary::-webkit-details-marker{display:none}.toc ol{margin-top:8px!important;list-style:none;padding:0;margin:0;border-left:3px solid var(--line)}
+.toc a{display:block;padding:6px 12px;color:var(--muted);text-decoration:none;margin-left:-3px;border-left:3px solid transparent}
+.toc a.on{color:var(--soil);border-color:var(--soil);font-weight:700}
+.notes{max-width:820px}
+.notes h2{margin-top:1.6em;padding-bottom:6px;border-bottom:2px solid var(--line)}.notes h2:first-child{margin-top:0}
+.notes h3{margin-top:1.3em;color:var(--soil)}
+.notes p,.notes li{max-width:72ch}
+.table-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+.table-wrap table{min-width:520px}.table-wrap p{margin:0}
+.notes figure{margin:24px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;cursor:zoom-in}
+.notes figure svg{width:100%;height:auto;display:block;font-family:"Source Sans 3",system-ui,sans-serif}.notes figure img{width:100%;height:auto;display:block;border-radius:8px}
+figcaption{font-size:15px;color:#6e5a49;padding:8px 4px 0}
+.callout{margin:22px 0;padding:14px 18px;border-radius:14px;background:color-mix(in srgb,var(--gold) 16%,var(--bg));border:1px solid color-mix(in srgb,var(--gold) 45%,var(--line))}
+.callout.key{background:color-mix(in srgb,var(--leaf) 11%,var(--bg));border-color:color-mix(in srgb,var(--leaf) 40%,var(--line))}
+.callout p{margin:4px 0}
+.equation{margin:18px 0;padding:14px 18px;border-left:5px solid var(--soil);background:var(--card);border-radius:0 12px 12px 0;font-size:18px;overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0}
+.flow .step{background:var(--soil);color:var(--bg);padding:8px 14px;border-radius:999px;font-weight:700}.flow .arrow{color:var(--soil);font-weight:700}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+.pager a{display:block;padding:16px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);background:var(--card)}
+.pager a small{display:block;color:var(--muted)}.pager .nx{text-align:right;grid-column:2}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--gold);z-index:30;width:0}
+.lb{position:fixed;inset:0;background:#000d;z-index:50;display:none;place-items:center;padding:20px;cursor:zoom-out}
+.lb.show{display:grid}.lb img{max-width:100%;max-height:82vh;background:#fff;border-radius:8px}.lb p{color:#fff;text-align:center;max-width:800px}
+footer{background:var(--deep);color:#e9dccd;font-size:15px}footer a{color:var(--gold)}
+.muted{color:var(--muted)}
+.loading{padding:60px 0;color:var(--muted)}
+@media(max-width:900px){.reader{grid-template-columns:minmax(0,1fr)}.toc{position:static;background:var(--card);border-radius:14px;padding:14px}.search input{width:100%}.search{flex:1 1 100%}}
+@media(max-width:600px){table{font-size:14px}.hero::before{width:56px;height:56px;top:20px}.hero .txt p{font-size:17px}.pager{grid-template-columns:1fr}.pager .nx{grid-column:1}
+.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--muted);font-weight:600}.stack td:empty{display:none}.brand small{display:none}.top{position:static}}
+@media(prefers-reduced-motion:no-preference){.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}}}
+/* ---------- motion (only when the viewer allows it) ---------- */
+.card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+@media(prefers-reduced-motion:no-preference){
+.card:hover,.gal button:hover,.pager a:hover{transform:translateY(-4px);box-shadow:0 12px 28px #3e271622}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}.unit.off.rv.in{opacity:.75}
+.hero h1{animation:rise .8s ease both}.hero .chips{animation:rise .8s .15s ease both}.hero .txt p{animation:rise .8s .3s ease both}
+.scene .sway{transform-box:fill-box;transform-origin:50% 100%;animation:sway 3.2s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.scene .drop{animation:drop 4s linear infinite;animation-delay:var(--d)}
+@keyframes drop{0%{transform:translateY(-30px);opacity:0}15%{opacity:.9}80%{opacity:.7}100%{transform:translateY(150px);opacity:0}}
+.scene .worm{animation:worm 14s ease-in-out infinite alternate}
+@keyframes worm{to{transform:translateX(260px)}}
+.hero::before{animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 110px #f5c64acc;transform:scale(1.06)}}
+.flow .step{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i,0)*.18s + .2s)}
+.flow .arrow{animation:fade .5s both;animation-delay:calc(var(--i,0)*.18s + .3s)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}@keyframes fade{from{opacity:0}}
+.bar i{animation:grow 1.2s cubic-bezier(.2,.7,.2,1) both}@keyframes grow{from{width:0}}
+figure.in .fa,figure.in .fw{stroke-dasharray:9 6;animation:flow 1.1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-15}}
+figure.in .ion{transform-box:fill-box;transform-origin:center;animation:bob 2.4s ease-in-out infinite alternate;animation-delay:var(--d)}
+@keyframes bob{from{transform:translate(0,-3px)}to{transform:translate(0,3px) scale(1.06)}}
+figure.in .spin{transform-box:fill-box;transform-origin:center;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+figure .stg,figure .pop{opacity:0}
+figure.in .stg{animation:rise .7s ease both;animation-delay:var(--d)}
+figure.in .pop{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:var(--d)}
+figure.in .salt{animation:sink 3s ease-in infinite;animation-delay:var(--d)}
+@keyframes sink{0%{transform:translateY(0);opacity:1}80%{opacity:.8}100%{transform:translateY(120px);opacity:0}}
+figure.in .dif{animation:dif 2.2s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes dif{50%{transform:translateX(-14px)}}
+figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
+.lesson .n{transition:transform .3s}.lesson:hover .n{transform:rotate(-6deg) scale(1.08)}
+.toc a{transition:color .2s,border-color .2s}
+}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<header class="top"><div class="in">
+<a class="brand" href="#home"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="38" width="56" height="8" rx="3" fill="#8d5a34"/><rect x="4" y="46" width="56" height="7" rx="3" fill="#6b4226"/><rect x="4" y="53" width="56" height="7" rx="3" fill="#3e2716"/><path d="M32 38V20" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/><path d="M32 26C20 26 16 16 16 10c10 0 16 6 16 16Z" fill="#66bb6a"/><path d="M32 22c10 0 16-8 16-14-10 0-16 6-16 14Z" fill="#2e7d32"/></svg><span><b>Crop Production Technologies</b><small>26AE021104 · B.Tech Agricultural Engineering</small></span></a>
+<nav class="main" id="nav"><a href="#home" data-v="home">Home</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#unit-1" data-v="unit">Unit I notes</a></nav>
+<div class="search"><input id="q" type="search" placeholder="Search Unit I notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
+</div></header>
+
+<main id="app"></main>
+
+<div class="lb" id="lb" role="dialog" aria-label="Figure viewer"><div><img id="lbimg" alt=""><p id="lbcap"></p></div></div>
+
+<footer class="band"><div class="in">
+<p><b>26AE021104 · Crop Production Technologies</b> · B.Tech Agricultural Engineering (Syllabus Ver 3.0)</p>
+<p>Prepared by <b>Dr. Vinayak Shinde</b>, Asst. Professor – Agricultural Sciences, D Y Patil Agriculture and Technical University, Talsande, Kolhapur</p>
+</div></footer>
+
+<script>
+{
+const L=[
+["u1-01","1–2","Soil – Definition, Composition and Soil Science","What soil is, its four components, chemical make-up and the branches of soil science."],
+["u1-02","1–2","Earth, Rocks and Minerals","Structure of the Earth, the rock cycle, igneous, sedimentary and metamorphic rocks, and soil-forming minerals."],
+["u1-03","1–2","Weathering of Rocks","Physical, chemical and biological weathering and why it matters for farming."],
+["u1-04","1–2","Soil Formation (Pedogenesis)","Jenny's five soil-forming factors and the main pedogenic processes."],
+["u1-05","1–4","Soil Profile and Horizons","Master horizons O, A, E, B, C, R; eluvial and illuvial zones; solum and regolith."],
+["u1-06","3–4","Soil Classification, Soil Taxonomy and Soils of Maharashtra","History of classification, the 12 USDA soil orders and the soils of Maharashtra."],
+["u1-07","5","Physical Properties of Soil","Texture, structure, density, porosity, colour, temperature, consistency and Atterberg limits."],
+["u1-08","6","Chemical Properties of Soil","pH, EC, ion exchange and CEC, organic carbon and nutrient availability."],
+["u1-09","7–8","Soil Colloids","Properties and types of colloids, clay minerals and origin of charge."],
+["u1-10","9","Soil Reaction","The pH scale, sources of acidity and alkalinity, buffering and significance of pH."],
+["u1-11","9","Essential Plant Nutrients","Criteria of essentiality, macro and micronutrients, functions and deficiency symptoms."],
+["u1-12","9","Soil Organic Matter (SOM)","Composition, decomposition, humus, C:N ratio and benefits of organic matter."],
+["u1-13","10","Problematic Soils","Acid, saline, sodic and waterlogged soils – characteristics, causes and reclamation."]];
+const DECKS=[];const NEWD=28;
+const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-02",2,"The rock cycle"],["u1-02",3,"Extrusive igneous rocks"],["u1-02",4,"Intrusive igneous rocks"],["u1-02",5,"Sedimentary rocks by grain size"],["u1-02",6,"Metamorphism – old and new rock"],["u1-03",7,"Three types of weathering"],["u1-03",8,"Chemical weathering on rock"],["u1-05",9,"A typical soil profile"],["u1-05",10,"Real soil pits showing horizons"],["u1-06",11,"Major soil types of Maharashtra"],["u1-06",12,"The five soils of Maharashtra"],["u1-07",13,"Textural triangle"],["u1-07",14,"Types of soil structure"],["u1-07",15,"Texture, bulk density and pore space"],["u1-07",16,"Soil colours and their meaning"],["u1-07",17,"Atterberg limits"],["u1-08",18,"Strength of adsorption on colloids"],["u1-08",19,"CEC of soil components"],["u1-09",20,"1:1, 2:1 and 2:1:1 clays"],["u1-10",21,"The pH scale"],["u1-10",22,"Active, exchangeable and residual acidity"],["u1-10",23,"Nutrient availability vs soil pH"]];
+const SYL=[["I","Soil Science",30,"#8d5a34",[["1–2","Definition and composition of soil; classification of soil-forming rocks; soil-forming processes",4],["3–4","Soil classification; Soil Taxonomy; major soil orders; soils of Maharashtra",4],["5","Physical properties of soil: texture, structure, bulk density, particle density, porosity, consistency, plasticity, etc.",5],["6","Chemical properties of soil: pH, EC, CEC, etc.",5],["7–8","Soil colloids: properties, types, origin of charge and ion exchange",4],["9","Soil reaction and essential nutrients; soil organic matter",4],["10","Problematic soils: characteristics, causes and reclamation",4]]],
+["II","Agronomy",30,"#2e7d32",[["11","History, definition, scope and importance of agronomy in India",4],["12","Classification of field crops",4],["13–14","Crop seasons in India; sowing methods and seed treatment",6],["15","Effect of weather parameters on crop growth and development",4],["16","Cropping systems and crop rotation",5],["17–18","Production practices of Rice, Wheat, Maize, Sugarcane, Soybean, Chick-pea and Cotton",7]]],
+["III","Horticulture",40,"#c98a12",[["19","Definition, importance and scope of horticulture in India",4],["20","Branches of horticulture and classification of horticultural crops",4],["21–22","Site selection, layout and planting methods for fruit crops",5],["23–24","Plant growth regulators and special horticultural practices",5],["25","Training and pruning in horticultural crops",4],["26","Methods of irrigation and mulching in horticultural crops",4],["27","Harvesting Methods and Post Harvest Practices",4],["28–30","Production practices of mango, banana, chilli, tomato, rose, marigold, coconut, turmeric, tulshi, lemon grass",10]]]];
+const CO=[["CO1","To understand soil formation, classification and properties"],["CO2","To understand principles of agronomy and major field crop production"],["CO3","To understand principles of horticulture and horticultural crop production"],["CO4","To apply soil, agronomic and horticultural principles for sustainable crop production"]];
+const MX=[["CO1",3,2,0,2,2,0,2,0,0,0,0,1,3,2,2],["CO2",3,2,2,2,2,1,2,0,0,1,0,1,3,2,2],["CO3",3,2,2,2,2,1,2,0,0,1,0,1,3,2,2],["CO4",3,3,3,2,2,2,3,1,2,1,1,2,3,3,3]];
+const TB=["Biswas, T.D. and Mukherjee, S.K. (2006). <i>Textbook of Soil Science</i>. Tata McGraw-Hill, New Delhi.","Brady, N.C. and Weil, R.R. (2016). <i>The Nature and Properties of Soils</i>. Pearson Education, New Delhi.","Reddy, T.Y. and Reddi, G.H.S. (2016). <i>Principles of Agronomy</i>. Kalyani Publishers, New Delhi.","Balasubramaniyan, P. and Palaniappan, S.P. (2007). <i>Principles and Practices of Agronomy</i>. Agrobios, Jodhpur.","Kumar, N. (2014). <i>Introduction to Horticulture</i>. Oxford &amp; IBH, New Delhi.","Chattopadhyay, T.K. (2013). <i>A Textbook on Pomology</i>. Kalyani Publishers, New Delhi."];
+const RB=["Indian Society of Soil Science (2015). <i>Soil Science: An Introduction</i>. ISSS, New Delhi.","Sehgal, J. (2015). <i>Textbook of Pedology: Concepts and Applications</i>. Kalyani Publishers, New Delhi.","Panda, S.C. (2010). <i>Agronomy</i>. Agrobios, Jodhpur.","Prasad, R. (2014). <i>Textbook of Field Crops Production</i>. ICAR, New Delhi.","Jitendra Singh (2014). <i>Basic Horticulture</i>. Kalyani Publishers, New Delhi.","Bose, T.K., Mitra, S.K. and Sadhu, M.K. (2002). <i>Fruits: Tropical and Subtropical</i>. Naya Udyog, Kolkata.","Chadha, K.L. (2001). <i>Handbook of Horticulture</i>. ICAR, New Delhi.","ICAR (2015). <i>Handbook of Agriculture</i>. ICAR, New Delhi."];
+const app=document.getElementById('app'),cache={};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=id=>+id.slice(3);
+const fig=n=>`figures/image${n}.jpg`;
+
+const scene=`<svg class="scene" viewBox="0 226 1440 294" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">
+<defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2f1c"/><stop offset="1" stop-color="#6b4226"/></linearGradient>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d5a34"/><stop offset="1" stop-color="#a86f3e"/></linearGradient>
+<linearGradient id="gC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b98a5c"/><stop offset="1" stop-color="#c9a27a"/></linearGradient>
+<g id="plant"><path d="M0 0V-46" stroke="#2e7d32" stroke-width="3"/><path d="M0-18c-14 0-20-10-20-18 12 0 20 8 20 18Z" fill="#66bb6a"/><path d="M0-30c14 0 20-10 20-18-12 0-20 8-20 18Z" fill="#2e7d32"/><path d="M0-46l-4-16 4 4 4-4Z" fill="#e9b949"/><path d="M0 0l-8 26M0 0l2 34M0 0l10 24" stroke="#d9c3a8" stroke-width="1.6" fill="none"/></g>
+<g id="stone"><path d="M-14 4c-2-10 8-14 16-12 10 2 14 8 10 14-6 6-22 6-26-2Z" fill="#8f8172"/><path d="M-10 -2c4-4 12-4 16 0" stroke="#c6b9a9" stroke-width="2" fill="none"/></g></defs>
+<path d="M0 262 Q360 236 720 258 T1440 250 V520 H0Z" fill="#3d5a2a"/>
+<rect x="0" y="270" width="1440" height="16" fill="#2f2013"/>
+<rect x="0" y="286" width="1440" height="66" fill="url(#gA)"/>
+<rect x="0" y="352" width="1440" height="26" fill="#9c7a5b"/>
+<rect x="0" y="378" width="1440" height="58" fill="url(#gB)"/>
+<rect x="0" y="436" width="1440" height="44" fill="url(#gC)"/>
+<rect x="0" y="480" width="1440" height="40" fill="#6f6a66"/>
+<g id="row"></g>
+<g fill="#4fa3d1"><circle class="drop" style="--d:0s" cx="140" cy="300" r="3.5"/><circle class="drop" style="--d:1.3s" cx="300" cy="300" r="3.5"/><circle class="drop" style="--d:2.6s" cx="470" cy="300" r="3.5"/><circle class="drop" style="--d:0.7s" cx="640" cy="300" r="3.5"/><circle class="drop" style="--d:2s" cx="820" cy="300" r="3.5"/><circle class="drop" style="--d:3.1s" cx="990" cy="300" r="3.5"/><circle class="drop" style="--d:1.6s" cx="1150" cy="300" r="3.5"/><circle class="drop" style="--d:0.4s" cx="1300" cy="300" r="3.5"/></g><path class="worm" d="M180 400 q10 -8 20 0 t20 0 t20 0" stroke="#d98b8b" stroke-width="6" fill="none" stroke-linecap="round"/>
+<g fill="#f3e6d3" opacity=".35"><circle cx="200" cy="300" r="2"/><circle cx="640" cy="310" r="2"/><circle cx="980" cy="300" r="2"/><circle cx="1260" cy="318" r="2"/></g>
+<g><use href="#stone" x="180" y="460"/><use href="#stone" x="520" y="452"/><use href="#stone" x="870" y="462"/><use href="#stone" x="1200" y="456"/><use href="#stone" x="1360" y="466"/></g>
+<g stroke="#4a4541" stroke-width="2" opacity=".6" fill="none"><path d="M0 500 L200 495 L400 505 L700 492 L1000 503 L1440 494"/><path d="M300 480 l-10 40 M760 480 l12 40 M1150 480 l-8 40"/></g>
+<g class="hz" fill="#fff" text-anchor="end"><text x="1420" y="283">O</text><text x="1420" y="324">A  topsoil</text><text x="1420" y="370">E</text><text x="1420" y="412">B  subsoil</text><text x="1420" y="463">C  parent material</text><text x="1420" y="505">R  bedrock</text></g>
+</svg>`;
+
+function home(){
+ const tot=SYL.flatMap(u=>u[4]).length;
+ return `<section class="hero"><div class="txt"><h1>Crop Production Technologies</h1>
+ <div class="chips"><span class="chip">Course code 26AE021104</span><span class="chip">2 credits</span><span class="chip">30 lectures</span><span class="chip">B.Tech Agricultural Engineering</span></div>
+ <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
+ <p style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p></div>${scene}</section>
+ <section class="band"><div class="in"><h2>Course at a glance</h2><div class="grid">
+ <div class="card stat"><b>2 – 0 – 0</b><span>Lecture – Tutorial – Practical hours per week</span></div>
+ <div class="card stat"><b data-n="100">100</b><span>Marks, theory: ISA 20 · MSE 30 · ESE 50</span></div>
+ <div class="card stat"><b data-n="40" data-s=" %">40 %</b><span>Passing in each of ISA, MSE and ESE</span></div>
+ <div class="card stat"><b data-n="${L.length}">${L.length}</b><span>Unit I lessons from the Word notes, with ${FIG.length+NEWD} photos, figures and diagrams</span></div></div>
+ <p class="muted" style="margin-top:18px"><b>Prerequisite:</b> Basic knowledge of Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></section>
+ <section class="band alt"><div class="in"><h2>Three units</h2><div class="grid">${SYL.map(u=>`<a class="card unit ${u[0]=='I'?'':'off'}" style="--c:${u[3]}" href="${u[0]=='I'?'#unit-1':'#syllabus'}"><span class="w">${u[2]} %</span><h3>Unit ${u[0]} – ${u[1]}</h3><span class="muted">${u[4].length} topics · Lectures ${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}</span><span class="tag">${u[0]=='I'?'Notes available':'Syllabus only'}</span></a>`).join('')}</div></div></section>
+ <section class="band"><div class="in"><h2>Course outcomes</h2><div class="grid">${CO.map(c=>`<div class="card"><span class="tag">${c[0]}</span><p style="margin:.5em 0 0">${c[1]}</p></div>`).join('')}</div></div></section>
+ <section class="band alt"><div class="in"><h2>Unit I in pictures</h2><p class="muted">Tap a picture to enlarge it, or open its lesson.</p>${gallery(FIG)}</div></section>`;
+}
+function gallery(list){return `<div class="gal">${list.map(f=>`<button data-fig="${f[1]}" data-cap="${esc(f[2])}" data-go="${f[0]}"><img loading="lazy" src="${fig(f[1])}" alt="${esc(f[2])}"><span>${esc(f[2])} · Lesson ${num(f[0])}</span></button>`).join('')}</div>`}
+function syllabus(){
+ return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Syllabus</div><h1>Syllabus and scheme</h1><p>Syllabus version 3.0 · Lecture-wise topics with weightage (%)</p></div></section>
+ <section class="band"><div class="in"><h2>Teaching and evaluation scheme</h2><div class="scroll"><table class="stack"><thead><tr><th>Lect.</th><th>Tut.</th><th>Pract.</th><th>Credits</th><th>Component</th><th>Exam</th><th class="num">Weightage</th><th class="num">Pass %</th></tr></thead><tbody>
+ ${[["ISA – In-Semester Assessment",20],["MSE – Mid-Semester Examination",30],["ESE – End-Semester Examination",50]].map((e,i)=>`<tr><td>${i?'':'2'}</td><td>${i?'':'–'}</td><td>${i?'':'–'}</td><td>${i?'':'2'}</td><td>${i?'':'100 Marks Theory'}</td><td>${e[0]}</td><td class="num">${e[1]}</td><td class="num">40</td></tr>`).join('')}</tbody></table></div>
+ <h2 style="margin-top:1.4em">Unit weightage</h2>${SYL.map(u=>`<div style="--c:${u[3]};margin:10px 0"><div style="display:flex;justify-content:space-between"><b>Unit ${u[0]} – ${u[1]}</b><b>${u[2]} %</b></div><div class="bar"><i style="width:${u[2]}%"></i></div></div>`).join('')}
+ <h2 style="margin-top:1.4em">Lecture-wise syllabus</h2><table class="stack"><thead><tr><th>Lecture</th><th>Unit / topics</th><th class="num">Weightage</th></tr></thead><tbody>
+ ${SYL.map(u=>`<tr class="unitrow" style="--c:${u[3]}"><td></td><td>UNIT ${u[0]} – ${u[1].toUpperCase()}${u[0]=='I'?' · <a href="#unit-1">read the notes</a>':''}</td><td class="num">${u[2]} %</td></tr>`+u[4].map(r=>`<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td class="num">${r[2]}</td></tr>`).join('')).join('')}</tbody></table>
+ <h2 style="margin-top:1.4em">Course outcomes</h2><table class="stack"><thead><tr><th>CO</th><th>After this course students will be able to…</th></tr></thead><tbody>${CO.map(c=>`<tr><td><b>${c[0]}</b></td><td>${c[1]}</td></tr>`).join('')}</tbody></table>
+ <h2 style="margin-top:1.4em">Course articulation matrix</h2><div class="scroll"><table class="mx"><thead><tr><th>CO / PO</th>${[1,2,3,4,5,6,7,8,9,10,11,12].map(n=>`<th>${n}</th>`).join('')}<th>PSO1</th><th>PSO2</th><th>BTL</th></tr></thead><tbody>${MX.map(r=>`<tr>${r.map((v,i)=>i==0?`<td>${v}</td>`:i==15?`<td>${v}</td>`:`<td class="${v?'m'+v:''}">${v||'–'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+ <p class="muted">3 – high, 2 – medium, 1 – low contribution · BTL – Bloom's Taxonomy Level</p>
+ <div class="grid" style="margin-top:20px"><div class="card"><h3>Text books</h3><ol>${TB.map(b=>`<li>${b}</li>`).join('')}</ol></div><div class="card"><h3>Reference books</h3><ol>${RB.map(b=>`<li>${b}</li>`).join('')}</ol></div></div></div></section>`;
+}
+function unit(){
+ const rows=SYL[0][4];
+ return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
+ <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div></section>
+ <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
+ <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>
+ <section class="band"><div class="in"><h2>Photos and figures</h2><p class="muted">Every lesson also has labelled diagrams drawn for these notes.</p>${gallery(FIG)}</div></section>`;
+}
+function deckHtml(d,i){return `<div class="deck" id="deck${i}" tabindex="0" aria-label="${esc(d[1])} slides">${Array.from({length:d[3]},(_,k)=>`<img loading="lazy" src="slides/${d[0]}/s-${String(k+1).padStart(2,'0')}.jpg" alt="${esc(d[1])} – slide ${k+1}">`).join('')}</div>
+ <div class="deckbar"><button data-dk="${i}" data-dir="-1" aria-label="Previous slide">‹</button><button data-dk="${i}" data-dir="1" aria-label="Next slide">›</button><span class="muted" id="cnt${i}">Slide 1 of ${d[3]}</span><button data-fs="${i}" style="padding:0 16px">Full screen</button></div>`}
+let curDeck=0;
+function slides(){
+ return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Slides</div><h1>Lecture slides</h1><p>Unit I slide decks. Swipe, use the arrow buttons or your keyboard's ← → keys.</p></div></section>
+ <section class="band"><div class="in"><div class="tabs" id="tabs">${DECKS.map((d,i)=>`<button data-tab="${i}" class="${i==curDeck?'on':''}">${d[1]} <span class="muted">· ${d[2]} · ${d[3]} slides</span></button>`).join('')}</div>
+ <div id="deckbox">${deckHtml(DECKS[curDeck],curDeck)}</div><p><a href="#${DECKS[curDeck][4]}" id="decklink">Read the related lesson: ${L.find(l=>l[0]==DECKS[curDeck][4])[2]}</a></p></div></section>`;
+}
+async function getLesson(id){if(!cache[id]){const r=await fetch(`lessons/${id}.html`);if(!r.ok)throw new Error(r.status);cache[id]=await r.text()}return cache[id]}
+async function lesson(id){
+ const i=L.findIndex(l=>l[0]==id),l=L[i],p=L[i-1],n=L[i+1],dk=DECKS.findIndex(d=>d[4]==id);
+ app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › <a href="#unit-1">Unit I – Soil Science</a> › Lesson ${num(id)}</div><h1>${num(id)}. ${l[2]}</h1><p>Lecture ${l[1]} · Unit I – Soil Science · CO1</p></div></section>
+ <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>In this lesson</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
+ let h;try{h=await getLesson(id)}catch(e){document.getElementById('notes').innerHTML='<p class="loading">These notes could not be loaded. Please refresh the page.</p>';return}
+ if(location.hash.slice(1)!=id)return;
+ const nt=document.getElementById('notes');
+ nt.innerHTML=h+(dk>=0?`<h2 id="slides-${dk}">Lecture slides – ${esc(DECKS[dk][1])}</h2>${deckHtml(DECKS[dk],dk)}`:'')+
+ `<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous lesson</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next lesson →</small>${num(n[0])}. ${n[2]}</a>`:`<a class="nx" href="#unit-1"><small>Finished Unit I →</small>Back to all lessons</a>`}</nav>`;
+ nt.querySelectorAll('.table-wrap table').forEach(t=>{if(t.rows[0]&&t.rows[0].cells.length<=4)t.classList.add('stack')});
+ const hs=[...nt.querySelectorAll('h2[id]')];
+ document.getElementById('toc').innerHTML=hs.map(x=>`<li><a href="#${id}" data-to="${x.id}">${esc(x.textContent)}</a></li>`).join('');
+ watchToc(hs);
+}
+let io;
+function watchToc(hs){io&&io.disconnect();io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('#toc a').forEach(a=>a.classList.toggle('on',a.dataset.to==e.target.id))}})},{rootMargin:'-80px 0px -70% 0px'});hs.forEach(h=>io.observe(h))}
+function route(){
+ const v=location.hash.slice(1)||'home';
+ let key=v;
+ if(v=='syllabus')app.innerHTML=`<div class="view">${syllabus()}</div>`;
+ else if(v=='unit-1'){app.innerHTML=`<div class="view">${unit()}</div>`;key='unit'}
+
+ else if(L.some(l=>l[0]==v)){lesson(v);key='unit'}
+ else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
+ document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));
+ scrollTo(0,0);
+}
+function slideBy(i,dir){const d=document.getElementById('deck'+i);if(!d)return;d.scrollBy({left:dir*d.clientWidth,behavior:'smooth'})}
+document.addEventListener('scroll',e=>{const t=e.target;if(t.classList&&t.classList.contains('deck')){const i=t.id.slice(4),k=Math.round(t.scrollLeft/t.clientWidth)+1,c=document.getElementById('cnt'+i);if(c)c.textContent=`Slide ${k} of ${t.children.length}`}},true);
+document.addEventListener('click',e=>{
+ const a=e.target.closest('[data-to]');if(a){e.preventDefault();document.getElementById(a.dataset.to)?.scrollIntoView({behavior:'smooth'});return}
+ const b=e.target.closest('[data-dk]');if(b){slideBy(b.dataset.dk,+b.dataset.dir);return}
+ const fsb=e.target.closest('[data-fs]');if(fsb){const d=document.getElementById('deck'+fsb.dataset.fs);try{d.requestFullscreen&&d.requestFullscreen().catch(()=>{})}catch(_){}return}
+ const t=e.target.closest('[data-tab]');if(t){curDeck=+t.dataset.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x==t));document.getElementById('deckbox').innerHTML=deckHtml(DECKS[curDeck],curDeck);const dl=document.getElementById('decklink');dl.href='#'+DECKS[curDeck][4];dl.textContent='Read the related lesson: '+L.find(l=>l[0]==DECKS[curDeck][4])[2];return}
+ const g=e.target.closest('[data-fig]');if(g){openLb(fig(g.dataset.fig),g.dataset.cap+' — Lesson '+num(g.dataset.go),g.dataset.go);return}
+ const f=e.target.closest('.notes figure');if(f){const im=f.querySelector('img');if(im)openLb(im.getAttribute('src'),f.querySelector('figcaption')?.textContent||'');return}
+ if(e.target.closest('#lb')){if(e.target.id=='lbgo')return;document.getElementById('lb').classList.remove('show');return}
+ if(!e.target.closest('.search'))res.classList.remove('show');
+});
+function openLb(src,cap,go){document.getElementById('lbimg').src=src;document.getElementById('lbcap').innerHTML=esc(cap)+(go?` · <a id="lbgo" href="#${go}" style="color:#e9b949">Open lesson</a>`:'');document.getElementById('lb').classList.add('show')}
+document.addEventListener('keydown',e=>{
+ if(e.key=='Escape'){document.getElementById('lb').classList.remove('show');res.classList.remove('show')}
+ if(e.target.matches('input'))return;
+ const d=document.querySelector('.deck');if(d&&(e.key=='ArrowRight'||e.key=='ArrowLeft')){slideBy(d.id.slice(4),e.key=='ArrowRight'?1:-1)}
+});
+document.getElementById('lb').addEventListener('click',e=>{if(e.target.id=='lbgo')document.getElementById('lb').classList.remove('show')});
+/* search */
+const q=document.getElementById('q'),res=document.getElementById('res');let all=null;
+async function loadAll(){if(all)return all;all=await Promise.all(L.map(async l=>{let t='';try{const d=document.createElement('div');d.innerHTML=await getLesson(l[0]);t=d.textContent.replace(/\s+/g,' ')}catch(_){}return [l,t]}));return all}
+let timer;
+q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(async()=>{const s=q.value.trim().toLowerCase();if(s.length<2){res.classList.remove('show');return}
+ const data=await loadAll();const out=[];
+ for(const [l,t] of data){const tl=t.toLowerCase(),i=tl.indexOf(s),inT=l[2].toLowerCase().includes(s);if(i<0&&!inT)continue;
+  let snip=i>=0?t.slice(Math.max(0,i-50),i+s.length+70):l[3];const k=snip.toLowerCase().indexOf(s);
+  snip=k>=0?esc(snip.slice(0,k))+'<mark>'+esc(snip.slice(k,k+s.length))+'</mark>'+esc(snip.slice(k+s.length)):esc(snip);
+  out.push(`<a href="#${l[0]}"><b>${num(l[0])}. ${esc(l[2])}</b><small>…${snip}…</small></a>`)}
+ res.innerHTML=out.length?out.join(''):`<a><small>No lesson mentions “${esc(q.value.trim())}”.</small></a>`;res.classList.add('show')},180)});
+res.addEventListener('click',e=>{if(e.target.closest('a[href]')){res.classList.remove('show');q.value=''}});
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'},{passive:true});
+
+let rvo;
+function reveal(){
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.notes figure').forEach(f=>f.classList.add('in'));return}
+ if(rvo){}
+ rvo=rvo||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvo.unobserve(e.target);const b=e.target.querySelector('b[data-n]:not([data-done])');if(b){b.dataset.done=1;countUp(b)}}}),{rootMargin:'0px 0px -8% 0px'});
+ document.querySelectorAll('#app .card,#app .gal button,#app h2,.notes p,.notes ul,.notes ol,.notes figure,.notes .table-wrap,.notes .callout,.notes .equation').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.transitionDelay=(el.matches('.card,.gal button')?(i%4)*80:0)+'ms';rvo.observe(el)})}
+function countUp(b){const n=+b.dataset.n,suf=b.dataset.s||'',t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1000);b.textContent=Math.round(n*(1-(1-k)**3))+suf;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+new MutationObserver(()=>{clearTimeout(window.__rv);window.__rv=setTimeout(reveal,30)}).observe(document.getElementById('app'),{childList:true,subtree:true});
+addEventListener('hashchange',route);
+route();
+const row=document.getElementById('row');
+if(row){}
+function plantRow(){const r=document.getElementById('row');if(r&&!r.children.length)r.innerHTML=Array.from({length:30},(_,i)=>`<g class="sway" style="animation-delay:${(i%6)*-.5}s"><use href="#plant" x="${20+i*48}" y="272"/></g>`).join('')}
+plantRow();addEventListener('hashchange',plantRow);
+}
+</script>
+</body>
+</html>
