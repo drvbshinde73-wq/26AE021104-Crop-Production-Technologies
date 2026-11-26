@@ -197,6 +197,14 @@ footer{background:var(--deep);color:#e9dccd;font-size:15px}footer a{color:var(--
 @keyframes layer{from{opacity:0;transform:translateX(-30px)}}
 .u3:hover{transform:translateY(-6px);box-shadow:0 18px 36px #3e271630}
 }
+
+.photos{display:grid;gap:14px;margin:22px 0;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.notes figure.photo{margin:0;padding:0;border-radius:14px;overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+.notes figure.photo img{aspect-ratio:4/3;object-fit:cover;border-radius:0;background:#e8ddd2}
+.photos.n1 figure.photo img{aspect-ratio:16/9}
+.photo figcaption{padding:10px 12px 12px;color:var(--ink);font-size:15px}
+.photo .credit{display:block;margin-top:4px;font-size:13px;color:var(--muted);text-decoration:none}
+.photo .credit:hover{text-decoration:underline}
 /* ---------- motion (only when the viewer allows it) ---------- */
 .card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 @media(prefers-reduced-motion:no-preference){
@@ -325,7 +333,6 @@ function home(){
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
  <section class="band dig"><div class="in"><h2>Dig through Unit I</h2><p class="muted lead">Every lesson is a layer. Start at the surface and dig down to the bedrock – tap a layer to open it.</p>
   <div class="strata">${L.map((l,i)=>`<a class="stratum" href="#${l[0]}" style="--c:${STRATA[i]};--t:${i>9?'#2a1d13':'#fff'};animation-delay:${i*70}ms"><span class="dp">${i*15} cm</span><span class="sn">${num(l[0])}</span><span class="st"><b>${l[2]}</b><small>Lecture ${l[1]} · ${l[3]}</small></span><span class="go">Open →</span></a>`).join('')}</div></div></section>
- <section class="band cine"><div class="in"><h2>Unit I in pictures</h2>${cinema()}</div></section>
  <section class="band"><div class="in"><h2>Three units, one journey</h2><div class="units3">${SYL.map((u,k)=>`<a class="u3 ${k?'off':''}" style="--c:${u[3]}" href="${k?'#syllabus':'#unit-1'}"><svg viewBox="0 0 300 90" aria-hidden="true" class="u3pic">${k==0?'<rect y="20" width="300" height="20" fill="#5d3d23"/><rect y="40" width="300" height="25" fill="#8d5a34"/><rect y="65" width="300" height="25" fill="#c9a27a"/><path d="M40 20v-14M120 20v-12M200 20v-15M260 20v-10" stroke="#2e7d32" stroke-width="4"/>':k==1?'<rect y="62" width="300" height="28" fill="#8d5a34"/>'+[...Array(14)].map((_,i)=>`<path d="M${12+i*21} 62 V${24+(i%3)*6}" stroke="#2e7d32" stroke-width="3"/><ellipse cx="${12+i*21}" cy="${22+(i%3)*6}" rx="4" ry="9" fill="#e9b949"/>`).join(''):'<rect y="70" width="300" height="20" fill="#8d5a34"/>'+[60,150,240].map(x=>`<path d="M${x} 70V42" stroke="#5d4037" stroke-width="6"/><circle cx="${x}" cy="30" r="26" fill="#2e7d32"/><circle cx="${x-10}" cy="28" r="5" fill="#f5a623"/><circle cx="${x+9}" cy="38" r="5" fill="#f5a623"/>`).join('')}</svg>
   <span class="w">${u[2]} %</span><h3>Unit ${u[0]} – ${u[1]}</h3><span class="muted">${u[4].length} topics · Lectures ${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}</span><span class="tag">${k?'Syllabus only':'Notes available'}</span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>What you will be able to do</h2><div class="cos">${CO.map((c,i)=>`<div class="co" style="--p:${(i+1)*25}"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--line)" stroke-width="6"/><circle class="ring" cx="32" cy="32" r="27" fill="none" stroke="var(--leaf)" stroke-width="6" pathLength="100" stroke-dasharray="${(i+1)*25} 100" transform="rotate(-90 32 32)"/><text x="32" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">${c[0]}</text></svg><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div></div></section>`;
@@ -370,8 +377,7 @@ function unit(){
  return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
  <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div></section>
  <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
- <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>
- <section class="band"><div class="in"><h2>Photos and figures</h2><p class="muted">Every lesson also has labelled diagrams drawn for these notes.</p>${cinema()}</div></section>`;
+ <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`;
 }
 function deckHtml(d,i){return `<div class="deck" id="deck${i}" tabindex="0" aria-label="${esc(d[1])} slides">${Array.from({length:d[3]},(_,k)=>`<img loading="lazy" src="slides/${d[0]}/s-${String(k+1).padStart(2,'0')}.jpg" alt="${esc(d[1])} – slide ${k+1}">`).join('')}</div>
  <div class="deckbar"><button data-dk="${i}" data-dir="-1" aria-label="Previous slide">‹</button><button data-dk="${i}" data-dir="1" aria-label="Next slide">›</button><span class="muted" id="cnt${i}">Slide 1 of ${d[3]}</span><button data-fs="${i}" style="padding:0 16px">Full screen</button></div>`}
@@ -417,7 +423,7 @@ document.addEventListener('click',e=>{
  const fsb=e.target.closest('[data-fs]');if(fsb){const d=document.getElementById('deck'+fsb.dataset.fs);try{d.requestFullscreen&&d.requestFullscreen().catch(()=>{})}catch(_){}return}
  const t=e.target.closest('[data-tab]');if(t){curDeck=+t.dataset.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x==t));document.getElementById('deckbox').innerHTML=deckHtml(DECKS[curDeck],curDeck);const dl=document.getElementById('decklink');dl.href='#'+DECKS[curDeck][4];dl.textContent='Read the related lesson: '+L.find(l=>l[0]==DECKS[curDeck][4])[2];return}
  const g=e.target.closest('[data-fig]');if(g){openLb(fig(g.dataset.fig),g.dataset.cap+' — Lesson '+num(g.dataset.go),g.dataset.go);return}
- const f=e.target.closest('.notes figure');if(f){const im=f.querySelector('img');if(im)openLb(im.getAttribute('src'),f.querySelector('figcaption')?.textContent||'');return}
+ if(e.target.closest('.credit'))return;const f=e.target.closest('.notes figure');if(f){const im=f.querySelector('img');if(im)openLb(im.getAttribute('src'),f.querySelector('figcaption')?.textContent||'');return}
  if(e.target.closest('#lb')){if(e.target.id=='lbgo')return;document.getElementById('lb').classList.remove('show');return}
  if(!e.target.closest('.search'))res.classList.remove('show');
 });
