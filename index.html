@@ -318,6 +318,19 @@ figure.photo img{transition:transform .8s ease}figure.photo:hover img{transform:
 .fact .fn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--soil);color:#fff;font:700 16px "Zilla Slab",serif}.fact p{margin:0;font-size:16px}
 .ese{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 .esec{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--card)}.esec h3{margin:0 0 8px;color:var(--soil)}.esec ol{margin:0;padding-left:22px}.esec li{padding:4px 0}
+
+.hslides{position:absolute;inset:0}
+.hslides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.hslides img.on{opacity:1}
+.hdots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:2}
+.hdot{width:12px;height:12px;min-width:12px;border-radius:50%;border:2px solid #fff;background:transparent;cursor:pointer;padding:0}
+.hdot.on{background:#fff}
+.ans summary{cursor:pointer;list-style:none}.ans summary::-webkit-details-marker{display:none}
+.ans summary::after{content:" · show answer points";color:var(--leaf);font-size:13px;font-weight:700}
+.ans[open] summary::after{content:" · hide"}
+.ans p{margin:6px 0 4px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--leaf) 9%,var(--bg));font-size:15px}
+.esec em{color:var(--muted);font-style:normal;font-size:14px}
+.pcred{font-size:13px;opacity:.75}
 /* ---------- motion (only when the viewer allows it) ---------- */
 .card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 @media(prefers-reduced-motion:no-preference){
@@ -389,6 +402,7 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <footer class="band"><div class="in">
 <p><b>26AE021104 · Crop Production Technologies</b> · B.Tech Agricultural Engineering (Syllabus Ver 3.0)</p>
 <p>Prepared by <b>Dr. Vinayak Shinde</b>, Asst. Professor – Agricultural Sciences, D Y Patil Agriculture and Technical University, Talsande, Kolhapur</p>
+<p class="pcred">Home-page photos: <a href="https://commons.wikimedia.org/wiki/File:Young_seedling_of_tomato_emerging_from_soil_-_India.jpg">seedling</a>, <a href="https://commons.wikimedia.org/wiki/File:Child_hand_are_holding_black_garden_soil_in_closeup.jpg">soil</a>, <a href="https://commons.wikimedia.org/wiki/File:Wheat_field_in_Punjab_-1.jpg">wheat field</a> (Sarbjit Bahga), <a href="https://commons.wikimedia.org/wiki/File:Langra_Mango_farm,_Mathurapur,_Bhagalpur_Bihar.JPG">mango orchard</a> (Abhishek Priyadarshi) – Wikimedia Commons, used under their free licences.</p>
 </div></footer>
 
 <script>
@@ -495,15 +509,13 @@ function heroBg(){let b='<svg class="bgart" viewBox="0 0 1440 600" preserveAspec
 const FP=(f,w)=>`https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=${w}`;
 const HP=[["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rich, dark soil full of humus","The living skin of the Earth – Unit I",""],["Ploughing_paddy_field_with_oxen,_Umaria_district,_MP,_India.jpg","Preparing the land","Ploughing a paddy field with oxen, Umaria, Madhya Pradesh","Yann"],["Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Field crops","Rice paddy fields in Tamil Nadu – Unit II","KARTY JazZ"],["Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg","Fruit orchards","Mango plantation near Sasan Gir, Gujarat – Unit III",""]];
 const UP=["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg"];
+const HERO=["Young_seedling_of_tomato_emerging_from_soil_-_India.jpg", "Child_hand_are_holding_black_garden_soil_in_closeup.jpg", "Wheat_field_in_Punjab_-1.jpg", "Langra_Mango_farm,_Mathurapur,_Bhagalpur_Bihar.JPG"];
 function home(){
- return `<section class="hero photo" id="hero"><img class="hbg" src="${FP('Young_seedling_of_tomato_emerging_from_soil_-_India.jpg',2400)}" alt="A young seedling emerging from moist soil, India" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="hshade"></div>
+ return `<section class="hero photo" id="hero"><div class="hslides">${HERO.map((f,i)=>`<img class="hs${i?'':' on'}" src="${FP(f,2400)}" alt="" referrerpolicy="no-referrer" ${i?'loading="lazy"':'fetchpriority="high"'} onerror="this.remove()">`).join('')}</div><div class="hshade"></div>
  <div class="hgrid"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
  <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
  <p class="cta"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p>
- <ul class="hstats"><li><b>13</b> lessons</li><li><b>13</b> animated videos</li><li><b>13</b> simulations</li></ul></div></div>
- <a class="hcredit" href="https://commons.wikimedia.org/wiki/File:Young_seedling_of_tomato_emerging_from_soil_-_India.jpg">Photo: young seedling emerging from soil, India · Wikimedia Commons</a></section>
- <section class="band pband"><div class="in"><h2>From soil to harvest</h2><p class="muted lead">Everything in this course connects these four pictures – healthy soil, a growing plant, field crops and fruit orchards.</p>
- <div class="pgrid">${HP.map(p=>`<figure class="pcard"><img loading="lazy" referrerpolicy="no-referrer" src="${FP(p[0],1400)}" alt="${esc(p[1])}" onerror="this.closest('figure').classList.add('noimg')"><figcaption><b>${p[1]}</b><span>${p[2]}</span><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(p[0])}">Photo: ${p[3]?esc(p[3])+', ':''}Wikimedia Commons</a></figcaption></figure>`).join('')}</div></div></section>
+ <ul class="hstats"><li><b>13</b> lessons</li><li><b>13</b> animated videos</li><li><b>13</b> simulations</li></ul></div></div><div class="hdots">${HERO.map((f,i)=>`<button class="hdot${i?'':' on'}" data-hs="${i}" aria-label="Photo ${i+1}"></button>`).join('')}</div></section>
  <section class="band glance"><div class="in glgrid">
   <div class="donutbox"><svg viewBox="0 0 200 200" class="donut" aria-label="Marks: ISA 20, MSE 30, ESE 50">
    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="26"/>
@@ -518,7 +530,7 @@ function home(){
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
  <section class="band dig"><div class="in"><h2>Dig through Unit I</h2><p class="muted lead">Every lesson is a layer. Start at the surface and dig down to the bedrock – tap a layer to open it.</p>
   <div class="strata">${L.map((l,i)=>`<a class="stratum" href="#${l[0]}" style="--c:${STRATA[i]};--t:${i>9?'#2a1d13':'#fff'};animation-delay:${i*70}ms"><span class="dp">${i*15} cm</span><span class="sn">${num(l[0])}</span><span class="st"><b>${l[2]}</b><small>Lecture ${l[1]} · ${l[3]}</small></span><span class="go">Open →</span></a>`).join('')}</div></div></section>
- <section class="band"><div class="in"><h2>Three units, one journey</h2><div class="units3">${SYL.map((u,k)=>`<a class="u3 ${k?'off':''}" style="--c:${u[3]}" href="${k?'#syllabus':'#unit-1'}"><span class="u3pic" style="background-image:url('${FP(UP[k],900)}')"></span>
+ <section class="band"><div class="in"><h2>Three units, one journey</h2><div class="units3">${SYL.map((u,k)=>`<a class="u3 ${k?'off':''}" style="--c:${u[3]}" href="${k?'#syllabus':'#unit-1'}">
   <span class="w">${u[2]} %</span><h3>Unit ${u[0]} – ${u[1]}</h3><span class="muted">${u[4].length} topics · Lectures ${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}</span><span class="tag">${k?'Syllabus only':'Notes available'}</span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>What you will be able to do</h2><div class="cos">${CO.map((c,i)=>`<div class="co" style="--p:${(i+1)*25}"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--line)" stroke-width="6"/><circle class="ring" cx="32" cy="32" r="27" fill="none" stroke="var(--leaf)" stroke-width="6" pathLength="100" stroke-dasharray="${(i+1)*25} 100" transform="rotate(-90 32 32)"/><text x="32" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">${c[0]}</text></svg><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div></div></section>`;
 }
@@ -560,7 +572,7 @@ function syllabus(){
 function unit(){
  const rows=SYL[0][4];
  return `<section class="phead band uhead"><div class="in uhgrid"><div><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
- <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><figure class="uart"><img src="${FP('HandsInSoil.jpg',1200)}" alt="Hands sifting dark, crumbly soil" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption>Dark, crumbly soil · Photo: M Tullottes, Wikimedia Commons</figcaption></figure></div></section>
+ <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><figure class="uart"><img src="${FP('HandsInSoil.jpg',1200)}" alt="Hands sifting dark, crumbly soil" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"></figure></div></section>
  <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`;
 }
@@ -647,6 +659,10 @@ new MutationObserver(()=>{document.querySelectorAll('.phead:not([data-sp])').for
 
 let vio;function vids(){vio=vio||new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!RM){const p=v.play();p&&p.catch(()=>{})}else v.pause()}),{threshold:.5});document.querySelectorAll('.notes video:not([data-o])').forEach(v=>{v.dataset.o=1;vio.observe(v)})}
 new MutationObserver(()=>{clearTimeout(window.__vv);window.__vv=setTimeout(vids,60)}).observe(document.getElementById('app'),{childList:true,subtree:true});
+
+let hsi=0;function hshow(k){const im=[...document.querySelectorAll('.hslides img')];if(!im.length)return;hsi=(k+im.length)%im.length;im.forEach((x,j)=>x.classList.toggle('on',j==hsi));document.querySelectorAll('.hdot').forEach((x,j)=>x.classList.toggle('on',j==hsi))}
+setInterval(()=>{if(document.getElementById('hero')&&!RM&&!document.hidden)hshow(hsi+1)},7000);
+document.addEventListener('click',e=>{const d=e.target.closest('[data-hs]');if(d)hshow(+d.dataset.hs)});
 addEventListener('hashchange',route);
 route();
 const row=document.getElementById('row');
@@ -674,3 +690,4 @@ plantRow();addEventListener('hashchange',plantRow);
 
 .hero.photo .hbg{animation:kenb 24s ease-in-out infinite alternate}@keyframes kenb{to{transform:scale(1.08)}}
 .fact.vis{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+.hslides img.on{animation:kenb 9s ease-out both}@keyframes kenb{from{transform:scale(1.1)}to{transform:scale(1)}}
