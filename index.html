@@ -25,7 +25,7 @@ h1{font-size:clamp(34px,5vw,52px)}h2{font-size:clamp(26px,3vw,34px)}h3{font-size
 a{color:var(--leaf)}
 .band{padding:clamp(28px,4vw,64px) max(5vw,16px)}.in{max-width:1240px;margin:0 auto}
 .alt{background:var(--band)}
-html{scroll-padding-top:72px}
+html{scroll-padding-top:72px;overflow-x:hidden}
 pre,.scroll{overflow-x:auto}.scroll a{flex:none}code{overflow-wrap:anywhere}
 /* top bar */
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -282,6 +282,19 @@ figure.photo img{transition:transform .8s ease}figure.photo:hover img{transform:
 .vbar{display:flex;align-items:center;gap:8px;padding:10px 16px;color:var(--gold);font-weight:700;font-size:14px}
 .vbar .dot{width:9px;height:9px;border-radius:50%;background:#e74c3c}
 .notes figure.vid figcaption{color:#f1e7dc;padding:10px 16px 14px;font:700 18px "Zilla Slab",serif}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2) 75%)}
+.hero .bgart{position:absolute;inset:0;width:100%;height:100%}
+.hgrid{position:relative;max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,64px) max(5vw,16px) clamp(20px,3vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(16px,3vw,40px);align-items:center}
+.hero .txt{padding:0}
+.hstats{list-style:none;padding:0;margin:18px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+.hstats li{background:color-mix(in srgb,var(--bg) 85%,transparent);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px}
+.hstats b{font:700 18px "Zilla Slab",serif;color:var(--soil)}
+.art{color:var(--ink);min-width:0;overflow:clip;contain:paint}.blk{width:100%;height:auto;display:block;overflow:hidden}
+.uhgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px;align-items:center}
+.uart{color:#f1e7dc;min-width:0;overflow:clip;contain:paint}
+.phead.uhead .blab text{fill:#f1e7dc}
+@media(max-width:860px){.hgrid,.uhgrid{grid-template-columns:minmax(0,1fr)}.uart{max-width:460px}}
 /* ---------- motion (only when the viewer allows it) ---------- */
 .card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 @media(prefers-reduced-motion:no-preference){
@@ -409,10 +422,59 @@ const scene=`<svg class="scene" viewBox="0 226 1440 294" preserveAspectRatio="xM
 const THEMES=[["all","All"],["rock","Rocks & minerals"],["weather","Weathering"],["profile","Soil body & profile"],["class","Classification"],["phys","Physical properties"],["chem","Chemistry & colloids"]];
 const FT={1:"profile",2:"rock",3:"rock",4:"rock",5:"rock",6:"rock",7:"weather",8:"weather",9:"profile",10:"profile",11:"class",12:"class",13:"phys",14:"phys",15:"phys",16:"phys",17:"phys",18:"chem",19:"chem",20:"chem",21:"chem",22:"chem",23:"chem"};
 const STRATA=["#2f1e12","#3e2716","#4e321d","#5d3d23","#6b4226","#7d5030","#8d5a34","#9c6a40","#a8784c","#b98a5c","#c9a27a","#a39a90","#8f8a85"];
+function soilBlock(id){
+ const T=[300,90],Rt=[540,190],B=[300,290],Lf=[60,190],D=230;
+ const H=[['O','Organic litter',0,14,'#3a2616','#2a1b10'],['A','Topsoil – humus-rich, most roots',14,74,'#5d3c23','#472d1a'],['E','Leached, pale layer',74,98,'#c4b29d','#a8977f'],['B','Subsoil – clay collects here',98,158,'#9a6a3e','#7e552f'],['C','Parent material – weathered rock',158,205,'#c9a27a','#a9845d'],['R','Bedrock – Deccan basalt',205,230,'#6f6b67','#57534f']];
+ const P=(a)=>a.map(p=>p.join(',')).join(' ');
+ let s=`<svg class="blk" viewBox="0 0 800 600" role="img" aria-label="Cut-away soil block showing horizons O, A, E, B, C and R under a crop field">
+ <defs><linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7cb342"/><stop offset="1" stop-color="#33691e"/></linearGradient>
+ <radialGradient id="${id}sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+ <ellipse cx="300" cy="545" rx="280" ry="38" fill="url(#${id}sh)" class="bshadow"/>
+ <g class="bfloat">`;
+ H.forEach(([l,d,a,b,c1,c2])=>{s+=`<polygon points="${P([[60,190+a],[300,290+a],[300,290+b],[60,190+b]])}" fill="${c1}"/><polygon points="${P([[300,290+a],[540,190+a],[540,190+b],[300,290+b]])}" fill="${c2}"/>`});
+ // stones in C, columns in R, texture specks
+ for(let i=0;i<9;i++){const x=80+i*24,y=190+170+ (x-60)*100/240+ (i%3)*8;s+=`<ellipse cx="${x}" cy="${y}" rx="8" ry="5" fill="#8f8172" opacity=".9"/>`}
+ for(let i=0;i<8;i++){const x=320+i*28,y=290+175-(x-300)*100/240+(i%2)*9;s+=`<ellipse cx="${x}" cy="${y}" rx="8" ry="5" fill="#7d6f60"/>`}
+ for(let i=1;i<6;i++){const x=60+i*40;s+=`<line x1="${x}" y1="${190+205+(x-60)*100/240}" x2="${x}" y2="${190+230+(x-60)*100/240}" stroke="#4d4a47" stroke-width="2"/>`;const x2=300+i*40;s+=`<line x1="${x2}" y1="${290+205-(x2-300)*100/240}" x2="${x2}" y2="${290+230-(x2-300)*100/240}" stroke="#403d3a" stroke-width="2"/>`}
+ // roots on left face
+ [[100,0],[170,1],[240,2]].forEach(([x,k])=>{const y=190+(x-60)*100/240;s+=`<path class="root" style="--d:${.6+k*.3}s" d="M${x} ${y+12} q-6 30 4 55 q10 30 -2 70 M${x+2} ${y+40} q14 10 18 30 M${x} ${y+70} q-14 8 -16 26" stroke="#ead9b8" stroke-width="2.4" fill="none" stroke-linecap="round"/>`});
+ // earthworm
+ s+=`<path class="bworm" d="M120 ${190+40+25} q8 -7 16 0 t16 0 t16 0" stroke="#e89a9a" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+ // infiltrating water drops on left face
+ for(let i=0;i<7;i++){const x=90+i*30,y=190+(x-60)*100/240+16;s+=`<circle class="seep" style="--d:${i*.55}s" cx="${x}" cy="${y}" r="3.4" fill="#64b5f6"/>`}
+ // top face
+ s+=`<polygon points="${P([T,Rt,B,Lf])}" fill="url(#${id}g)"/>`;
+ for(let r=1;r<8;r++){const u=r/8;s+=`<line x1="${300+240*u}" y1="${90+100*u}" x2="${300+240*u-240}" y2="${90+100*u+100}" stroke="#2e5d1e" stroke-width="1.4" opacity=".55"/>`}
+ // plants on grid
+ const pts=[];for(let i=1;i<8;i++)for(let j=1;j<7;j++){pts.push([i/8+.0,j/7])}
+ pts.sort((a,b)=>(a[0]+a[1])-(b[0]+b[1]));
+ pts.forEach(([u,v],k)=>{const x=300+240*u-240*v,y=90+100*u+100*v,sc=.55+.45*((u+v)/2);s+=`<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${sc.toFixed(2)})"><g class="bplant" style="--d:${(k%7)*-.4}s"><path d="M0 0V-26" stroke="#1b5e20" stroke-width="2.6"/><path d="M0 -10c-10 0-14-6-14-11 8 0 14 5 14 11Z" fill="#8bc34a"/><path d="M0 -17c10 0 14-6 14-11-8 0-14 5-14 11Z" fill="#43a047"/>${k%3==0?'<circle cx="0" cy="-28" r="3.6" fill="#fff"/><circle cx="-3" cy="-27" r="2.4" fill="#f1f1f1"/>':''}</g></g>`});
+ // edges highlight
+ s+=`<polyline points="${P([Lf,B,Rt])}" fill="none" stroke="#ffffff55" stroke-width="2"/><line x1="300" y1="290" x2="300" y2="520" stroke="#ffffff33" stroke-width="2"/>`;
+ s+='</g>';
+ // labels with leader lines from right face mid
+ H.forEach(([l,d,a,b],i)=>{const ym=190+(a+b)/2-90*0+0;const yy=(290+(a+b)/2)-100*0.85;const xa=505,ya=190+(a+b)/2+ (540-505)*100/240;const ly=150+i*62;
+  s+=`<g class="blab" style="--d:${1.2+i*.35}s"><path d="M${xa} ${ya.toFixed(1)} L590 ${ly} H604" stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6"/><circle cx="${xa}" cy="${ya.toFixed(1)}" r="3.5" fill="#e9b949"/><text x="606" y="${ly+7}" font-size="26" font-weight="800" fill="currentColor" font-family="Zilla Slab,serif">${l}</text><text x="636" y="${ly+5}" font-size="17" fill="currentColor" opacity=".85">${d.split(' – ')[0]}</text>${d.includes(' – ')?`<text x="636" y="${ly+24}" font-size="14" fill="currentColor" opacity=".7">${d.split(' – ')[1]}</text>`:''}</g>`});
+ // rain cloud
+ s+=`<g class="bcloud"><ellipse cx="230" cy="40" rx="62" ry="22" fill="#fff" opacity=".95"/><ellipse cx="270" cy="30" rx="44" ry="24" fill="#fff"/><ellipse cx="190" cy="34" rx="34" ry="18" fill="#fff"/></g>`;
+ for(let i=0;i<9;i++){s+=`<line class="brain" style="--d:${i*.27}s" x1="${170+i*14}" y1="62" x2="${166+i*14}" y2="76" stroke="#64b5f6" stroke-width="2.4" stroke-linecap="round"/>`}
+ return s+'</svg>';
+}
+function heroBg(){let b='<svg class="bgart" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="hz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7c873" stop-opacity=".0"/><stop offset="1" stop-color="#f7c873" stop-opacity=".55"/></linearGradient></defs>';
+ b+='<rect x="0" y="300" width="1440" height="300" fill="url(#hz)"/>';
+ b+='<path d="M0 420 L120 400 L150 380 L330 378 L360 400 L520 404 L560 370 L760 366 L800 392 L980 396 L1010 362 L1220 358 L1250 388 L1440 392 V600 H0Z" fill="#8a6f8f" opacity=".45"/>';
+ b+='<path d="M0 470 L90 452 L120 430 L300 428 L340 456 L620 460 L660 436 L880 432 L920 462 L1180 466 L1210 440 L1440 444 V600 H0Z" fill="#6d5a74" opacity=".55"/>';
+ b+='<path d="M0 520 Q360 490 720 515 T1440 505 V600 H0Z" fill="#4e6b34"/><path d="M0 548 Q360 530 720 552 T1440 540 V600 H0Z" fill="#3d5a2a"/>';
+ for(let i=0;i<3;i++)b+=`<g class="cloud" style="--d:${-i*14}s;--y:${60+i*45}px"><ellipse cx="0" cy="0" rx="70" ry="20" fill="#fff" opacity=".8"/><ellipse cx="40" cy="-10" rx="44" ry="20" fill="#fff" opacity=".8"/></g>`;
+ for(let i=0;i<4;i++)b+=`<path class="bird" style="--d:${-i*3.5}s;--y:${120+i*26}px" d="M0 0 q8 -8 16 0 q8 -8 16 0" stroke="#3e2716" stroke-width="2.4" fill="none"/>`;
+ return b+'</svg>'}
+
 function home(){
- return `<section class="hero" id="hero"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
+ return `<section class="hero" id="hero">${heroBg()}<div class="hgrid"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
  <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
- <p class="cta"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p></div>${scene}</section>
+ <p class="cta"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p>
+ <ul class="hstats"><li><b>13</b> lessons</li><li><b>13</b> animated videos</li><li><b>13</b> simulations</li></ul></div>
+ <div class="art">${soilBlock('hb')}</div></div></section>
  <section class="band glance"><div class="in glgrid">
   <div class="donutbox"><svg viewBox="0 0 200 200" class="donut" aria-label="Marks: ISA 20, MSE 30, ESE 50">
    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="26"/>
@@ -451,7 +513,7 @@ document.addEventListener('click',e=>{const c=e.target.closest('[data-cin]');if(
  const t=e.target.closest('[data-th]');if(t){cin.th=t.dataset.th;document.querySelectorAll('.fchip').forEach(x=>x.classList.toggle('on',x==t));cinInit();return}
  if(e.target.id=='cplay'){cin.paused=!cin.paused;e.target.textContent=cin.paused?'Play':'Pause';e.target.setAttribute('aria-label',cin.paused?'Play slideshow':'Pause slideshow');cinShow(cin.i,true)}});
 document.addEventListener('keydown',e=>{if(e.target.id=='cin'&&(e.key=='ArrowRight'||e.key=='ArrowLeft')){e.preventDefault();cinShow(cin.i+(e.key=='ArrowRight'?1:-1))}});
-document.addEventListener('mousemove',e=>{const h=document.getElementById('hero');if(!h||RM)return;const r=h.getBoundingClientRect();if(e.clientY>r.bottom)return;const dx=(e.clientX/innerWidth-.5),dy=(e.clientY/innerHeight-.5);h.style.setProperty('--mx',dx);h.style.setProperty('--my',dy)},{passive:true});
+document.addEventListener('mousemove',e=>{const h=document.getElementById('hero');if(!h||RM)return;const ar=h.querySelector('.art');if(ar)ar.style.transform=`translate(${(e.clientX/innerWidth-.5)*-12}px,${(e.clientY/innerHeight-.5)*-8}px)`;const r=h.getBoundingClientRect();if(e.clientY>r.bottom)return;const dx=(e.clientX/innerWidth-.5),dy=(e.clientY/innerHeight-.5);h.style.setProperty('--mx',dx);h.style.setProperty('--my',dy)},{passive:true});
 
 function gallery(list){return `<div class="gal">${list.map(f=>`<button data-fig="${f[1]}" data-cap="${esc(f[2])}" data-go="${f[0]}"><img loading="lazy" src="${fig(f[1])}" alt="${esc(f[2])}"><span>${esc(f[2])} · Lesson ${num(f[0])}</span></button>`).join('')}</div>`}
 function syllabus(){
@@ -468,8 +530,8 @@ function syllabus(){
 }
 function unit(){
  const rows=SYL[0][4];
- return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
- <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div></section>
+ return `<section class="phead band uhead"><div class="in uhgrid"><div><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
+ <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><div class="uart">${soilBlock('ub')}</div></div></section>
  <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`;
 }
@@ -567,3 +629,16 @@ plantRow();addEventListener('hashchange',plantRow);
 <script src="widgets.js"></script>
 </body>
 </html>
+
+.bfloat{animation:bfl 6s ease-in-out infinite}@keyframes bfl{50%{transform:translateY(-8px)}}
+.bshadow{transform-box:fill-box;transform-origin:center;animation:bsh 6s ease-in-out infinite}@keyframes bsh{50%{transform:scale(.92);opacity:.8}}
+.bplant{transform-box:fill-box;transform-origin:50% 100%;animation:sway 2.8s ease-in-out infinite alternate;animation-delay:var(--d)}
+.root{stroke-dasharray:200;stroke-dashoffset:200;animation:rootg 2.4s ease forwards;animation-delay:var(--d)}@keyframes rootg{to{stroke-dashoffset:0}}
+.seep{animation:seep 3.8s ease-in infinite;animation-delay:var(--d)}@keyframes seep{0%{transform:translateY(0);opacity:0}10%{opacity:1}80%{opacity:.9}100%{transform:translateY(150px);opacity:0}}
+.bworm{animation:bw 9s ease-in-out infinite alternate}@keyframes bw{to{transform:translateX(120px) translateY(50px)}}
+.blab{opacity:0;animation:blab .6s ease forwards;animation-delay:var(--d)}@keyframes blab{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.bcloud{animation:bcl 8s ease-in-out infinite alternate}@keyframes bcl{to{transform:translateX(40px)}}
+.brain{animation:brain .9s linear infinite;animation-delay:var(--d)}@keyframes brain{from{transform:translateY(0);opacity:1}to{transform:translateY(34px);opacity:0}}
+.sunr{transform-box:fill-box;transform-origin:center;animation:sunr 6s ease-in-out infinite alternate}@keyframes sunr{to{transform:translateY(-14px) scale(1.04)}}
+.cloud{animation:cl 42s linear infinite;animation-delay:var(--d)}@keyframes cl{from{transform:translate(-120px,var(--y))}to{transform:translate(1560px,var(--y))}}
+.bird{animation:bird 16s linear infinite;animation-delay:var(--d)}@keyframes bird{from{transform:translate(1500px,var(--y)) scale(.8)}to{transform:translate(-80px,calc(var(--y) - 60px)) scale(.8)}}
