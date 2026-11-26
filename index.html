@@ -295,6 +295,29 @@ figure.photo img{transition:transform .8s ease}figure.photo:hover img{transform:
 .uart{color:#f1e7dc;min-width:0;overflow:clip;contain:paint}
 .phead.uhead .blab text{fill:#f1e7dc}
 @media(max-width:860px){.hgrid,.uhgrid{grid-template-columns:minmax(0,1fr)}.uart{max-width:460px}}
+
+.hero.photo{position:relative;overflow:hidden;min-height:clamp(540px,80vh,780px);background:#1e2a16;color:#fff;display:flex;align-items:center}
+.hero.photo::before{display:none}
+.hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%}
+.hshade{position:absolute;inset:0;background:linear-gradient(90deg,#0c1207f2 0%,#0c1207b8 38%,#0c120740 70%,transparent 100%),linear-gradient(0deg,#0c1207aa,transparent 40%)}
+.hero.photo .hgrid{grid-template-columns:minmax(0,640px);width:100%}
+.hero.photo h1{color:#fff;font-size:clamp(42px,7vw,80px)}.hero.photo .txt p{color:#f3ece2}.hero.photo .kicker{color:var(--gold)!important}
+.hero.photo .btn.ghost{background:#ffffff18;color:#fff;border-color:#fff}
+.hero.photo .hstats li{background:#ffffff1f;border-color:#ffffff40;color:#fff;backdrop-filter:blur(4px)}.hero.photo .hstats b{color:var(--gold)}
+.hcredit{position:absolute;right:12px;bottom:10px;font-size:12px;color:#ffffffb0;text-decoration:none}
+.pgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:18px}
+.pcard{margin:0;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:3/4;background:linear-gradient(160deg,#5d3d23,#2e7d32);box-shadow:0 14px 34px #3e271630}
+.pcard img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.pcard:hover img{transform:scale(1.07)}.pcard.noimg img{display:none}
+.pcard figcaption{position:absolute;inset:auto 0 0 0;padding:60px 16px 14px;background:linear-gradient(transparent,#000000c8);color:#fff;display:flex;flex-direction:column;gap:2px}
+.pcard figcaption b{font:700 22px "Zilla Slab",serif}.pcard figcaption span{font-size:14px;opacity:.9}.pcard figcaption a{font-size:12px;color:#ffffffa8;text-decoration:none;margin-top:4px}
+.u3pic{display:block;margin:0 -20px 12px;height:170px;background:#5d3d23 center/cover no-repeat}
+.uart{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px #0006}.uart img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}.uart figcaption{font-size:12px;padding:6px 10px;background:#0006;color:#f1e7dc}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin:16px 0}
+.fact{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 20%,var(--bg)),color-mix(in srgb,var(--leaf) 8%,var(--bg)));border:1px solid var(--line)}
+.fact .fn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--soil);color:#fff;font:700 16px "Zilla Slab",serif}.fact p{margin:0;font-size:16px}
+.ese{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.esec{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--card)}.esec h3{margin:0 0 8px;color:var(--soil)}.esec ol{margin:0;padding-left:22px}.esec li{padding:4px 0}
 /* ---------- motion (only when the viewer allows it) ---------- */
 .card,.gal button,.pager a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
 @media(prefers-reduced-motion:no-preference){
@@ -469,12 +492,18 @@ function heroBg(){let b='<svg class="bgart" viewBox="0 0 1440 600" preserveAspec
  for(let i=0;i<4;i++)b+=`<path class="bird" style="--d:${-i*3.5}s;--y:${120+i*26}px" d="M0 0 q8 -8 16 0 q8 -8 16 0" stroke="#3e2716" stroke-width="2.4" fill="none"/>`;
  return b+'</svg>'}
 
+const FP=(f,w)=>`https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=${w}`;
+const HP=[["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rich, dark soil full of humus","The living skin of the Earth – Unit I",""],["Ploughing_paddy_field_with_oxen,_Umaria_district,_MP,_India.jpg","Preparing the land","Ploughing a paddy field with oxen, Umaria, Madhya Pradesh","Yann"],["Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Field crops","Rice paddy fields in Tamil Nadu – Unit II","KARTY JazZ"],["Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg","Fruit orchards","Mango plantation near Sasan Gir, Gujarat – Unit III",""]];
+const UP=["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg"];
 function home(){
- return `<section class="hero" id="hero">${heroBg()}<div class="hgrid"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
+ return `<section class="hero photo" id="hero"><img class="hbg" src="${FP('Young_seedling_of_tomato_emerging_from_soil_-_India.jpg',2400)}" alt="A young seedling emerging from moist soil, India" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="hshade"></div>
+ <div class="hgrid"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
  <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
  <p class="cta"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p>
- <ul class="hstats"><li><b>13</b> lessons</li><li><b>13</b> animated videos</li><li><b>13</b> simulations</li></ul></div>
- <div class="art">${soilBlock('hb')}</div></div></section>
+ <ul class="hstats"><li><b>13</b> lessons</li><li><b>13</b> animated videos</li><li><b>13</b> simulations</li></ul></div></div>
+ <a class="hcredit" href="https://commons.wikimedia.org/wiki/File:Young_seedling_of_tomato_emerging_from_soil_-_India.jpg">Photo: young seedling emerging from soil, India · Wikimedia Commons</a></section>
+ <section class="band pband"><div class="in"><h2>From soil to harvest</h2><p class="muted lead">Everything in this course connects these four pictures – healthy soil, a growing plant, field crops and fruit orchards.</p>
+ <div class="pgrid">${HP.map(p=>`<figure class="pcard"><img loading="lazy" referrerpolicy="no-referrer" src="${FP(p[0],1400)}" alt="${esc(p[1])}" onerror="this.closest('figure').classList.add('noimg')"><figcaption><b>${p[1]}</b><span>${p[2]}</span><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(p[0])}">Photo: ${p[3]?esc(p[3])+', ':''}Wikimedia Commons</a></figcaption></figure>`).join('')}</div></div></section>
  <section class="band glance"><div class="in glgrid">
   <div class="donutbox"><svg viewBox="0 0 200 200" class="donut" aria-label="Marks: ISA 20, MSE 30, ESE 50">
    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="26"/>
@@ -489,7 +518,7 @@ function home(){
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
  <section class="band dig"><div class="in"><h2>Dig through Unit I</h2><p class="muted lead">Every lesson is a layer. Start at the surface and dig down to the bedrock – tap a layer to open it.</p>
   <div class="strata">${L.map((l,i)=>`<a class="stratum" href="#${l[0]}" style="--c:${STRATA[i]};--t:${i>9?'#2a1d13':'#fff'};animation-delay:${i*70}ms"><span class="dp">${i*15} cm</span><span class="sn">${num(l[0])}</span><span class="st"><b>${l[2]}</b><small>Lecture ${l[1]} · ${l[3]}</small></span><span class="go">Open →</span></a>`).join('')}</div></div></section>
- <section class="band"><div class="in"><h2>Three units, one journey</h2><div class="units3">${SYL.map((u,k)=>`<a class="u3 ${k?'off':''}" style="--c:${u[3]}" href="${k?'#syllabus':'#unit-1'}"><svg viewBox="0 0 300 90" aria-hidden="true" class="u3pic">${k==0?'<rect y="20" width="300" height="20" fill="#5d3d23"/><rect y="40" width="300" height="25" fill="#8d5a34"/><rect y="65" width="300" height="25" fill="#c9a27a"/><path d="M40 20v-14M120 20v-12M200 20v-15M260 20v-10" stroke="#2e7d32" stroke-width="4"/>':k==1?'<rect y="62" width="300" height="28" fill="#8d5a34"/>'+[...Array(14)].map((_,i)=>`<path d="M${12+i*21} 62 V${24+(i%3)*6}" stroke="#2e7d32" stroke-width="3"/><ellipse cx="${12+i*21}" cy="${22+(i%3)*6}" rx="4" ry="9" fill="#e9b949"/>`).join(''):'<rect y="70" width="300" height="20" fill="#8d5a34"/>'+[60,150,240].map(x=>`<path d="M${x} 70V42" stroke="#5d4037" stroke-width="6"/><circle cx="${x}" cy="30" r="26" fill="#2e7d32"/><circle cx="${x-10}" cy="28" r="5" fill="#f5a623"/><circle cx="${x+9}" cy="38" r="5" fill="#f5a623"/>`).join('')}</svg>
+ <section class="band"><div class="in"><h2>Three units, one journey</h2><div class="units3">${SYL.map((u,k)=>`<a class="u3 ${k?'off':''}" style="--c:${u[3]}" href="${k?'#syllabus':'#unit-1'}"><span class="u3pic" style="background-image:url('${FP(UP[k],900)}')"></span>
   <span class="w">${u[2]} %</span><h3>Unit ${u[0]} – ${u[1]}</h3><span class="muted">${u[4].length} topics · Lectures ${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}</span><span class="tag">${k?'Syllabus only':'Notes available'}</span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>What you will be able to do</h2><div class="cos">${CO.map((c,i)=>`<div class="co" style="--p:${(i+1)*25}"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--line)" stroke-width="6"/><circle class="ring" cx="32" cy="32" r="27" fill="none" stroke="var(--leaf)" stroke-width="6" pathLength="100" stroke-dasharray="${(i+1)*25} 100" transform="rotate(-90 32 32)"/><text x="32" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">${c[0]}</text></svg><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div></div></section>`;
 }
@@ -531,7 +560,7 @@ function syllabus(){
 function unit(){
  const rows=SYL[0][4];
  return `<section class="phead band uhead"><div class="in uhgrid"><div><div class="crumb"><a href="#home">Home</a> › Unit I</div><h1>Unit I – Soil Science</h1><p>Lectures 1–10 · Weightage 30 % · CO1 · ${L.length} lessons · ${FIG.length} photos and figures + ${NEWD} new diagrams</p>
- <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><div class="uart">${soilBlock('ub')}</div></div></section>
+ <div class="flow">${["Elements","Minerals","Rocks","Weathering","Parent material","Soil"].map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><figure class="uart"><img src="${FP('HandsInSoil.jpg',1200)}" alt="Hands sifting dark, crumbly soil" referrerpolicy="no-referrer" onerror="this.closest('figure').remove()"><figcaption>Dark, crumbly soil · Photo: M Tullottes, Wikimedia Commons</figcaption></figure></div></section>
  <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`;
 }
@@ -610,7 +639,7 @@ function reveal(){
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.notes figure').forEach(f=>f.classList.add('vis'));return}
  if(rvo){}
  rvo=rvo||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvo.unobserve(e.target);const b=e.target.matches('.tile')?e.target.querySelector('b[data-n]:not([data-done])'):e.target.querySelector('b[data-n]:not([data-done])');if(b){b.dataset.done=1;countUp(b)}}}),{rootMargin:'0px 0px -8% 0px'});
- document.querySelectorAll('#app .card,#app .gal button,#app h2,.notes p,.notes ul,.notes ol,.notes figure,.notes .table-wrap,.notes .callout,.notes .equation,.notes .xp,.notes .hook,.notes .qz,#app .donutbox,#app .strata,#app .co,#app .tile,#app .u3,#app .stage,.notes h2,.notes .simwrap,.notes .vcard').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.transitionDelay=(el.matches('.card,.gal button')?(i%4)*80:0)+'ms';rvo.observe(el)})}
+ document.querySelectorAll('#app .card,#app .gal button,#app h2,.notes p,.notes ul,.notes ol,.notes figure,.notes .table-wrap,.notes .callout,.notes .equation,.notes .xp,.notes .hook,.notes .qz,.notes .fact,.notes .esec,#app .pcard,#app .donutbox,#app .strata,#app .co,#app .tile,#app .u3,#app .stage,.notes h2,.notes .simwrap,.notes .vcard').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.transitionDelay=(el.matches('.card,.gal button')?(i%4)*80:0)+'ms';rvo.observe(el)})}
 function countUp(b){const n=+b.dataset.n,suf=b.dataset.s||'',t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1000);b.textContent=Math.round(n*(1-(1-k)**3))+suf;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
 new MutationObserver(()=>{clearTimeout(window.__rv);window.__rv=setTimeout(reveal,30)}).observe(document.getElementById('app'),{childList:true,subtree:true});
 document.getElementById('totop').addEventListener('click',()=>scrollTo({top:0,behavior:RM?'auto':'smooth'}));
@@ -642,3 +671,6 @@ plantRow();addEventListener('hashchange',plantRow);
 .sunr{transform-box:fill-box;transform-origin:center;animation:sunr 6s ease-in-out infinite alternate}@keyframes sunr{to{transform:translateY(-14px) scale(1.04)}}
 .cloud{animation:cl 42s linear infinite;animation-delay:var(--d)}@keyframes cl{from{transform:translate(-120px,var(--y))}to{transform:translate(1560px,var(--y))}}
 .bird{animation:bird 16s linear infinite;animation-delay:var(--d)}@keyframes bird{from{transform:translate(1500px,var(--y)) scale(.8)}to{transform:translate(-80px,calc(var(--y) - 60px)) scale(.8)}}
+
+.hero.photo .hbg{animation:kenb 24s ease-in-out infinite alternate}@keyframes kenb{to{transform:scale(1.08)}}
+.fact.vis{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
