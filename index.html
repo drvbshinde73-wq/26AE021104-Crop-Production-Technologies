@@ -399,6 +399,46 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .fact.vis{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
 .hslides img.on{animation:kenb 9s ease-out both}@keyframes kenb{from{transform:scale(1.1)}to{transform:scale(1)}}
 
+
+/* ===== Teacher profile (hero, top-right) ===== */
+.hero.photo .hgrid{grid-template-columns:minmax(0,1.25fr) minmax(0,.95fr);align-items:start}
+.prof{justify-self:end;align-self:start;max-width:440px;color:#fff;background:#0f1d0bb8;border:1px solid #ffffff38;border-radius:24px;padding:20px;backdrop-filter:blur(12px);box-shadow:0 24px 60px #0007;animation:profIn 1s cubic-bezier(.2,.8,.2,1) .3s both}
+@keyframes profIn{from{opacity:0;transform:translateY(-24px) scale(.97)}to{opacity:1;transform:none}}
+.prof-top{display:flex;gap:16px;align-items:center}
+.prof-pic{width:112px;height:112px;flex:none;border-radius:50%;object-fit:cover;border:4px solid #e9b949;box-shadow:0 0 0 6px #e9b94933;background:#fff}
+.prof-k{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e9b949;font-weight:700}
+.prof-name{font-size:26px;margin:2px 0 4px;color:#fff}
+.hero.photo .prof p{color:#eef5e8;max-width:none}
+.prof-role{margin:0;font-size:14px;line-height:1.4}
+.prof-q{font-size:14px;margin:12px 0 0;opacity:.95}
+.prof-award{font-size:14px;margin:10px 0 0;padding:8px 12px;border-radius:12px;background:#e9b94926;border:1px solid #e9b94966}
+.prof-award b{color:#ffd76a}
+.prof-stats{list-style:none;padding:0;margin:12px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.prof-stats li{background:#ffffff14;border:1px solid #ffffff2b;border-radius:12px;padding:6px 8px;font-size:12.5px;line-height:1.2;text-align:center}
+.prof-stats b{display:block;font:700 22px "Zilla Slab",serif;color:#ffd76a}
+.prof-x{font-size:13px;margin:10px 0 0;opacity:.85}
+@media(max-width:860px){.hero.photo .hgrid{grid-template-columns:minmax(0,1fr)}.prof{justify-self:stretch;max-width:none}}
+@media(max-width:420px){.prof-pic{width:84px;height:84px}.prof-name{font-size:22px}}
+/* ===== Landing: syllabus, notes, beyond ===== */
+.hsyl{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin:18px 0}
+.hsu{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:18px;padding:18px}
+.hsu-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.hsu-h b{font:700 20px "Zilla Slab",serif;color:var(--c)}.hsu-h span{font:700 26px "Zilla Slab",serif;color:var(--c)}
+.hsu .bar{margin:8px 0 10px}.hsu .bar i{background:var(--c)}
+.hsu ol{margin:0;padding-left:0;list-style:none}.hsu li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:15px}.hsu li:last-child{border:0}
+.hsu .lec{display:inline-block;min-width:64px;font-weight:700;color:var(--c);font-size:13px}
+.hnotes{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:18px}
+.hn{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.hn-h{display:flex;gap:12px;align-items:center;padding:16px 18px;background:var(--c);color:#fff;text-decoration:none}
+.hn-h span{font-size:30px}.hn-h b{font:700 20px "Zilla Slab",serif;flex:1}.hn-h small{opacity:.9;white-space:nowrap}
+.hn ol{list-style:none;margin:0;padding:8px}
+.hn li a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;transition:background .2s,transform .2s}
+.hn li a:hover{background:var(--band);transform:translateX(4px)}
+.hn .sn{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);font-weight:800;font-size:13px}
+.hbeyond{background:linear-gradient(135deg,#0f2a3a,#1d3a2a);color:#eaf3ee}.hbeyond h2{color:#fff}.hbeyond .muted{color:#c6d8cf}.hbeyond .jr-kick{color:#7fd3ff}
+.hbx{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:18px}
+.hbx-c{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#eaf3ee;background:#ffffff12;border:1px solid #ffffff26;border-radius:20px;padding:20px;transition:transform .3s,background .3s}
+.hbx-c:hover{transform:translateY(-6px);background:#ffffff1f}
+.hbx-i{font-size:34px}.hbx-c h3{color:#fff;margin:4px 0 0}.hbx-c p{margin:0;color:#c6d8cf;font-size:15px}.hbx-c .go{margin-top:auto;color:#7fd3ff;font-weight:700}
 /* ===== Three units, one journey (photo design) ===== */
 .hero.photo .hs{object-fit:cover}
 .jr{background:radial-gradient(900px 480px at 8% 0%,color-mix(in srgb,#7ed957 16%,transparent),transparent),radial-gradient(900px 480px at 100% 100%,color-mix(in srgb,#ff8c42 16%,transparent),transparent),var(--bg)}
@@ -453,8 +493,8 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <div class="progress" id="prog"></div>
 <header class="top"><div class="in">
 <a class="brand" href="#home"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="38" width="56" height="8" rx="3" fill="#8d5a34"/><rect x="4" y="46" width="56" height="7" rx="3" fill="#6b4226"/><rect x="4" y="53" width="56" height="7" rx="3" fill="#3e2716"/><path d="M32 38V20" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/><path d="M32 26C20 26 16 16 16 10c10 0 16 6 16 16Z" fill="#66bb6a"/><path d="M32 22c10 0 16-8 16-14-10 0-16 6-16 14Z" fill="#2e7d32"/></svg><span><b>Crop Production Technologies</b><small>26AE021104 · B.Tech Agricultural Engineering</small></span></a>
-<nav class="main" id="nav"><a href="#home" data-v="home">Home</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#unit-1" data-v="unit">Unit I notes</a></nav>
-<div class="search"><input id="q" type="search" placeholder="Search Unit I notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
+<nav class="main" id="nav"><a href="#home" data-v="home">Home</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#unit-1" data-v="unit">Unit I</a><a href="#unit-2" data-v="unit2">Unit II</a><a href="#unit-3" data-v="unit3">Unit III</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
+<div class="search"><input id="q" type="search" placeholder="Search all notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
 </div></header>
 
 <main id="app"></main>
@@ -484,6 +524,32 @@ const L=[
 ["u1-11","9","Essential Plant Nutrients","Criteria of essentiality, macro and micronutrients, functions and deficiency symptoms."],
 ["u1-12","9","Soil Organic Matter (SOM)","Composition, decomposition, humus, C:N ratio and benefits of organic matter."],
 ["u1-13","10","Problematic Soils","Acid, saline, sodic and waterlogged soils – characteristics, causes and reclamation."]];
+const L2=[
+["u2-01","11","History, Definition, Scope and Importance of Agronomy","Meaning of agronomy, its history in India, scope and relation with other sciences."],
+["u2-02","12","Classification of Field Crops","Economic, seasonal, botanical, photosynthetic and special-purpose groups of field crops."],
+["u2-03","13–14","Crop Seasons, Sowing Methods and Seed Treatment","Kharif, rabi and zaid seasons; sowing methods; seed rate; seed treatment."],
+["u2-04","15","Weather and Crop Growth","Effect of temperature, rainfall, light, humidity and wind on crops."],
+["u2-05","16","Cropping Systems and Crop Rotation","Mono, sequential, relay, mixed and intercropping; LER; principles of rotation."],
+["u2-06","17–18","Production Practices of Major Field Crops","Rice, wheat, maize, sugarcane, soybean, chickpea and cotton."]];
+const L3=[
+["u3-01","19","Horticulture – Definition, Importance and Scope","Meaning, importance, status and scope of horticulture in India."],
+["u3-02","20","Branches and Classification of Horticultural Crops","Pomology, olericulture, floriculture and more; classification of fruits, vegetables and flowers."],
+["u3-03","21–22","Site Selection, Layout and Planting of Fruit Crops","Orchard site, planning, layout systems and planting method."],
+["u3-04","23–24","Plant Growth Regulators and Special Practices","Auxins, gibberellins, cytokinins, ethylene, ABA, retardants; pinching, girdling, bahar."],
+["u3-05","25","Training and Pruning","Objectives, training systems and pruning methods in fruit crops."],
+["u3-06","26","Irrigation and Mulching","Irrigation methods, drip and fertigation, scheduling and mulching."],
+["u3-07","27","Harvesting and Post-harvest Practices","Maturity indices, harvesting, handling, storage and reducing losses."],
+["u3-08","28–30","Production Practices of Ten Horticultural Crops","Mango, banana, chilli, tomato, rose, marigold, coconut, turmeric, tulsi and lemongrass."]];
+const LB=[
+["bx-01","Beyond","Precision Agriculture and Drones","GPS, GIS, NDVI, sensors, drones and variable-rate technology."],
+["bx-02","Beyond","Protected Cultivation and Hydroponics","Polyhouses, shade nets, hydroponics, aeroponics and vertical farming."],
+["bx-03","Beyond","Smart Nutrient Management","Soil Health Card, 4R stewardship, nano and neem-coated fertilizers, INM."],
+["bx-04","Beyond","Climate-smart Agriculture","Three pillars, conservation agriculture and carbon farming."],
+["bx-05","Beyond","Organic and Natural Farming","Certification, PKVY, Jeevamrut and the natural farming mission."],
+["bx-06","Beyond","Digital Agriculture and AI","e-NAM, Agristack, AI diagnosis, blockchain traceability and agri-startups."]];
+const UNITS={u1:{key:"unit-1",name:"Unit I – Soil Science",co:"CO1",list:()=>L},u2:{key:"unit-2",name:"Unit II – Agronomy",co:"CO2",list:()=>L2},u3:{key:"unit-3",name:"Unit III – Horticulture",co:"CO3",list:()=>L3},bx:{key:"beyond",name:"Beyond the syllabus",co:"CO4",list:()=>LB}};
+const ALL=()=>[...L,...L2,...L3,...LB];
+const uOf=id=>UNITS[id.slice(0,2)];
 const DECKS=[];const NEWD=28;
 const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-02",2,"The rock cycle"],["u1-02",3,"Extrusive igneous rocks"],["u1-02",4,"Intrusive igneous rocks"],["u1-02",5,"Sedimentary rocks by grain size"],["u1-02",6,"Metamorphism – old and new rock"],["u1-03",7,"Three types of weathering"],["u1-03",8,"Chemical weathering on rock"],["u1-05",9,"A typical soil profile"],["u1-05",10,"Real soil pits showing horizons"],["u1-06",11,"Major soil types of Maharashtra"],["u1-06",12,"The five soils of Maharashtra"],["u1-07",13,"Textural triangle"],["u1-07",14,"Types of soil structure"],["u1-07",15,"Texture, bulk density and pore space"],["u1-07",16,"Soil colours and their meaning"],["u1-07",17,"Atterberg limits"],["u1-08",18,"Strength of adsorption on colloids"],["u1-08",19,"CEC of soil components"],["u1-09",20,"1:1, 2:1 and 2:1:1 clays"],["u1-10",21,"The pH scale"],["u1-10",22,"Active, exchangeable and residual acidity"],["u1-10",23,"Nutrient availability vs soil pH"]];
 const SYL=[["I","Soil Science",30,"#8d5a34",[["1–2","Definition and composition of soil; classification of soil-forming rocks; soil-forming processes",4],["3–4","Soil classification; Soil Taxonomy; major soil orders; soils of Maharashtra",4],["5","Physical properties of soil: texture, structure, bulk density, particle density, porosity, consistency, plasticity, etc.",5],["6","Chemical properties of soil: pH, EC, CEC, etc.",5],["7–8","Soil colloids: properties, types, origin of charge and ion exchange",4],["9","Soil reaction and essential nutrients; soil organic matter",4],["10","Problematic soils: characteristics, causes and reclamation",4]]],
@@ -577,24 +643,35 @@ function home(){
  return `<section class="hero photo" id="hero"><div class="hslides">${HERO.map((f,i)=>`<img class="hs${i?'':' on'}" src="${f}" alt="" ${i?'loading="lazy"':'fetchpriority="high"'} onerror="this.remove()">`).join('')}</div><div class="hshade"></div>
  <div class="hgrid"><div class="txt"><p class="kicker">B.Tech Agricultural Engineering · 26AE021104</p><h1>Crop Production<br>Technologies</h1>
  <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
- <p class="cta"><a class="btn" href="#unit-1">Start Unit I notes</a><a class="btn ghost" href="#syllabus">See full syllabus</a></p>
- <ul class="hstats"><li><b>2</b> credits</li><li><b>30</b> lectures</li><li><b>3</b> units</li><li><b>100</b> marks</li></ul></div></div><div class="hdots">${HERO.map((f,i)=>`<button class="hdot${i?'':' on'}" data-hs="${i}" aria-label="Photo ${i+1}"></button>`).join('')}</div></section>
+ <p class="cta"><button type="button" class="btn" onclick="document.getElementById('h-notes').scrollIntoView({behavior:'smooth'})">Open the notes</button><button type="button" class="btn ghost" onclick="document.getElementById('h-syl').scrollIntoView({behavior:'smooth'})">See the syllabus</button></p>
+ <ul class="hstats"><li><b>2</b> credits</li><li><b>30</b> lectures</li><li><b>3</b> units</li><li><b>100</b> marks</li></ul></div><aside class="prof" aria-label="Course teacher">
+  <div class="prof-top"><img class="prof-pic" src="photos/dr-vinayak-shinde.webp" alt="Dr. Vinayak B. Shinde"><div><p class="prof-k">Course teacher</p><h2 class="prof-name">Dr. Vinayak B. Shinde</h2><p class="prof-role">Assistant Professor – Agricultural Sciences<br>Ph.D Guide · Deputy Controller of Examinations<br>D Y Patil Agriculture &amp; Technical University, Talsande, Kolhapur</p></div></div>
+  <p class="prof-q">M.Sc. (Horti. – Fruit Science), Ph.D, PGDAEM, Diploma in Agro-Journalism · Founder-President, KrushiSamarpan Foundation</p>
+  <p class="prof-award">🏅 Honoured by the <b>Prime Minister of India</b>, the <b>Chief Minister of Maharashtra</b> and with an <b>international award</b> for agricultural research &amp; extension</p>
+  <ul class="prof-stats"><li><b>12+</b>years' experience</li><li><b>81</b>awards</li><li><b>3</b>patents</li><li><b>26</b>research papers</li><li><b>23</b>books &amp; chapters</li><li><b>175+</b>popular articles</li></ul>
+  <p class="prof-x">Expertise: protected cultivation · fruit orchards · medicinal &amp; aromatic plants · nursery production</p>
+ </aside></div><div class="hdots">${HERO.map((f,i)=>`<button class="hdot${i?'':' on'}" data-hs="${i}" aria-label="Photo ${i+1}"></button>`).join('')}</div></section>
  <section class="band glance"><div class="in glgrid">
   <div class="donutbox"><svg viewBox="0 0 200 200" class="donut" aria-label="Marks: ISA 20, MSE 30, ESE 50">
    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="26"/>
    ${[["ISA",20,0,"#e9b949"],["MSE",30,20,"#2e7d32"],["ESE",50,50,"#8d5a34"]].map(d=>`<circle class="arc" cx="100" cy="100" r="70" fill="none" stroke="${d[3]}" stroke-width="26" pathLength="100" stroke-dasharray="${d[1]-0.8} ${100-d[1]+0.8}" stroke-dashoffset="${25-d[2]}" style="--len:${d[1]}"/>`).join('')}
    <text x="100" y="96" text-anchor="middle" font-size="34" font-weight="700" fill="currentColor" font-family="Zilla Slab,serif">100</text><text x="100" y="120" text-anchor="middle" font-size="13" fill="currentColor">marks, theory</text></svg>
    <ul class="legend"><li><i style="background:#e9b949"></i><b>ISA</b> In-semester assessment <span>20</span></li><li><i style="background:#2e7d32"></i><b>MSE</b> Mid-semester exam <span>30</span></li><li><i style="background:#8d5a34"></i><b>ESE</b> End-semester exam <span>50</span></li><li class="muted">40 % needed to pass in each</li></ul></div>
-  <div><h2>Course at a glance</h2><div class="tiles">
+  <div><p class="jr-kick">Course details</p><h2>26AE021104 · Crop Production Technologies</h2><p class="muted">B.Tech Agricultural Engineering · Syllabus version 3.0 · Theory · L-T-P: 2-0-0</p><div class="tiles">
    <div class="tile"><b data-n="2">2</b><span>credits · 2 lectures a week</span></div>
    <div class="tile"><b data-n="30">30</b><span>lectures in 3 units</span></div>
    <div class="tile"><b data-n="3">3</b><span>units: soil, agronomy, horticulture</span></div>
    <div class="tile"><b data-n="${FIG.length+NEWD}">${FIG.length+NEWD}</b><span>photos, figures &amp; diagrams</span></div></div>
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
- <section class="band dig"><div class="in"><h2>Dig through Unit I</h2><p class="muted lead">Every lesson is a layer. Start at the surface and dig down to the bedrock – tap a layer to open it.</p>
-  <div class="strata">${L.map((l,i)=>`<a class="stratum" href="#${l[0]}" style="--c:${STRATA[i]};--t:${i>9?'#2a1d13':'#fff'};animation-delay:${i*70}ms"><span class="dp">${i*15} cm</span><span class="sn">${num(l[0])}</span><span class="st"><b>${l[2]}</b><small>Lecture ${l[1]} · ${l[3]}</small></span><span class="go">Open →</span></a>`).join('')}</div></div></section>
+ <section class="band alt" id="h-syl"><div class="in"><p class="jr-kick">Syllabus</p><h2>Three units · 30 lectures</h2>
+  <div class="hsyl">${SYL.map((u,k)=>`<div class="hsu" style="--c:${['#b5651d','#2e7d32','#e8590c'][k]}"><div class="hsu-h"><b>Unit ${u[0]} – ${u[1]}</b><span>${u[2]} %</span></div><div class="bar"><i style="width:${u[2]/40*100}%"></i></div><ol>${u[4].map(r=>`<li><span class="lec">Lec ${r[0]}</span> ${r[1]}</li>`).join('')}</ol></div>`).join('')}</div>
+  <p><a class="btn ghost" href="#syllabus" style="color:var(--ink);border-color:var(--line)">Full syllabus, scheme &amp; CO–PO matrix →</a></p></div></section>
+ <section class="band" id="h-notes"><div class="in"><p class="jr-kick">Notes</p><h2>Lesson notes for every unit</h2><p class="muted lead">Simple explanations, tables, photos, amazing facts and ESE questions with answer points.</p>
+  <div class="hnotes">${[["u1","🪨",L,"#b5651d"],["u2","🌾",L2,"#2e7d32"],["u3","🥭",L3,"#e8590c"]].map(([c,ic,LL,col])=>`<div class="hn" style="--c:${col}"><a class="hn-h" href="#${UNITS[c].key}"><span>${ic}</span><b>${UNITS[c].name}</b><small>${LL.length} lessons →</small></a><ol>${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span>${l[2]}</a></li>`).join('')}</ol></div>`).join('')}</div></div></section>
+ <section class="band hbeyond" id="h-beyond"><div class="in"><p class="jr-kick">Beyond the syllabus</p><h2>Where crop production is heading</h2><p class="muted lead">Six modern topics every future agricultural engineer should know.</p>
+  <div class="hbx">${LB.map((l,k)=>`<a class="hbx-c" href="#${l[0]}"><span class="hbx-i">${['🛰️','🏠','🧪','🌡️','🌿','📱'][k]}</span><h3>${l[2]}</h3><p>${l[3]}</p><span class="go">Read →</span></a>`).join('')}</div></div></section>
  <section class="band jr"><div class="in"><p class="jr-kick">Course map</p><h2 class="jr-title">Three units, <span>one journey</span></h2><p class="muted lead">From the soil to the field crop to the orchard – follow the path from ground to harvest.</p>
-  <div class="jr-path"><svg class="jr-line" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 90 50, 10 100, 50 150 S 90 250, 50 300" pathLength="100"/></svg><div class="jr-stop" style="--jc:#b5651d"><div class="jr-pic"><img src="photos/soil.jpg" alt="Soil Science" loading="lazy"><span class="jr-num">1</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:30"/></svg><b class="jr-val">30%</b></div><div class="jr-body"><span class="jr-tag">Unit I · Lectures 1–10</span><h3>🪨 Soil Science</h3><p class="jr-sub">Understand the ground beneath every crop.</p><ul class="jr-ticks"><li>Rocks, weathering &amp; soil formation</li><li>Soil taxonomy &amp; soils of Maharashtra</li><li>Physical &amp; chemical properties</li><li>Colloids, nutrients &amp; organic matter</li><li>Problematic soils &amp; reclamation</li></ul><a class="btn" href="#unit-1">Start learning →</a></div></div><div class="jr-stop jr-flip" style="--jc:#2e7d32"><div class="jr-pic"><img src="photos/wheat.jpg" alt="Agronomy" loading="lazy"><span class="jr-num">2</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:30"/></svg><b class="jr-val">30%</b></div><div class="jr-body"><span class="jr-tag">Unit II · Lectures 11–18</span><h3>🌾 Agronomy</h3><p class="jr-sub">Grow field crops the scientific way.</p><ul class="jr-ticks"><li>Scope &amp; history of agronomy</li><li>Classification of field crops</li><li>Crop seasons, sowing &amp; seed treatment</li><li>Weather and crop growth</li><li>Rice · Wheat · Maize · Sugarcane · Soybean · Chickpea · Cotton</li></ul><a class="btn ghost" href="#syllabus">See syllabus</a></div></div><div class="jr-stop" style="--jc:#e8590c"><div class="jr-pic"><img src="photos/mango.jpg" alt="Horticulture" loading="lazy"><span class="jr-num">3</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:40"/></svg><b class="jr-val">40%</b></div><div class="jr-body"><span class="jr-tag">Unit III · Lectures 19–30</span><h3>🥭 Horticulture</h3><p class="jr-sub">Fruits, vegetables, flowers &amp; spices.</p><ul class="jr-ticks"><li>Scope &amp; branches of horticulture</li><li>Orchard layout &amp; planting</li><li>Growth regulators, training &amp; pruning</li><li>Irrigation, mulching &amp; post-harvest</li><li>Mango · Banana · Tomato · Rose · Marigold · Coconut · Turmeric</li></ul><a class="btn ghost" href="#syllabus">See syllabus</a></div></div></div>
+  <div class="jr-path"><svg class="jr-line" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 90 50, 10 100, 50 150 S 90 250, 50 300" pathLength="100"/></svg><div class="jr-stop" style="--jc:#b5651d"><div class="jr-pic"><img src="photos/soil.jpg" alt="Soil Science" loading="lazy"><span class="jr-num">1</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:30"/></svg><b class="jr-val">30%</b></div><div class="jr-body"><span class="jr-tag">Unit I · Lectures 1–10</span><h3>🪨 Soil Science</h3><p class="jr-sub">Understand the ground beneath every crop.</p><ul class="jr-ticks"><li>Rocks, weathering &amp; soil formation</li><li>Soil taxonomy &amp; soils of Maharashtra</li><li>Physical &amp; chemical properties</li><li>Colloids, nutrients &amp; organic matter</li><li>Problematic soils &amp; reclamation</li></ul><a class="btn" href="#unit-1">Start learning →</a></div></div><div class="jr-stop jr-flip" style="--jc:#2e7d32"><div class="jr-pic"><img src="photos/wheat.jpg" alt="Agronomy" loading="lazy"><span class="jr-num">2</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:30"/></svg><b class="jr-val">30%</b></div><div class="jr-body"><span class="jr-tag">Unit II · Lectures 11–18</span><h3>🌾 Agronomy</h3><p class="jr-sub">Grow field crops the scientific way.</p><ul class="jr-ticks"><li>Scope &amp; history of agronomy</li><li>Classification of field crops</li><li>Crop seasons, sowing &amp; seed treatment</li><li>Weather and crop growth</li><li>Rice · Wheat · Maize · Sugarcane · Soybean · Chickpea · Cotton</li></ul><a class="btn" href="#unit-2">Read the notes →</a></div></div><div class="jr-stop" style="--jc:#e8590c"><div class="jr-pic"><img src="photos/mango.jpg" alt="Horticulture" loading="lazy"><span class="jr-num">3</span><svg class="jr-ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" pathLength="100" style="--p:40"/></svg><b class="jr-val">40%</b></div><div class="jr-body"><span class="jr-tag">Unit III · Lectures 19–30</span><h3>🥭 Horticulture</h3><p class="jr-sub">Fruits, vegetables, flowers &amp; spices.</p><ul class="jr-ticks"><li>Scope &amp; branches of horticulture</li><li>Orchard layout &amp; planting</li><li>Growth regulators, training &amp; pruning</li><li>Irrigation, mulching &amp; post-harvest</li><li>Mango · Banana · Tomato · Rose · Marigold · Coconut · Turmeric</li></ul><a class="btn" href="#unit-3">Read the notes →</a></div></div></div>
   <div class="jr-finish"><span>🏆</span><div><b>Destination: sustainable crop production</b><p>CO4 – apply soil, agronomic and horticultural principles together.</p></div></div></div></section>
  <section class="band jr-sts"><div class="in"><p class="jr-kick">Seed to market</p><h2>Six stations along the way</h2><div class="jr-stations"><div class="jr-st" style="--i:0"><div class="jr-stimg"><img src="photos/soil.jpg" alt="" loading="lazy"></div><span class="jr-dot">1</span><h4>Soil</h4><p>Know your soil</p><span class="jr-u">Unit I</span></div><div class="jr-st" style="--i:1"><div class="jr-stimg"><img src="photos/oxen.jpg" alt="" loading="lazy"></div><span class="jr-dot">2</span><h4>Prepare &amp; sow</h4><p>Tillage, seed &amp; sowing</p><span class="jr-u">Unit II</span></div><div class="jr-st" style="--i:2"><div class="jr-stimg"><img src="photos/sugarcane.jpg" alt="" loading="lazy"></div><span class="jr-dot">3</span><h4>Field crops</h4><p>Grow major field crops</p><span class="jr-u">Unit II</span></div><div class="jr-st" style="--i:3"><div class="jr-stimg"><img src="photos/canal.jpg" alt="" loading="lazy"></div><span class="jr-dot">4</span><h4>Water</h4><p>Irrigation &amp; mulching</p><span class="jr-u">Unit II · III</span></div><div class="jr-st" style="--i:4"><div class="jr-stimg"><img src="photos/marigold.jpg" alt="" loading="lazy"></div><span class="jr-dot">5</span><h4>Orchard &amp; garden</h4><p>Fruits, vegetables, flowers</p><span class="jr-u">Unit III</span></div><div class="jr-st" style="--i:5"><div class="jr-stimg"><img src="photos/market.jpg" alt="" loading="lazy"></div><span class="jr-dot">6</span><h4>Harvest &amp; market</h4><p>Post-harvest practices</p><span class="jr-u">Unit III</span></div></div></div></section>
  <section class="band"><div class="in"><p class="jr-kick">What we will grow</p><h2>Crops in this course</h2><div class="jr-mosaic"><figure class="jr-tile w"><img src="photos/terraces.jpg" alt="Rice" loading="lazy"><figcaption>Rice</figcaption></figure><figure class="jr-tile "><img src="photos/wheat.jpg" alt="Wheat" loading="lazy"><figcaption>Wheat</figcaption></figure><figure class="jr-tile "><img src="photos/sugarcane.jpg" alt="Sugarcane" loading="lazy"><figcaption>Sugarcane</figcaption></figure><figure class="jr-tile t"><img src="photos/mango.jpg" alt="Mango" loading="lazy"><figcaption>Mango</figcaption></figure><figure class="jr-tile "><img src="photos/banana.jpg" alt="Banana" loading="lazy"><figcaption>Banana</figcaption></figure><figure class="jr-tile "><img src="photos/tomato.jpg" alt="Tomato" loading="lazy"><figcaption>Tomato</figcaption></figure><figure class="jr-tile "><img src="photos/marigold.jpg" alt="Marigold" loading="lazy"><figcaption>Marigold</figcaption></figure><figure class="jr-tile w"><img src="photos/tea.jpg" alt="Plantation crops" loading="lazy"><figcaption>Plantation crops</figcaption></figure><figure class="jr-tile "><img src="photos/harvest.jpg" alt="Harvest" loading="lazy"><figcaption>Harvest</figcaption></figure></div></div></section>
@@ -629,7 +706,7 @@ function syllabus(){
  ${[["ISA – In-Semester Assessment",20],["MSE – Mid-Semester Examination",30],["ESE – End-Semester Examination",50]].map((e,i)=>`<tr><td>${i?'':'2'}</td><td>${i?'':'–'}</td><td>${i?'':'–'}</td><td>${i?'':'2'}</td><td>${i?'':'100 Marks Theory'}</td><td>${e[0]}</td><td class="num">${e[1]}</td><td class="num">40</td></tr>`).join('')}</tbody></table></div>
  <h2 style="margin-top:1.4em">Unit weightage</h2>${SYL.map(u=>`<div style="--c:${u[3]};margin:10px 0"><div style="display:flex;justify-content:space-between"><b>Unit ${u[0]} – ${u[1]}</b><b>${u[2]} %</b></div><div class="bar"><i style="width:${u[2]}%"></i></div></div>`).join('')}
  <h2 style="margin-top:1.4em">Lecture-wise syllabus</h2><table class="stack"><thead><tr><th>Lecture</th><th>Unit / topics</th><th class="num">Weightage</th></tr></thead><tbody>
- ${SYL.map(u=>`<tr class="unitrow" style="--c:${u[3]}"><td></td><td>UNIT ${u[0]} – ${u[1].toUpperCase()}${u[0]=='I'?' · <a href="#unit-1">read the notes</a>':''}</td><td class="num">${u[2]} %</td></tr>`+u[4].map(r=>`<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td class="num">${r[2]}</td></tr>`).join('')).join('')}</tbody></table>
+ ${SYL.map(u=>`<tr class="unitrow" style="--c:${u[3]}"><td></td><td>UNIT ${u[0]} – ${u[1].toUpperCase()} · <a href="#${['unit-1','unit-2','unit-3'][['I','II','III'].indexOf(u[0])]}">read the notes</a></td><td class="num">${u[2]} %</td></tr>`+u[4].map(r=>`<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td class="num">${r[2]}</td></tr>`).join('')).join('')}</tbody></table>
  <h2 style="margin-top:1.4em">Course outcomes</h2><table class="stack"><thead><tr><th>CO</th><th>After this course students will be able to…</th></tr></thead><tbody>${CO.map(c=>`<tr><td><b>${c[0]}</b></td><td>${c[1]}</td></tr>`).join('')}</tbody></table>
  <h2 style="margin-top:1.4em">Course articulation matrix</h2><div class="scroll"><table class="mx"><thead><tr><th>CO / PO</th>${[1,2,3,4,5,6,7,8,9,10,11,12].map(n=>`<th>${n}</th>`).join('')}<th>PSO1</th><th>PSO2</th><th>BTL</th></tr></thead><tbody>${MX.map(r=>`<tr>${r.map((v,i)=>i==0?`<td>${v}</td>`:i==15?`<td>${v}</td>`:`<td class="${v?'m'+v:''}">${v||'–'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
  <p class="muted">3 – high, 2 – medium, 1 – low contribution · BTL – Bloom's Taxonomy Level</p>
@@ -642,6 +719,15 @@ function unit(){
  <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${L.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">Lec ${l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
  <section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lessons</th></tr></thead><tbody>${rows.map(r=>{const ls=L.filter(l=>l[1]==r[0]||(r[0]=='3–4'&&l[0]=='u1-05')||(r[0]=='1–2'&&l[0]=='u1-05'));return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`;
 }
+function unitX(code){
+ const U=UNITS[code],LL=U.list(),k=code=='u2'?1:code=='u3'?2:-1,S=k>=0?SYL[k]:null;
+ const pic={u2:"photos/wheat.jpg",u3:"photos/mango.jpg",bx:"photos/terraces.jpg"}[code];
+ const flow={u2:["Season","Seed","Sowing","Nutrients","Water","Protection","Harvest"],u3:["Site","Layout","Planting","Training","Water","Harvest","Market"],bx:["Data","Technology","Sustainability","Income"]}[code];
+ return `<section class="phead band uhead"><div class="in uhgrid"><div><div class="crumb"><a href="#home">Home</a> › ${U.name}</div><h1>${U.name}</h1><p>${S?`Lectures ${S[4][0][0].split('–')[0]}–${S[4].at(-1)[0].split('–').at(-1)} · Weightage ${S[2]} % · ${U.co}`:'Modern topics that go beyond the prescribed syllabus · supports '+U.co} · ${LL.length} lessons</p>
+ <div class="flow">${flow.map((s,i)=>(i?'<span class="arrow" style="color:#e9b949">➜</span>':'')+`<span class="step" style="background:#e9b949;color:#2a1d13">${s}</span>`).join('')}</div></div><figure class="uart"><img src="${pic}" alt="${U.name}"></figure></div></section>
+ <section class="band"><div class="in"><h2>Lessons</h2><div class="grid">${LL.map(l=>`<a class="card lesson" href="#${l[0]}"><span class="n">${num(l[0])}</span><span><span class="tag">${l[1]=='Beyond'?'Beyond syllabus':'Lec '+l[1]}</span><h3 style="margin:.35em 0 0">${l[2]}</h3><p>${l[3]}</p></span></a>`).join('')}</div></div></section>
+ ${S?`<section class="band alt"><div class="in"><h2>Lecture-to-lesson map</h2><table class="stack"><thead><tr><th>Lecture</th><th>Syllabus topic</th><th>Lesson</th></tr></thead><tbody>${S[4].map(r=>{const ls=LL.filter(l=>l[1]==r[0]);return `<tr><td style="white-space:nowrap">${r[0]}</td><td>${r[1]}</td><td>${ls.map(l=>`<a href="#${l[0]}">${num(l[0])}. ${l[2]}</a>`).join('<br>')}</td></tr>`}).join('')}</tbody></table></div></section>`:''}`;
+}
 function deckHtml(d,i){return `<div class="deck" id="deck${i}" tabindex="0" aria-label="${esc(d[1])} slides">${Array.from({length:d[3]},(_,k)=>`<img loading="lazy" src="slides/${d[0]}/s-${String(k+1).padStart(2,'0')}.jpg" alt="${esc(d[1])} – slide ${k+1}">`).join('')}</div>
  <div class="deckbar"><button data-dk="${i}" data-dir="-1" aria-label="Previous slide">‹</button><button data-dk="${i}" data-dir="1" aria-label="Next slide">›</button><span class="muted" id="cnt${i}">Slide 1 of ${d[3]}</span><button data-fs="${i}" style="padding:0 16px">Full screen</button></div>`}
 let curDeck=0;
@@ -652,14 +738,14 @@ function slides(){
 }
 async function getLesson(id){if(!cache[id]){const r=await fetch(`lessons/${id}.html`);if(!r.ok)throw new Error(r.status);cache[id]=await r.text()}return cache[id]}
 async function lesson(id){
- const i=L.findIndex(l=>l[0]==id),l=L[i],p=L[i-1],n=L[i+1],dk=DECKS.findIndex(d=>d[4]==id);
- app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › <a href="#unit-1">Unit I – Soil Science</a> › Lesson ${num(id)}</div><h1>${num(id)}. ${l[2]}</h1><p>Lecture ${l[1]} · Unit I – Soil Science · CO1</p></div></section>
+ const U=uOf(id),LL=U.list(),i=LL.findIndex(l=>l[0]==id),l=LL[i],p=LL[i-1],n=LL[i+1],dk=DECKS.findIndex(d=>d[4]==id);
+ app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › <a href="#${U.key}">${U.name}</a> › Lesson ${num(id)}</div><h1>${num(id)}. ${l[2]}</h1><p>${l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name} · ${U.co}</p></div></section>
  <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>In this lesson</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
  let h;try{h=await getLesson(id)}catch(e){document.getElementById('notes').innerHTML='<p class="loading">These notes could not be loaded. Please refresh the page.</p>';return}
  if(location.hash.slice(1)!=id)return;
  const nt=document.getElementById('notes');
  nt.innerHTML=h+(dk>=0?`<h2 id="slides-${dk}">Lecture slides – ${esc(DECKS[dk][1])}</h2>${deckHtml(DECKS[dk],dk)}`:'')+
- `<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous lesson</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next lesson →</small>${num(n[0])}. ${n[2]}</a>`:`<a class="nx" href="#unit-1"><small>Finished Unit I →</small>Back to all lessons</a>`}</nav>`;
+ `<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous lesson</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next lesson →</small>${num(n[0])}. ${n[2]}</a>`:`<a class="nx" href="#${U.key}"><small>Finished ${U.name} →</small>Back to all lessons</a>`}</nav>`;
  nt.querySelectorAll('.table-wrap table').forEach(t=>{if(t.rows[0]&&t.rows[0].cells.length<=4)t.classList.add('stack')});
  const hs=[...nt.querySelectorAll('h2[id]')];
  document.getElementById('toc').innerHTML=hs.map(x=>`<li><a href="#${id}" data-to="${x.id}">${esc(x.textContent)}</a></li>`).join('');
@@ -674,7 +760,10 @@ function route(){
  if(v=='syllabus')app.innerHTML=`<div class="view">${syllabus()}</div>`;
  else if(v=='unit-1'){app.innerHTML=`<div class="view">${unit()}</div>`;key='unit'}
 
- else if(L.some(l=>l[0]==v)){lesson(v);key='unit'}
+ else if(v=='unit-2'){app.innerHTML=`<div class="view">${unitX('u2')}</div>`;key='unit2'}
+ else if(v=='unit-3'){app.innerHTML=`<div class="view">${unitX('u3')}</div>`;key='unit3'}
+ else if(v=='beyond'){app.innerHTML=`<div class="view">${unitX('bx')}</div>`;key='beyond'}
+ else if(ALL().some(l=>l[0]==v)){lesson(v);key={u1:'unit',u2:'unit2',u3:'unit3',bx:'beyond'}[v.slice(0,2)]}
  else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));cin.th='all';cinInit();
  scrollTo(0,0);
@@ -700,14 +789,14 @@ document.addEventListener('keydown',e=>{
 document.getElementById('lb').addEventListener('click',e=>{if(e.target.id=='lbgo')document.getElementById('lb').classList.remove('show')});
 /* search */
 const q=document.getElementById('q'),res=document.getElementById('res');let all=null;
-async function loadAll(){if(all)return all;all=await Promise.all(L.map(async l=>{let t='';try{const d=document.createElement('div');d.innerHTML=await getLesson(l[0]);t=d.textContent.replace(/\s+/g,' ')}catch(_){}return [l,t]}));return all}
+async function loadAll(){if(all)return all;all=await Promise.all(ALL().map(async l=>{let t='';try{const d=document.createElement('div');d.innerHTML=await getLesson(l[0]);t=d.textContent.replace(/\s+/g,' ')}catch(_){}return [l,t]}));return all}
 let timer;
 q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(async()=>{const s=q.value.trim().toLowerCase();if(s.length<2){res.classList.remove('show');return}
  const data=await loadAll();const out=[];
  for(const [l,t] of data){const tl=t.toLowerCase(),i=tl.indexOf(s),inT=l[2].toLowerCase().includes(s);if(i<0&&!inT)continue;
   let snip=i>=0?t.slice(Math.max(0,i-50),i+s.length+70):l[3];const k=snip.toLowerCase().indexOf(s);
   snip=k>=0?esc(snip.slice(0,k))+'<mark>'+esc(snip.slice(k,k+s.length))+'</mark>'+esc(snip.slice(k+s.length)):esc(snip);
-  out.push(`<a href="#${l[0]}"><b>${num(l[0])}. ${esc(l[2])}</b><small>…${snip}…</small></a>`)}
+  out.push(`<a href="#${l[0]}"><b>${uOf(l[0]).name.split(' –')[0]} · ${num(l[0])}. ${esc(l[2])}</b><small>…${snip}…</small></a>`)}
  res.innerHTML=out.length?out.join(''):`<a><small>No lesson mentions “${esc(q.value.trim())}”.</small></a>`;res.classList.add('show')},180)});
 res.addEventListener('click',e=>{if(e.target.closest('a[href]')){res.classList.remove('show');q.value=''}});
 addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('totop').classList.toggle('show',h.scrollTop>700);document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'},{passive:true});
