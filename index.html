@@ -437,6 +437,13 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .as-n{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--c);color:#fff;font:700 28px "Zilla Slab",serif}
 .as-tag{font-size:13px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.06em}.as-c h3{margin:4px 0 6px}.as-c p{margin:0;color:var(--muted)}.as-go{display:inline-block;margin-top:10px;font-weight:700;color:var(--c)}
 /* ===== Beyond: connect + articles ===== */
+.cx-grid.cx-row{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:1100px){.cx-grid.cx-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.cx-grid.cx-row .cx{flex:0 0 220px;scroll-snap-align:start}}
+.cx-row .cx{flex-direction:column;align-items:flex-start;text-align:left}.cx-row .cx-go{position:absolute;top:12px;right:14px}.cx{position:relative}
+.cx-contact{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px}.cx-contact a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;min-height:44px}
+.cx-contact .cx-i{background:var(--c)}.cx-contact small{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}.cx-contact a:hover{border-color:var(--soil)}
+.notes ol.refs li{font-size:15px;margin:4px 0}
+
 .cx-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:14px}
 .cx{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;transition:transform .25s,border-color .25s}
 .cx:hover{transform:translateY(-3px);border-color:var(--c)}
@@ -803,22 +810,10 @@ function pBeyond(){
  return ` <section class="band hbeyond" id="s-beyond"><div class="in"><p class="jr-kick">Beyond the syllabus</p><h2>Where crop production is heading</h2>
   <div class="hbx">${LB.map((l,k)=>`<a class="hbx-c" href="#${l[0]}"><span class="hbx-i">${['🛰️','🏠','🧪','🌡️','🌿','📱'][k]}</span><h3>${l[2]}</h3><p>${l[3]}</p><span class="go">Read →</span></a>`).join('')}</div></div></section>
  <section class="band"><div class="in"><h2>Connect with KrushiSamarpan</h2><p class="muted">Articles, videos, farmer groups and updates by Dr. Vinayak B. Shinde and KrushiSamarpan Foundation.</p>
-  <div class="cx-grid">${[["https://krushisamarpan.blogspot.com/","Blog","KrushiSamarpan Blog","Articles on crops, soils and horticulture","#f57c00","✍️"],
-   ["https://www.youtube.com/c/KrushiSamarpanGroup","YouTube","KrushiSamarpan Group","Video lectures and field demonstrations","#e53935","▶"],
-   ["https://www.facebook.com/KrushiSamarpanFoundation/","Facebook page","KrushiSamarpan Foundation","News, events and updates","#1877f2","f"],
-   ["https://www.facebook.com/groups/krushisamarpan/","Facebook group","KrushiSamarpan community","Discussion group for farmers and students","#3b5998","👥"],
-   ["https://telegram.me/s/krushisamarpan","Telegram","KrushiSamarpan channel","Quick updates and study material","#229ed9","✈"]].map(x=>`<a class="cx" href="${x[0]}" target="_blank" rel="noopener" style="--c:${x[4]}"><span class="cx-i">${x[5]}</span><div><small>${x[1]}</small><b>${x[2]}</b><p>${x[3]}</p></div><span class="cx-go">↗</span></a>`).join('')}</div></div></section>
- <section class="band alt"><div class="in"><h2>Published articles</h2><p class="muted">Popular articles in English and Marathi – open or download the PDF.</p>
-  <div class="ar-tabs"><button class="on" data-arl="english">English</button><button data-arl="marathi">मराठी (Marathi)</button></div><div id="arlist" class="ar-list"><p class="muted">Loading articles…</p></div></div></section>`;
+  <div class="cx-grid cx-row">${[["https://www.youtube.com/c/KrushiSamarpanGroup","YouTube","KrushiSamarpan Group","Video lectures and field demonstrations","#e53935","▶"],["https://krushisamarpan.blogspot.com/","Blog","KrushiSamarpan Blog","Articles on crops, soils and horticulture","#f57c00","✍️"],["https://www.facebook.com/groups/krushisamarpan/","Facebook group","KrushiSamarpan community","Discussion group for farmers and students","#3b5998","👥"],["https://www.facebook.com/KrushiSamarpanFoundation/","Facebook page","KrushiSamarpan Foundation","News, events and updates","#1877f2","f"],["https://telegram.me/s/krushisamarpan","Telegram","KrushiSamarpan channel","Quick updates and study material","#229ed9","✈"]].map(x=>`<a class="cx" href="${x[0]}" target="_blank" rel="noopener" style="--c:${x[4]}"><span class="cx-i">${x[5]}</span><div><small>${x[1]}</small><b>${x[2]}</b><p>${x[3]}</p></div><span class="cx-go">↗</span></a>`).join('')}</div><div class="cx-contact"><a href="mailto:drvbshinde73@gmail.com"><span class="cx-i" style="--c:#c62828">✉</span><span><small>Email</small><b>drvbshinde73@gmail.com</b></span></a><a href="https://wa.me/917071777767" target="_blank" rel="noopener"><span class="cx-i" style="--c:#25d366">✆</span><span><small>Contact · WhatsApp</small><b>+91 7071777767</b></span></a></div></div></section>
+`;
 }
-const AR_REPO='drvbshinde73-wq/26AE021104-Crop-Production-Technologies';let arLang='english',arCache={};
-async function loadArticles(){const box=document.getElementById('arlist');if(!box)return;
- document.querySelectorAll('[data-arl]').forEach(b=>b.classList.toggle('on',b.dataset.arl==arLang));
- try{if(!arCache[arLang]){const r=await fetch(`https://api.github.com/repos/${AR_REPO}/contents/articles/${arLang}`);if(!r.ok)throw 0;arCache[arLang]=(await r.json()).filter(f=>/\.pdf$/i.test(f.name))}
-  const L_=arCache[arLang];if(!document.getElementById('arlist'))return;
-  box.innerHTML=L_.length?L_.map(f=>`<a class="ar" href="articles/${arLang}/${encodeURIComponent(f.name)}" target="_blank" rel="noopener"><span class="ar-i">PDF</span><b>${esc(f.name.replace(/\.pdf$/i,'').replace(/[_-]+/g,' '))}</b><small>${(f.size/1048576).toFixed(1)} MB</small></a>`).join(''):'<p class="muted">No articles added yet in this language.</p>'}
- catch(e){box.innerHTML='<p class="muted">The article list could not be loaded right now. Please try again in a few minutes.</p>'}}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-arl]');if(b){arLang=b.dataset.arl;document.getElementById('arlist').innerHTML='<p class="muted">Loading articles…</p>';loadArticles()}});
+
 function cinema(){return `<div class="cin" id="cin" tabindex="0" aria-label="Photo slideshow">
  <div class="chipsrow" role="tablist">${THEMES.map(t=>`<button class="fchip ${t[0]=='all'?'on':''}" data-th="${t[0]}">${t[1]}</button>`).join('')}</div>
  <div class="stage"><img id="cimgA" alt=""><img id="cimgB" alt="" class="hide"><div class="cap"><span id="cnum"></span><b id="ctit"></b><a id="clink" href="#home">Open lesson →</a></div>
@@ -872,7 +867,7 @@ function route(){
  const v=location.hash.slice(1)||'home';
  let key=v;
  const PG={syllabus:pSyllabus,notes:pNotes,assignments:pAssign,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
- if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`;if(v=='beyond')loadArticles()}
+ if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`}
  else if(UJ[v]){window.pendingSec=UJ[v];history.replaceState(null,'','#notes');app.innerHTML=`<div class="view">${pNotes()}</div>`;key='notes'}
  else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':v.startsWith('as')?'assignments':'notes'}
  else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
