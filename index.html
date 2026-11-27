@@ -695,6 +695,22 @@ nav.main a.unav:hover:not(.on){background:color-mix(in srgb,var(--tc) 11%,transp
 
 @media(min-width:1101px){nav.main a{padding:10px 11px;font-size:14.5px}.top .search input{width:180px}}
 @media(min-width:1101px) and (max-width:1320px){.top .search input{width:150px}}
+
+/* assignment rank graphics */
+.rk{display:inline-block;min-width:44px;text-align:center;padding:3px 10px;border-radius:999px;font-weight:800;font-size:13.5px;color:#fff}
+.rk-g{background:#2e7d32}.rk-m{background:#e8590c}.rk-l{background:#c0392b}
+.ab-r.me span{font-weight:800;color:#c0392b}.ab-r.me i{background:linear-gradient(90deg,#c0392b,#e8590c)}.ab-r.me b{color:#c0392b}
+.rkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0 18px}
+.rkgrid .an-bars{margin:10px 0}.rkgrid .ab-r{grid-template-columns:minmax(120px,160px) 1fr 70px}
+.rkfig svg{display:block;width:100%;height:auto}
+.rkline{stroke-dasharray:800;stroke-dashoffset:800;animation:rkDraw 1.2s ease forwards;animation-delay:var(--d)}@keyframes rkDraw{to{stroke-dashoffset:0}}
+.wmed{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:14px 0}
+.wm{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:16px 10px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.wm .wr{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;font:800 18px "Zilla Slab",serif;color:#fff;box-shadow:0 8px 18px #0002}
+.wm .wr1{background:radial-gradient(circle at 30% 30%,#ffe27a,#d4a017)}.wm .wr2{background:radial-gradient(circle at 30% 30%,#f1f1f1,#9aa3ab);color:#2f3a42}.wm .wr3{background:radial-gradient(circle at 30% 30%,#f0b27a,#a0522d)}
+.wm b{font:700 17px "Zilla Slab",serif}.wm small{color:var(--muted);font-size:13px}
+.wm.pop{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both;animation-delay:var(--d)}
+@media(prefers-reduced-motion:reduce){.rkline{animation:none;stroke-dashoffset:0}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
