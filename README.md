@@ -1,7 +1,5 @@
 # 26AE021104 · Crop Production Technologies
 
-Course website for **B.Tech Agricultural Engineering** – course details, unit-wise syllabus and illustrated lesson notes for **Unit I – Soil Science** (13 lessons, photos, figures and animated diagrams).
+This repository holds the course website. All course content – course details, syllabus, notes for Units I–III and beyond-the-syllabus topics – is on the website only:
 
-**Live site:** open the GitHub Pages link shown under *Settings → Pages* after publishing.
-
-Prepared by **Dr. Vinayak Shinde**, Asst. Professor – Agricultural Sciences, D Y Patil Agriculture and Technical University, Talsande, Kolhapur.
+**https://drvbshinde73-wq.github.io/26AE021104-Crop-Production-Technologies/**
