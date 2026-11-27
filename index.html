@@ -806,7 +806,8 @@ const UNITS={u1:{key:"unit-1",name:"Unit I – Soil Science",co:"CO1",list:()=>L
 const AS=[
 ["as-01","Unit I","Rocks, minerals, soil separates, Earth and atmosphere","Igneous, sedimentary and metamorphic rocks · metals and non-metals · intrusive and extrusive rocks · clay, silt and sand · minerals, layers of the Earth and atmosphere",5],
 ["as-02","Unit I","Ions, soil reaction, colloids, soil pH and soil classification","Classification of ions · factors affecting soil reaction · sources of soil colloids · soil pH classes · pre- and post-Dokuchaev classification",5],
-["as-03","Unit II","Indian agriculture, agronomy and field crops","History of Indian agriculture · importance and scope of agronomy · present scenario of field crops in Maharashtra and India",3]];
+["as-03","Unit II","Indian agriculture, agronomy and field crops","History of Indian agriculture · importance and scope of agronomy · present scenario of field crops in Maharashtra and India",3],
+["as-04","Unit I","Solved MSE paper – soil properties, classification and nutrients","Soil pH, EC and CEC · soil orders · rocks · volumetric composition · soil structure · saline and sodic soils · colloids · essential nutrients · bulk vs particle density",9]];
 UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
 const ALL=()=>[...L,...L2,...L3,...AS,...LB];
 const LOCKED=new Set(["u2-11","u2-12","u2-13","u2-14","u2-15","u2-16","u2-17","u2-18","u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
@@ -972,7 +973,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ut]');if(b
 addEventListener('resize',()=>moveUInd());
 function pAssign(){
  return `<section class="phead band"><div class="in"><h1>Assignments</h1><p>${AS.length} assignments · ${AS.reduce((a,x)=>a+x[4],0)} questions · each with detailed scientific answers, figures, photographs and animated diagrams</p></div></section>
- <section class="band"><div class="in"><div class="as-grid">${AS.map((a,k)=>`<a class="as-c" href="#${a[0]}" style="--c:${['#b5651d','#6a1b9a','#2e7d32'][k]}"><span class="as-n">${k+1}</span><div><span class="as-tag">${a[1]} · ${a[4]} questions</span><h3>${a[2]}</h3><p>${a[3]}</p><span class="as-go">Open questions &amp; answers →</span></div></a>`).join('')}</div></div></section>`;
+ <section class="band"><div class="in"><div class="as-grid">${AS.map((a,k)=>`<a class="as-c" href="#${a[0]}" style="--c:${['#b5651d','#6a1b9a','#2e7d32','#1565c0'][k]}"><span class="as-n">${k+1}</span><div><span class="as-tag">${a[1]} · ${a[4]} questions</span><h3>${a[2]}</h3><p>${a[3]}</p><span class="as-go">Open questions &amp; answers →</span></div></a>`).join('')}</div></div></section>`;
 }
 function pBeyond(){
  return ` <section class="band hbeyond" id="s-beyond"><div class="in"><p class="jr-kick">Beyond the syllabus</p><h2>Where crop production is heading</h2>
