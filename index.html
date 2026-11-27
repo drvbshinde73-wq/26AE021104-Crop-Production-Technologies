@@ -364,7 +364,7 @@ figure.photo img{transition:transform .8s ease}figure.photo:hover img{transform:
 @keyframes glow{to{box-shadow:0 0 110px #f5c64acc;transform:scale(1.06)}}
 .flow .step{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i,0)*.18s + .2s)}
 .flow .arrow{animation:fade .5s both;animation-delay:calc(var(--i,0)*.18s + .3s)}
-@keyframes pop{from{transform:scale(.4);opacity:0}}@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}@keyframes fade{from{opacity:0}}
 .bar i{animation:grow 1.2s cubic-bezier(.2,.7,.2,1) both}@keyframes grow{from{width:0}}
 figure.vis .fa,figure.vis .fw{stroke-dasharray:9 6;animation:flow 1.1s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-15}}
@@ -383,6 +383,21 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .lesson .n{transition:transform .3s}.lesson:hover .n{transform:rotate(-6deg) scale(1.08)}
 .toc a{transition:color .2s,border-color .2s}
 }
+.bfloat{animation:bfl 6s ease-in-out infinite}@keyframes bfl{50%{transform:translateY(-8px)}}
+.bshadow{transform-box:fill-box;transform-origin:center;animation:bsh 6s ease-in-out infinite}@keyframes bsh{50%{transform:scale(.92);opacity:.8}}
+.bplant{transform-box:fill-box;transform-origin:50% 100%;animation:sway 2.8s ease-in-out infinite alternate;animation-delay:var(--d)}
+.root{stroke-dasharray:200;stroke-dashoffset:200;animation:rootg 2.4s ease forwards;animation-delay:var(--d)}@keyframes rootg{to{stroke-dashoffset:0}}
+.seep{animation:seep 3.8s ease-in infinite;animation-delay:var(--d)}@keyframes seep{0%{transform:translateY(0);opacity:0}10%{opacity:1}80%{opacity:.9}100%{transform:translateY(150px);opacity:0}}
+.bworm{animation:bw 9s ease-in-out infinite alternate}@keyframes bw{to{transform:translateX(120px) translateY(50px)}}
+.blab{opacity:0;animation:blab .6s ease forwards;animation-delay:var(--d)}@keyframes blab{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.bcloud{animation:bcl 8s ease-in-out infinite alternate}@keyframes bcl{to{transform:translateX(40px)}}
+.brain{animation:brain .9s linear infinite;animation-delay:var(--d)}@keyframes brain{from{transform:translateY(0);opacity:1}to{transform:translateY(34px);opacity:0}}
+.sunr{transform-box:fill-box;transform-origin:center;animation:sunr 6s ease-in-out infinite alternate}@keyframes sunr{to{transform:translateY(-14px) scale(1.04)}}
+.cloud{animation:cl 42s linear infinite;animation-delay:var(--d)}@keyframes cl{from{transform:translate(-120px,var(--y))}to{transform:translate(1560px,var(--y))}}
+.bird{animation:bird 16s linear infinite;animation-delay:var(--d)}@keyframes bird{from{transform:translate(1500px,var(--y)) scale(.8)}to{transform:translate(-80px,calc(var(--y) - 60px)) scale(.8)}}
+.hero.photo .hbg{animation:kenb 24s ease-in-out infinite alternate}@keyframes kenb{to{transform:scale(1.08)}}
+.fact.vis{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+.hslides img.on{animation:kenb 9s ease-out both}@keyframes kenb{from{transform:scale(1.1)}to{transform:scale(1)}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -674,20 +689,3 @@ plantRow();addEventListener('hashchange',plantRow);
 <script src="widgets.js"></script>
 </body>
 </html>
-
-.bfloat{animation:bfl 6s ease-in-out infinite}@keyframes bfl{50%{transform:translateY(-8px)}}
-.bshadow{transform-box:fill-box;transform-origin:center;animation:bsh 6s ease-in-out infinite}@keyframes bsh{50%{transform:scale(.92);opacity:.8}}
-.bplant{transform-box:fill-box;transform-origin:50% 100%;animation:sway 2.8s ease-in-out infinite alternate;animation-delay:var(--d)}
-.root{stroke-dasharray:200;stroke-dashoffset:200;animation:rootg 2.4s ease forwards;animation-delay:var(--d)}@keyframes rootg{to{stroke-dashoffset:0}}
-.seep{animation:seep 3.8s ease-in infinite;animation-delay:var(--d)}@keyframes seep{0%{transform:translateY(0);opacity:0}10%{opacity:1}80%{opacity:.9}100%{transform:translateY(150px);opacity:0}}
-.bworm{animation:bw 9s ease-in-out infinite alternate}@keyframes bw{to{transform:translateX(120px) translateY(50px)}}
-.blab{opacity:0;animation:blab .6s ease forwards;animation-delay:var(--d)}@keyframes blab{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
-.bcloud{animation:bcl 8s ease-in-out infinite alternate}@keyframes bcl{to{transform:translateX(40px)}}
-.brain{animation:brain .9s linear infinite;animation-delay:var(--d)}@keyframes brain{from{transform:translateY(0);opacity:1}to{transform:translateY(34px);opacity:0}}
-.sunr{transform-box:fill-box;transform-origin:center;animation:sunr 6s ease-in-out infinite alternate}@keyframes sunr{to{transform:translateY(-14px) scale(1.04)}}
-.cloud{animation:cl 42s linear infinite;animation-delay:var(--d)}@keyframes cl{from{transform:translate(-120px,var(--y))}to{transform:translate(1560px,var(--y))}}
-.bird{animation:bird 16s linear infinite;animation-delay:var(--d)}@keyframes bird{from{transform:translate(1500px,var(--y)) scale(.8)}to{transform:translate(-80px,calc(var(--y) - 60px)) scale(.8)}}
-
-.hero.photo .hbg{animation:kenb 24s ease-in-out infinite alternate}@keyframes kenb{to{transform:scale(1.08)}}
-.fact.vis{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
-.hslides img.on{animation:kenb 9s ease-out both}@keyframes kenb{from{transform:scale(1.1)}to{transform:scale(1)}}
