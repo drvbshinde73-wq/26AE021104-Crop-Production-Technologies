@@ -684,6 +684,17 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .sc-drip{animation:scDrip 1.6s ease-in infinite;animation-delay:var(--d)}@keyframes scDrip{from{transform:translateY(0);opacity:1}to{transform:translateY(26px);opacity:0}}
 .sc-wet{transform-box:fill-box;transform-origin:center;animation:scWet 3.2s ease-in-out infinite;animation-delay:var(--d)}@keyframes scWet{0%{transform:scale(.3);opacity:0}50%{opacity:.35}100%{transform:scale(1.1);opacity:0}}
 @media(prefers-reduced-motion:reduce){.notes figure.scene *,.lockcard *,.upanel,.ulist li,.ubflow span,.uban img,.ubarc,.unotes .uind{animation:none!important;transition:none!important}.sc-season.s1,.sc-seed{opacity:1}.sc-boll,.sc-pop{transform:none;opacity:1}.sc-draw{stroke-dashoffset:0}}
+
+/* unit tabs in the main menu */
+nav.main a.unav{gap:7px;transition:background .3s,color .3s}
+nav.main a.unav .ur{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 4px;border-radius:7px;font:700 11.5px "Zilla Slab",serif;background:color-mix(in srgb,var(--tc) 16%,transparent);color:var(--tc);transition:background .3s,color .3s}
+nav.main a.unav.on{background:var(--tc);color:#fff;box-shadow:0 6px 16px color-mix(in srgb,var(--tc) 40%,transparent)}
+nav.main a.unav.on .ur{background:#ffffff33;color:#fff}
+nav.main a.unav:hover:not(.on){background:color-mix(in srgb,var(--tc) 11%,transparent)}
+.upage .jr-title{margin-bottom:22px}
+
+@media(min-width:1101px){nav.main a{padding:10px 11px;font-size:14.5px}.top .search input{width:180px}}
+@media(min-width:1101px) and (max-width:1320px){.top .search input{width:150px}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -691,7 +702,7 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <div class="progress" id="prog"></div>
 <header class="top"><div class="in">
 <div class="brand"><img class="brand-logo" src="photos/krushisamarpan-logo.png" alt="KrushiSamarpan Foundation logo"><span><b>Crop Production Technologies</b></span></div>
-<nav class="main" id="nav"><a href="#home" data-v="home">Course</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#notes" data-v="notes">Notes</a><a href="#assignments" data-v="assignments">Assignments</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
+<nav class="main" id="nav"><a href="#home" data-v="home">Course</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#unit-1" data-v="u1" class="unav" style="--tc:#b5651d"><span class="ur">I</span>Unit I</a><a href="#unit-2" data-v="u2" class="unav" style="--tc:#2e7d32"><span class="ur">II</span>Unit II</a><a href="#unit-3" data-v="u3" class="unav" style="--tc:#e8590c"><span class="ur">III</span>Unit III</a><a href="#assignments" data-v="assignments">Assignments</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
 <div class="search"><input id="q" type="search" placeholder="Search all notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
 </div></header>
 
@@ -900,6 +911,8 @@ function uPanel(k){const T=UT[k],LL=T.list(),U=UNITS['u'+k],open=LL.filter(l=>!i
   <div class="ubflow">${T.flow.map((f,i)=>`<span style="--i:${i}">${f}</span>`).join('')}</div></div>
   <div class="ubring" aria-label="${open} of ${LL.length} lectures released"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="#ffffff33" stroke-width="7"/><circle class="ubarc" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" pathLength="100" stroke-dasharray="${open/LL.length*100} 100" transform="rotate(-90 40 40)"/></svg><b>${open}/${LL.length}</b><small>released</small></div></div>
   <ol class="ulist">${LL.map((l,i)=>{const lk=isLk(l[0]);return `<li style="--i:${i}"><a class="ucard${lk?' lk':''}" href="#${l[0]}"><span class="sn">${lk?LKI:l[1]}</span><span class="ut"><small>Lecture ${l[1]}${lk?' · <em>released after the lecture</em>':''}</small><b>${l[2]}</b><span>${l[3]}</span></span><span class="go">${lk?'Locked':'Read'} →</span></a></li>`}).join('')}</ol></div>`}
+function pUnit(k){const T=UT[k],U=UNITS['u'+k];
+ return `<section class="band jr unotes upage" style="--jc:${T.c}"><div class="in"><p class="jr-kick" style="color:${T.c}">${U.name.split(' – ')[0]} · Lectures ${T.list()[0][1]}–${T.list().at(-1)[1]}</p><div id="upanel">${uPanel(k)}</div></div></section>`}
 function pNotes(){
  return `<section class="band jr unotes" id="s-notes"><div class="in"><p class="jr-kick">Notes</p><h2 class="jr-title">Three units, <span>one journey</span></h2>
   <div class="utabs" role="tablist" aria-label="Units">${[1,2,3].map(k=>{const T=UT[k],LL=T.list();return `<button role="tab" class="utab${k==curU?' on':''}" data-ut="${k}" aria-selected="${k==curU}" style="--tc:${T.c}"><span class="ui">${T.ic}</span><span class="ul"><b>Unit ${['I','II','III'][k-1]}</b><small>${SYL[k-1][1]} · Lec ${LL[0][1]}–${LL.at(-1)[1]}</small></span></button>`}).join('')}<i class="uind" aria-hidden="true"></i></div>
@@ -979,14 +992,14 @@ function watchToc(hs){io&&io.disconnect();io=new IntersectionObserver(es=>{es.fo
 function route(){
  const v=location.hash.slice(1)||'home';
  let key=v;
- const PG={syllabus:pSyllabus,notes:pNotes,assignments:pAssign,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
+ const PG={syllabus:pSyllabus,assignments:pAssign,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
  if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`}
- else if(UJ[v]){curU=+v.slice(-1);app.innerHTML=`<div class="view">${pNotes()}</div>`;key='notes'}
- else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':v.startsWith('as')?'assignments':'notes'}
+ else if(v=='notes'){location.replace('#unit-1');return}
+ else if(UJ[v]){curU=+v.slice(-1);app.innerHTML=`<div class="view">${pUnit(curU)}</div>`;key='u'+curU}
+ else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':v.startsWith('as')?'assignments':'u'+v[1]}
  else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));cin.th='all';cinInit();
  scrollTo(0,0);
- if(key=='notes')requestAnimationFrame(moveUInd);
  if(window.pendingSec){const t=window.pendingSec;window.pendingSec=null;setTimeout(()=>{const el=document.getElementById(t);el&&el.scrollIntoView()},80)}
 }
 function slideBy(i,dir){const d=document.getElementById('deck'+i);if(!d)return;d.scrollBy({left:dir*d.clientWidth,behavior:'smooth'})}
