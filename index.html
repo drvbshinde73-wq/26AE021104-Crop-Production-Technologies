@@ -118,7 +118,7 @@ footer{background:var(--deep);color:#e9dccd;font-size:15px}footer a{color:var(--
 @media(max-width:900px){.reader{grid-template-columns:minmax(0,1fr)}.toc{position:static;background:var(--card);border-radius:14px;padding:14px}.search input{width:100%}.search{flex:1 1 100%}}
 @media(max-width:600px){table{font-size:14px}.hero::before{width:56px;height:56px;top:20px}.hero .txt p{font-size:17px}.pager{grid-template-columns:1fr}.pager .nx{grid-column:1}
 .stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--muted);font-weight:600}.stack td:empty{display:none}.brand small{display:none}.top{position:static}}
-@media(prefers-reduced-motion:no-preference){.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}}}
+@media(prefers-reduced-motion:no-preference){.view{animation:rise .45s ease both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}}
 
 .hook{background:var(--deep);color:#f1e7dc;border-radius:18px;padding:22px 24px;margin:0 0 28px;position:relative;overflow:hidden}
 .hook h3{color:#fff;font-size:24px;margin:.2em 0 .4em}.hook p{max-width:none}.hook strong{color:var(--gold)}
@@ -364,7 +364,7 @@ figure.photo img{transition:transform .8s ease}figure.photo:hover img{transform:
 @keyframes glow{to{box-shadow:0 0 110px #f5c64acc;transform:scale(1.06)}}
 .flow .step{animation:pop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i,0)*.18s + .2s)}
 .flow .arrow{animation:fade .5s both;animation-delay:calc(var(--i,0)*.18s + .3s)}
-@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}@keyframes fade{from{opacity:0}}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}@keyframes fade{from{opacity:0}to{opacity:1}}
 .bar i{animation:grow 1.2s cubic-bezier(.2,.7,.2,1) both}@keyframes grow{from{width:0}}
 figure.vis .fa,figure.vis .fw{stroke-dasharray:9 6;animation:flow 1.1s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-15}}
@@ -613,6 +613,77 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 @media (max-width:760px){.jr-stop{grid-template-columns:1fr;gap:16px}.jr-flip .jr-pic{order:0}.jr-line{display:none}}
 @media (max-width:480px){.jr-stations{grid-template-columns:repeat(2,1fr)}}
 @media (prefers-reduced-motion:reduce){.jr-stop{opacity:1;transform:none}.jr-line path{stroke-dashoffset:0}}
+
+/* ===== Notes: three unit tabs ===== */
+.unotes .utabs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;margin:26px 0 22px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 34px #3e27161a}
+.unotes .utab{position:relative;z-index:1;display:flex;align-items:center;gap:12px;padding:12px 16px;border:0;border-radius:16px;background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:color .35s,transform .2s}
+.unotes .utab:hover:not(.on){background:color-mix(in srgb,var(--tc) 9%,transparent)}
+.unotes .utab:active{transform:scale(.98)}
+.unotes .utab .ui{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;font-size:24px;background:color-mix(in srgb,var(--tc) 14%,transparent);transition:background .35s,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.unotes .utab.on .ui{background:#ffffff2e;transform:rotate(-8deg) scale(1.06)}
+.unotes .utab .ul{display:flex;flex-direction:column;line-height:1.2}.unotes .utab b{font:700 19px "Zilla Slab",serif}.unotes .utab small{font-size:13px;opacity:.8}
+.unotes .utab.on{color:#fff}
+.unotes .uind{position:absolute;top:6px;left:0;height:calc(100% - 12px);border-radius:16px;z-index:0;transition:transform .55s cubic-bezier(.6,.05,.2,1),width .55s cubic-bezier(.6,.05,.2,1),background .55s;box-shadow:0 10px 24px #0003}
+@media(max-width:640px){.unotes .utab{flex-direction:column;gap:4px;padding:10px 4px;text-align:center}.unotes .utab small{display:none}.unotes .utab .ui{width:38px;height:38px;font-size:20px}.unotes .utab b{font-size:16px}}
+.upanel{animation:upIn .6s cubic-bezier(.2,.7,.2,1) both}#upanel.swap .upanel{animation:upIn .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes upIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.uban{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px;min-height:260px;border-radius:26px;overflow:hidden;padding:clamp(18px,3vw,34px);color:#fff;isolation:isolate;box-shadow:0 22px 44px #0000002e}
+.uban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:ubZoom 18s ease-in-out infinite alternate}@keyframes ubZoom{to{transform:scale(1.08)}}
+.uban::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,color-mix(in srgb,var(--jc) 82%,#000) 0%,color-mix(in srgb,var(--jc) 45%,transparent) 55%,#0000 100%)}
+.uban h3{color:#fff;font-size:clamp(30px,4vw,46px);margin:2px 0 6px}.uban p{margin:0;max-width:52ch}
+.ubk{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.ubflow{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ubflow span{padding:5px 12px;border-radius:999px;background:#ffffff26;backdrop-filter:blur(4px);font-weight:700;font-size:14px;animation:upIn .5s both;animation-delay:calc(var(--i)*70ms + .2s)}
+.ubring{position:relative;width:110px;height:110px;display:grid;place-items:center;text-align:center}
+.ubring svg{position:absolute;inset:0}.ubring b{font:700 26px "Zilla Slab",serif;margin-top:-10px}.ubring small{position:absolute;bottom:26px;font-size:11px;opacity:.85}
+.ubarc{animation:ubArc 1.4s .3s cubic-bezier(.2,.7,.2,1) both}@keyframes ubArc{from{stroke-dasharray:0 100}}
+@media(max-width:640px){.uban{grid-template-columns:1fr}.ubring{width:90px;height:90px}}
+.ulist{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.ulist li{animation:upIn .5s both;animation-delay:calc(var(--i)*60ms + .15s)}
+.ucard{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;height:100%;padding:16px;border-radius:18px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:var(--ink);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative}
+.ucard:hover{transform:translateY(-4px);box-shadow:0 16px 30px #3e271624;border-color:color-mix(in srgb,var(--jc) 45%,var(--line))}
+.ucard .sn{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--jc);color:#fff;font:700 20px "Zilla Slab",serif;transition:transform .3s}
+.ucard:hover .sn{transform:rotate(-6deg) scale(1.08)}
+.ucard .ut{display:flex;flex-direction:column;gap:3px}.ucard .ut small{color:var(--muted);font-size:13px}.ucard .ut b{font:700 18px/1.25 "Zilla Slab",serif}.ucard .ut>span{color:var(--muted);font-size:14.5px;line-height:1.45}
+.ucard .go{grid-column:2;font-size:13px;font-weight:700;color:var(--jc)}
+.ucard.lk{border-style:dashed;background:color-mix(in srgb,var(--jc) 4%,var(--card))}.ucard.lk .sn{background:color-mix(in srgb,var(--jc) 18%,var(--card));color:var(--jc)}.ucard.lk .ut b,.ucard.lk .ut>span{opacity:.75}
+.ucard.lk em{font-style:normal;color:light-dark(#9b2c1f,#f0a59a);font-weight:700}
+.lki{width:24px;height:24px}
+/* lock screen */
+.lockcard{text-align:center;max-width:620px;margin:10px auto 30px;padding:clamp(24px,4vw,44px);border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,color-mix(in srgb,var(--uc) 8%,var(--card)),var(--card))}
+.lkart{width:120px;margin:0 auto 14px;color:var(--uc)}.lkart svg{display:block;width:100%}
+.lkring{transform-origin:60px 60px;animation:lkspin 3.2s linear infinite}@keyframes lkspin{to{transform:rotate(360deg)}}
+.lkbody{animation:lkbob 2.6s ease-in-out infinite}@keyframes lkbob{50%{transform:translateY(-3px)}}
+.lockcard h2{margin-top:0}
+.tpreview{margin-top:22px;text-align:left;border-top:1px solid var(--line);padding-top:14px}.tpreview summary{cursor:pointer;color:var(--muted);font-size:14px}
+.pwrow{display:flex;gap:8px;margin-top:6px}.pwrow input{flex:1;font:16px inherit;font-family:inherit;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px}
+/* animated scenes in lecture notes */
+.notes figure.scene{background:var(--deep);border:0;padding:0;border-radius:18px;overflow:hidden;margin:0 0 26px;box-shadow:0 18px 40px #3e271633}
+.notes figure.scene svg{display:block;width:100%;height:auto;aspect-ratio:8/3}
+.notes figure.scene figcaption{color:#f1e7dc;padding:10px 16px 14px;font:700 18px "Zilla Slab",serif}
+.notes figure.scene .vbar{display:flex;align-items:center;gap:8px;padding:10px 16px;color:#e9b949;font-weight:700;font-size:14px}.notes figure.scene .vbar .dot{width:9px;height:9px;border-radius:50%;background:#e74c3c;animation:scBlink 1.4s infinite}@keyframes scBlink{50%{opacity:.3}}
+.sc-sun{transform-box:fill-box;transform-origin:center;animation:scSun 6s ease-in-out infinite alternate}@keyframes scSun{to{transform:scale(1.08)}}
+.sc-cloud{animation:scCloud 38s linear infinite;animation-delay:var(--d)}@keyframes scCloud{from{transform:translate(-120px,var(--y))}to{transform:translate(920px,var(--y))}}
+.sc-sway{transform-box:fill-box;transform-origin:50% 100%;animation:scSway 3s ease-in-out infinite alternate;animation-delay:var(--d)}@keyframes scSway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+.sc-rain{animation:scRain 1.1s linear infinite;animation-delay:var(--d)}@keyframes scRain{from{transform:translateY(0);opacity:0}20%{opacity:1}to{transform:translateY(110px);opacity:0}}
+.sc-lab{animation:scLab 1s ease both;animation-delay:var(--d)}@keyframes scLab{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sc-tractor{animation:scDrive 14s linear infinite}@keyframes scDrive{from{transform:translateX(-120px)}to{transform:translateX(900px)}}
+.sc-drill{animation:scDrive 10s linear infinite}.sc-truck{animation:scDrive 9s linear infinite}
+.sc-seed{opacity:0;animation:scSeed 10s linear infinite;animation-delay:var(--d)}@keyframes scSeed{0%,8%{opacity:0;transform:translateY(-14px)}14%,100%{opacity:1;transform:none}}
+.sc-season{opacity:0;animation:scSeason 12s infinite}.sc-season.s2{animation-delay:4s}.sc-season.s3{animation-delay:8s}@keyframes scSeason{0%{opacity:0}6%,30%{opacity:1}36%,100%{opacity:0}}
+.sc-rays{animation:scRays 2.2s ease-in-out infinite alternate}@keyframes scRays{from{opacity:.35}to{opacity:1}}
+.sc-wind{animation:scWind 3s ease-in-out infinite}@keyframes scWind{0%{transform:translateX(-30px);opacity:0}40%{opacity:1}100%{transform:translateX(160px);opacity:0}}
+.sc-water{animation:scWater 3s ease-in-out infinite alternate}@keyframes scWater{to{transform:translateY(3px);opacity:.6}}
+.sc-boll{transform-box:fill-box;transform-origin:center;animation:scBoll 5s ease-in-out infinite;animation-delay:var(--d)}@keyframes scBoll{0%,10%{transform:scale(0)}30%,85%{transform:scale(1)}100%{transform:scale(0)}}
+.sc-pop{transform-box:fill-box;transform-origin:center;animation:scPop 7s cubic-bezier(.3,1.5,.5,1) infinite;animation-delay:var(--d)}@keyframes scPop{0%{transform:scale(0);opacity:0}8%,80%{transform:scale(1);opacity:1}92%,100%{transform:scale(.6);opacity:0}}
+.sc-draw{stroke-dasharray:400;stroke-dashoffset:400;animation:scDraw 7s ease infinite;animation-delay:var(--d)}@keyframes scDraw{0%{stroke-dashoffset:400}15%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:400}}
+.sc-down{animation:scDown 2s linear infinite;animation-delay:var(--d)}@keyframes scDown{from{transform:translateY(0);opacity:1}to{transform:translateY(150px);opacity:0}}
+.sc-up{animation:scUp 2s linear infinite;animation-delay:var(--d)}@keyframes scUp{from{transform:translateY(0);opacity:1}to{transform:translateY(-190px);opacity:0}}
+.sc-cut{animation:scCut 6s ease infinite}@keyframes scCut{0%,30%{opacity:1}45%,100%{opacity:0;transform:translateY(40px)}}
+.sc-shears{animation:scShear 6s ease infinite}@keyframes scShear{0%{transform:translate(0,0)}25%{transform:translate(-160px,-20px)}40%{transform:translate(-200px,-10px)}60%,100%{transform:translate(0,0)}}
+.sc-drip{animation:scDrip 1.6s ease-in infinite;animation-delay:var(--d)}@keyframes scDrip{from{transform:translateY(0);opacity:1}to{transform:translateY(26px);opacity:0}}
+.sc-wet{transform-box:fill-box;transform-origin:center;animation:scWet 3.2s ease-in-out infinite;animation-delay:var(--d)}@keyframes scWet{0%{transform:scale(.3);opacity:0}50%{opacity:.35}100%{transform:scale(1.1);opacity:0}}
+@media(prefers-reduced-motion:reduce){.notes figure.scene *,.lockcard *,.upanel,.ulist li,.ubflow span,.uban img,.ubarc,.unotes .uind{animation:none!important;transition:none!important}.sc-season.s1,.sc-seed{opacity:1}.sc-boll,.sc-pop{transform:none;opacity:1}.sc-draw{stroke-dashoffset:0}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -680,6 +751,17 @@ const AS=[
 ["as-03","Unit II","Indian agriculture, agronomy and field crops","History of Indian agriculture · importance and scope of agronomy · present scenario of field crops in Maharashtra and India",3]];
 UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
 const ALL=()=>[...L,...L2,...L3,...AS,...LB];
+const LOCKED=new Set(["u2-17","u2-18","u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
+const isLk=id=>LOCKED.has(id)&&!cache[id];
+const LKI='<svg viewBox="0 0 24 24" aria-hidden="true" class="lki"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="10" width="16" height="11" rx="3" fill="currentColor"/></svg>';
+async function decryptLesson(id,pw){const r=await fetch(`lessons/${id}.lock`);if(!r.ok)throw new Error('missing');const j=await r.json(),b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
+ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(j.s),iterations:j.n,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+ return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b(j.i)},key,b(j.c)))}
+function lockView(id,U,l){const k=U.key.slice(-1);return `<div class="lockcard" style="--uc:${UT[k].c}"><div class="lkart" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-opacity=".18" stroke-width="4"/><circle class="lkring" cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="4" pathLength="100" stroke-dasharray="22 78"/><g class="lkbody"><path d="M42 54V44a18 18 0 0 1 36 0v10" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><rect x="34" y="54" width="52" height="40" rx="9" fill="currentColor"/><circle cx="60" cy="72" r="5" fill="var(--bg)"/><rect x="58" y="72" width="4" height="12" rx="2" fill="var(--bg)"/></g></svg></div>
+ <h2>These notes are locked for now</h2><p>The notes for <b>Lecture ${l[1]} – ${esc(l[2])}</b> will be released here after the topic is taught in class.</p>
+ <p><a class="btn" href="#${U.key}">Back to ${esc(U.name.split(' – ')[0])} lectures</a></p>
+ <details class="tpreview"><summary>Teacher preview</summary><form id="unlock" autocomplete="off"><label for="pw" class="muted">Course passphrase</label><div class="pwrow"><input id="pw" type="password" required><button class="btn">Unlock</button></div><p class="muted" id="pwmsg" role="status"></p></form></details></div>`}
 const uOf=id=>UNITS[id.slice(0,2)];
 const DECKS=[];const NEWD=28;
 const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-01",2,"The rock cycle"],["u1-01",3,"Extrusive igneous rocks"],["u1-01",4,"Intrusive igneous rocks"],["u1-01",5,"Sedimentary rocks by grain size"],["u1-01",6,"Metamorphism – old and new rock"],["u1-02",7,"Three types of weathering"],["u1-02",8,"Chemical weathering on rock"],["u1-03",9,"A typical soil profile"],["u1-03",10,"Real soil pits showing horizons"],["u1-04",11,"Major soil types of Maharashtra"],["u1-04",12,"The five soils of Maharashtra"],["u1-05",13,"Textural triangle"],["u1-05",14,"Types of soil structure"],["u1-05",15,"Texture, bulk density and pore space"],["u1-05",16,"Soil colours and their meaning"],["u1-05",17,"Atterberg limits"],["u1-06",18,"Strength of adsorption on colloids"],["u1-06",19,"CEC of soil components"],["u1-07",20,"1:1, 2:1 and 2:1:1 clays"],["u1-09",21,"The pH scale"],["u1-09",22,"Active, exchangeable and residual acidity"],["u1-09",23,"Nutrient availability vs soil pH"]];
@@ -809,11 +891,25 @@ function pSyllabus(){
   <p class="sy-leg"><span><i class="hm3"></i>3 High</span><span><i class="hm2"></i>2 Medium</span><span><i class="hm1"></i>1 Low</span><span>BTL – Bloom's Taxonomy Level</span></p></div></section>
  <section class="band"><div class="in"><h2>Suggested readings</h2><div class="sy-books"><div><h3>📗 Text books</h3><ol>${TB.map(b=>`<li>${b}${bookLinks(b)}</li>`).join('')}</ol></div><div><h3>📘 Reference books</h3><ol>${RB.map(b=>`<li>${b}${bookLinks(b)}</li>`).join('')}</ol></div></div></div></section>`;
 }
+const UT={1:{c:"#b5651d",c2:"#f0b27a",ic:"🪨",img:"photos/soil.jpg",list:()=>L,tag:"From rock to living soil",flow:["Rocks","Weathering","Profile","Properties","Colloids","Nutrients"]},
+ 2:{c:"#2e7d32",c2:"#9ad29c",ic:"🌾",img:"photos/wheat.jpg",list:()=>L2,tag:"Managing the field for maximum sustainable yield",flow:["Agronomy","Crops","Seasons","Sowing","Weather","Cropping systems"]},
+ 3:{c:"#e8590c",c2:"#ffc08f",ic:"🥭",img:"photos/mango.jpg",list:()=>L3,tag:"Fruits, vegetables, flowers, spices and plantation crops",flow:["Site","Layout","Regulators","Training","Water","Post-harvest"]}};
+let curU=1;
+function uPanel(k){const T=UT[k],LL=T.list(),U=UNITS['u'+k],open=LL.filter(l=>!isLk(l[0])).length,sy=SYL[k-1];
+ return `<div class="upanel" style="--jc:${T.c};--jc2:${T.c2}"><div class="uban"><img src="${T.img}" alt="" loading="lazy"><div class="ubtxt"><p class="ubk">${U.name.split(' – ')[0]} · ${sy[2]} % weightage · ${U.co}</p><h3>${sy[1]}</h3><p>${T.tag}</p>
+  <div class="ubflow">${T.flow.map((f,i)=>`<span style="--i:${i}">${f}</span>`).join('')}</div></div>
+  <div class="ubring" aria-label="${open} of ${LL.length} lectures released"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="#ffffff33" stroke-width="7"/><circle class="ubarc" cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" pathLength="100" stroke-dasharray="${open/LL.length*100} 100" transform="rotate(-90 40 40)"/></svg><b>${open}/${LL.length}</b><small>released</small></div></div>
+  <ol class="ulist">${LL.map((l,i)=>{const lk=isLk(l[0]);return `<li style="--i:${i}"><a class="ucard${lk?' lk':''}" href="#${l[0]}"><span class="sn">${lk?LKI:l[1]}</span><span class="ut"><small>Lecture ${l[1]}${lk?' · <em>released after the lecture</em>':''}</small><b>${l[2]}</b><span>${l[3]}</span></span><span class="go">${lk?'Locked':'Read'} →</span></a></li>`}).join('')}</ol></div>`}
 function pNotes(){
- return ` <section class="band jr" id="s-notes"><div class="in"><p class="jr-kick">Notes</p><h2 class="jr-title">Three units, <span>one journey</span></h2>
-  <div class="jr-path"><svg class="jr-line" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 90 50, 10 100, 50 150 S 90 250, 50 300" pathLength="100"/></svg>
-  ${[["u1","photos/soil.jpg","#b5651d","🪨",L],["u2","photos/wheat.jpg","#2e7d32","🌾",L2],["u3","photos/mango.jpg","#e8590c","🥭",L3]].map(([c,img,col,ic,LL],k)=>`<div class="jr-stop${k%2?' jr-flip':''}" id="n-${c}" style="--jc:${col}"><div class="jr-pic"><img src="${img}" alt="" loading="lazy"><span class="jr-num">${k+1}</span></div><div class="jr-body"><h3>${ic} ${UNITS[c].name}</h3><p class="jr-meta"><b>${LL.length} lectures</b> (${LL[0][1]}–${LL.at(-1)[1]}) · ${SYL[k][2]} % weightage</p><ol class="jr-lessons">${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span><span>${l[2]}</span></a></li>`).join('')}</ol></div></div>`).join('')}</div></div></section>`;
+ return `<section class="band jr unotes" id="s-notes"><div class="in"><p class="jr-kick">Notes</p><h2 class="jr-title">Three units, <span>one journey</span></h2>
+  <div class="utabs" role="tablist" aria-label="Units">${[1,2,3].map(k=>{const T=UT[k],LL=T.list();return `<button role="tab" class="utab${k==curU?' on':''}" data-ut="${k}" aria-selected="${k==curU}" style="--tc:${T.c}"><span class="ui">${T.ic}</span><span class="ul"><b>Unit ${['I','II','III'][k-1]}</b><small>${SYL[k-1][1]} · Lec ${LL[0][1]}–${LL.at(-1)[1]}</small></span></button>`}).join('')}<i class="uind" aria-hidden="true"></i></div>
+  <div id="upanel" role="tabpanel">${uPanel(curU)}</div></div></section>`;
 }
+function moveUInd(){const t=document.querySelector('.unotes .utabs'),a=t&&t.querySelector('.utab.on'),ind=t&&t.querySelector('.uind');if(!ind||!a)return;ind.style.width=a.offsetWidth+'px';ind.style.transform=`translateX(${a.offsetLeft}px)`;ind.style.background=a.style.getPropertyValue('--tc')}
+function setUnit(k,push){curU=k;document.querySelectorAll('.utab').forEach(b=>{const on=+b.dataset.ut==k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});moveUInd();
+ const pn=document.getElementById('upanel');if(pn){pn.classList.remove('swap');void pn.offsetWidth;pn.innerHTML=uPanel(k);pn.classList.add('swap')}if(push)history.replaceState(null,'','#unit-'+k)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ut]');if(b){setUnit(+b.dataset.ut,true)}});
+addEventListener('resize',()=>moveUInd());
 function pAssign(){
  return `<section class="phead band"><div class="in"><h1>Assignments</h1><p>${AS.length} assignments · ${AS.reduce((a,x)=>a+x[4],0)} questions · each with detailed scientific answers, figures, photographs and animated diagrams</p></div></section>
  <section class="band"><div class="in"><div class="as-grid">${AS.map((a,k)=>`<a class="as-c" href="#${a[0]}" style="--c:${['#b5651d','#6a1b9a','#2e7d32'][k]}"><span class="as-n">${k+1}</span><div><span class="as-tag">${a[1]} · ${a[4]} questions</span><h3>${a[2]}</h3><p>${a[3]}</p><span class="as-go">Open questions &amp; answers →</span></div></a>`).join('')}</div></div></section>`;
@@ -862,6 +958,11 @@ async function lesson(id){
  const U=uOf(id),LL=U.list(),i=LL.findIndex(l=>l[0]==id),l=LL[i],p=LL[i-1],n=LL[i+1],dk=DECKS.findIndex(d=>d[4]==id);
  app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb">${U.name} › ${id.startsWith("as")?"Assignment":id.startsWith("bx")?"Topic":"Lecture"} ${num(id)}</div><h1>${id.startsWith("as")?"Assignment No. "+num(id)+" – ":num(id)+". "}${l[2]}</h1><p>${id.startsWith("as")?l[4]+" questions with answers · "+l[1]:l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name}${id.startsWith("as")?"":" · "+U.co}</p></div></section>
  <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>Contents</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
+ if(LOCKED.has(id)&&!cache[id]){const sp=sessionStorage.getItem('cptpw');if(sp){try{cache[id]=await decryptLesson(id,sp)}catch(_){}}}
+ if(isLk(id)){const nt=document.getElementById('notes');nt.innerHTML=lockView(id,U,l)+`<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next →</small>${num(n[0])}. ${n[2]}</a>`:''}</nav>`;
+  document.getElementById('toc').innerHTML='<li class="muted">Released after the lecture</li>';
+  document.getElementById('unlock').addEventListener('submit',async e=>{e.preventDefault();const pw=document.getElementById('pw').value,m=document.getElementById('pwmsg');m.textContent='Checking…';
+   try{cache[id]=await decryptLesson(id,pw);sessionStorage.setItem('cptpw',pw);all=null;lesson(id)}catch(_){m.textContent='That passphrase did not work.'}});return}
  let h;try{h=await getLesson(id)}catch(e){document.getElementById('notes').innerHTML='<p class="loading">These notes could not be loaded. Please refresh the page.</p>';return}
  if(location.hash.slice(1)!=id)return;
  const nt=document.getElementById('notes');
@@ -880,11 +981,12 @@ function route(){
  let key=v;
  const PG={syllabus:pSyllabus,notes:pNotes,assignments:pAssign,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
  if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`}
- else if(UJ[v]){window.pendingSec=UJ[v];history.replaceState(null,'','#notes');app.innerHTML=`<div class="view">${pNotes()}</div>`;key='notes'}
+ else if(UJ[v]){curU=+v.slice(-1);app.innerHTML=`<div class="view">${pNotes()}</div>`;key='notes'}
  else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':v.startsWith('as')?'assignments':'notes'}
  else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));cin.th='all';cinInit();
  scrollTo(0,0);
+ if(key=='notes')requestAnimationFrame(moveUInd);
  if(window.pendingSec){const t=window.pendingSec;window.pendingSec=null;setTimeout(()=>{const el=document.getElementById(t);el&&el.scrollIntoView()},80)}
 }
 function slideBy(i,dir){const d=document.getElementById('deck'+i);if(!d)return;d.scrollBy({left:dir*d.clientWidth,behavior:'smooth'})}
@@ -908,7 +1010,7 @@ document.addEventListener('keydown',e=>{
 document.getElementById('lb').addEventListener('click',e=>{if(e.target.id=='lbgo')document.getElementById('lb').classList.remove('show')});
 /* search */
 const q=document.getElementById('q'),res=document.getElementById('res');let all=null;
-async function loadAll(){if(all)return all;all=await Promise.all(ALL().map(async l=>{let t='';try{const d=document.createElement('div');d.innerHTML=await getLesson(l[0]);t=d.textContent.replace(/\s+/g,' ')}catch(_){}return [l,t]}));return all}
+async function loadAll(){if(all)return all;all=await Promise.all(ALL().filter(l=>!isLk(l[0])).map(async l=>{let t='';try{const d=document.createElement('div');d.innerHTML=await getLesson(l[0]);t=d.textContent.replace(/\s+/g,' ')}catch(_){}return [l,t]}));return all}
 let timer;
 q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(async()=>{const s=q.value.trim().toLowerCase();if(s.length<2){res.classList.remove('show');return}
  const data=await loadAll();const out=[];
