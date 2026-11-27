@@ -31,7 +31,7 @@ pre,.scroll{overflow-x:auto}.scroll a{flex:none}code{overflow-wrap:anywhere}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top .in{display:flex;align-items:center;gap:16px;padding:8px max(3vw,12px);flex-wrap:wrap}
 .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);margin-right:auto}
-.brand svg{width:36px;height:36px}.brand b{font-size:18px;margin:0;display:block}.brand small{display:block;color:var(--muted);font-size:13px}
+.brand svg{width:36px;height:36px}.brand-logo{width:52px;height:52px;flex:none;border-radius:10px;background:#fff;object-fit:contain;box-shadow:0 1px 4px #0002}.brand b{font-size:18px;margin:0;display:block}.brand small{display:block;color:var(--muted);font-size:13px}
 nav.main{display:flex;gap:4px;flex-wrap:wrap}
 nav.main a{padding:10px 14px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
 nav.main a.on{background:var(--soil);color:var(--bg)}
@@ -522,7 +522,7 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <body>
 <div class="progress" id="prog"></div>
 <header class="top"><div class="in">
-<div class="brand"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="38" width="56" height="8" rx="3" fill="#8d5a34"/><rect x="4" y="46" width="56" height="7" rx="3" fill="#6b4226"/><rect x="4" y="53" width="56" height="7" rx="3" fill="#3e2716"/><path d="M32 38V20" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/><path d="M32 26C20 26 16 16 16 10c10 0 16 6 16 16Z" fill="#66bb6a"/><path d="M32 22c10 0 16-8 16-14-10 0-16 6-16 14Z" fill="#2e7d32"/></svg><span><b>Crop Production Technologies</b></span></div>
+<div class="brand"><img class="brand-logo" src="photos/krushisamarpan-logo.png" alt="KrushiSamarpan Foundation logo"><span><b>Crop Production Technologies</b></span></div>
 <nav class="main" id="nav"><a href="#home" data-v="home">Course</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#notes" data-v="notes">Notes</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
 <div class="search"><input id="q" type="search" placeholder="Search all notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
 </div></header>
