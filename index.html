@@ -750,7 +750,7 @@ h1{font-size:26px}h2{font-size:21px}h3{font-size:17.5px}
 .notes h2{font-size:20px;margin-top:1.3em}.notes h3{font-size:17px}.notes h4{font-size:13.5px}
 .phead h1{font-size:25px}.phead .crumb,.phead p{font-size:13px}
 .hero .txt p{font-size:15px}.hook h3{font-size:18px}.hook,.notes .hook{padding:16px 16px}
-table,.notes table{font-size:12.5px}.notes th,.notes td{padding:6px 7px}
+table,.notes table{font-size:12.5px}.notes th,.notes td{padding:6px 7px}.notes .stack td{padding:3px 0;padding-inline-start:8em}.notes table.stack{min-width:0!important;width:100%}
 figcaption{font-size:12.5px}.lab,.kicker{font-size:12.5px}.equation{font-size:14.5px;padding:10px 12px}
 .notes .src{font-size:12px}.notes ol.refs li{font-size:12.5px}
 .lesson p,.toc,.chip{font-size:13px}.lesson h3{font-size:16px}
@@ -768,6 +768,13 @@ nav.main a{font-size:13.5px;padding:6px 10px}.brand b{font-size:15.5px}.brand sm
 .notes,.notes p,.notes li,.notes td,.notes th,.notes td p,.notes th p,.notes dt,.notes dd,.notes summary,.notes details p,.notes .fact p,.notes .callout p,.notes .xp p,.notes .hook p,.notes .ab-t,.notes .tl-i p,.notes .equation,.notes table{font-size:var(--fa)!important}
 .notes figcaption,.notes figure.vid figcaption,.notes figure.photo figcaption{font-size:var(--fc)!important;font-family:"Nunito Sans",system-ui,sans-serif!important;font-weight:600!important;line-height:1.45}
 .notes .lab,.notes p.lab,.notes .src,.notes p.src,.notes .ab-n,.notes ol.refs li,.notes .kicker{font-size:var(--fl)!important}
+
+/* slide figures from lectures */
+.notes .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0 22px;align-items:start}
+.notes .sgrid figure.slide{margin:0}
+.notes figure.slide{background:#fff;padding:10px}
+.notes figure.slide img{max-height:380px;object-fit:contain;background:#fff}
+.notes figure.slide .credit{display:block;margin-top:3px;font-weight:400;color:var(--muted);font-size:var(--fl)}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -800,11 +807,11 @@ const L=[
 ["u1-09","9","Soil Reaction, Essential Nutrients and Soil Organic Matter","pH and acidity, buffering, essential nutrients and their functions, organic matter and humus."],
 ["u1-10","10","Problematic Soils","Saline, sodic, acid, acid sulphate, calcareous and waterlogged soils and their reclamation."]];
 const L2=[
-["u2-11","11","Agronomy – History, Definition, Scope and Importance","Meaning, history in India, scope, importance and principles of agronomy."],
+["u2-11","11","Agronomy – History, Definition, Scope and Importance","Meaning of agronomy, year-wise history of Indian agriculture, scope and importance."],
 ["u2-12","12","Classification of Field Crops","Ontogeny (life span), agronomic use, botanical (plant kingdom), season, climate, photoperiod, CO₂ pathway and special-purpose groups."],
 ["u2-13","13","Crop Seasons of India","Kharif, rabi and zaid seasons and factors deciding time of sowing."],
-["u2-14","14","Sowing Methods, Seed Rate and Seed Treatment","Methods of sowing, seed-rate calculation and seed treatment."],
-["u2-15","15","Weather and Crop Growth","Temperature, rainfall, light, humidity, wind and climate change."],
+["u2-14","14","Sowing Methods, Seed Rate and Seed Treatment","Methods of sowing, germination, seed-rate calculation and seed treatment."],
+["u2-15","15","Weather and Crop Growth","Temperature, solar radiation, photoperiod, rainfall, humidity, wind, CO₂ and C₃/C₄/CAM plants."],
 ["u2-16","16","Cropping Systems and Crop Rotation","Cropping systems, intercropping indices and principles of crop rotation."],
 ["u2-17","17","Production Practices of Rice, Wheat, Maize and Sugarcane","Complete packages of practices for the major cereals and sugarcane."],
 ["u2-18","18","Production Practices of Soybean, Chickpea and Cotton","Packages of practices for the legumes and cotton of the black soils."]];
@@ -836,7 +843,7 @@ const AS=[
 ["as-04","Unit I","Solved MSE paper – soil properties, classification and nutrients","Soil pH, EC and CEC · soil orders · rocks · volumetric composition · soil structure · saline and sodic soils · colloids · essential nutrients · bulk vs particle density",9]];
 UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
 const ALL=()=>[...L,...L2,...L3,...AS,...LB];
-const LOCKED=new Set(["u2-11","u2-12","u2-13","u2-14","u2-15","u2-16","u2-17","u2-18","u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
+const LOCKED=new Set(["u2-13","u2-16","u2-17","u2-18","u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
 const isLk=id=>LOCKED.has(id)&&!cache[id];
 const LKI='<svg viewBox="0 0 24 24" aria-hidden="true" class="lki"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="10" width="16" height="11" rx="3" fill="currentColor"/></svg>';
 async function decryptLesson(id,pw){const r=await fetch(`lessons/${id}.lock`);if(!r.ok)throw new Error('missing');const j=await r.json(),b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
