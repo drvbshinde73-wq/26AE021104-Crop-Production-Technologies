@@ -455,6 +455,8 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .ar-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
 .ar{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .ar:hover{border-color:var(--soil)}.ar-i{flex:none;font-size:12px;font-weight:800;color:#fff;background:#c62828;border-radius:8px;padding:6px 8px}.ar b{flex:1}.ar small{color:var(--muted)}
+.notes .src{font-size:13px;color:var(--muted);margin:4px 0 18px}.ab-n{font-size:13px;color:var(--muted);margin:8px 0 0}
+.an-gb .gb{transform-box:fill-box;transform-origin:bottom;animation:gbGrow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*.08s)}@keyframes gbGrow{from{transform:scaleY(0)}to{transform:none}}
 /* ===== Assignment animations ===== */
 .notes figure.anim{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 0 10px;overflow:hidden}
 .notes figure.anim svg{display:block;width:100%;height:auto;color:var(--ink)}
