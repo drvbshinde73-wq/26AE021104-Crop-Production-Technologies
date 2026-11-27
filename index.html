@@ -400,6 +400,93 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 .hslides img.on{animation:kenb 9s ease-out both}@keyframes kenb{from{transform:scale(1.1)}to{transform:scale(1)}}
 
 
+
+/* ===== Syllabus page ===== */
+.sy-head p{max-width:760px}
+.sy-stack{display:flex;margin-top:22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #0004}
+.sy-stack>div{flex:var(--w);background:var(--c);color:#fff;padding:12px 16px;display:flex;flex-direction:column;transform-origin:left;animation:syGrow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*.18s)}
+.sy-stack b{font:700 26px "Zilla Slab",serif}.sy-stack span{font-size:14px;opacity:.92}
+@keyframes syGrow{from{transform:scaleX(0);opacity:0}to{transform:none;opacity:1}}
+.sy-units{display:grid;gap:22px}
+.sy-u{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.sy-u header{display:flex;gap:16px;align-items:center;padding:18px 22px;background:linear-gradient(110deg,var(--c),color-mix(in srgb,var(--c) 70%,#000));color:#fff}
+.sy-u header h2{margin:0;color:#fff}.sy-u header p{margin:2px 0 0;opacity:.9}
+.sy-r{flex:none;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#ffffff26;border:2px solid #ffffff80;font:700 22px "Zilla Slab",serif}
+.sy-w{margin-left:auto;font:700 44px/1 "Zilla Slab",serif}.sy-w small{font-size:20px}
+.sy-tl{list-style:none;margin:0;padding:18px 22px 22px;position:relative}
+.sy-tl::before{content:"";position:absolute;left:52px;top:26px;bottom:30px;width:3px;background:color-mix(in srgb,var(--c) 35%,transparent);border-radius:3px}
+.sy-tl li{display:grid;grid-template-columns:64px 1fr 120px;gap:16px;align-items:center;padding:10px 0;position:relative}
+.sy-l{position:relative;z-index:1;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--bg);border:3px solid var(--c);color:var(--c);font-size:11px;line-height:1.1;text-align:center}
+.sy-l b{font:700 17px "Zilla Slab",serif}
+.sy-tl p{margin:0;font-size:16.5px}
+.sy-p b{display:block;text-align:right;color:var(--c)}.sy-p i{display:block;height:8px;border-radius:8px;background:var(--line);position:relative;overflow:hidden}
+.sy-p i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--x);background:var(--c);border-radius:8px}
+@media(max-width:640px){.sy-tl li{grid-template-columns:56px 1fr;}.sy-p{grid-column:2}.sy-l{width:54px;height:54px}.sy-tl::before{left:48px}.sy-w{font-size:34px}.sy-u header{padding:14px}}
+.sy-cos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.sy-co{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:16px;padding:16px}
+.sy-co b{display:inline-block;padding:2px 12px;border-radius:999px;background:var(--c);color:#fff}.sy-co p{margin:8px 0 0}
+.sy-mx{border-collapse:separate;border-spacing:4px;min-width:760px}.sy-mx th{font-size:13px;padding:6px}.sy-mx td{text-align:center;border-radius:8px;padding:8px 4px;font-weight:700}
+.hm0{background:var(--band);color:var(--muted)}.hm1{background:#dcedc8;color:#33691e}.hm2{background:#81c784;color:#0f3d12}.hm3{background:#2e7d32;color:#fff}.sy-mx .btl{background:var(--card);border:1px solid var(--line)}
+.sy-leg{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}.sy-leg i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+.sy-books{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}.sy-books>div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px}
+.jr-meta{margin:-2px 0 10px;color:var(--muted)}.jr-meta b{color:var(--jc)}
+/* ===== Assignments ===== */
+.as-grid{display:grid;gap:18px}
+.as-c{display:flex;gap:18px;align-items:flex-start;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:20px;padding:20px;transition:transform .25s,box-shadow .25s}
+.as-c:hover{transform:translateY(-4px);box-shadow:0 16px 34px #3e27161f}
+.as-n{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--c);color:#fff;font:700 28px "Zilla Slab",serif}
+.as-tag{font-size:13px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.06em}.as-c h3{margin:4px 0 6px}.as-c p{margin:0;color:var(--muted)}.as-go{display:inline-block;margin-top:10px;font-weight:700;color:var(--c)}
+/* ===== Beyond: connect + articles ===== */
+.cx-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:14px}
+.cx{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;transition:transform .25s,border-color .25s}
+.cx:hover{transform:translateY(-3px);border-color:var(--c)}
+.cx-i{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--c);color:#fff;font:700 20px "Source Sans 3",sans-serif}
+.cx small{color:var(--c);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.06em}.cx b{display:block}.cx p{margin:0;color:var(--muted);font-size:14px}.cx-go{margin-left:auto;color:var(--muted)}
+.ar-tabs{display:flex;gap:8px;margin:12px 0}.ar-tabs button{font:inherit;font-weight:700;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:44px}
+.ar-tabs button.on{background:var(--soil);color:var(--bg);border-color:var(--soil)}
+.ar-list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.ar{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ar:hover{border-color:var(--soil)}.ar-i{flex:none;font-size:12px;font-weight:800;color:#fff;background:#c62828;border-radius:8px;padding:6px 8px}.ar b{flex:1}.ar small{color:var(--muted)}
+/* ===== Assignment animations ===== */
+.notes figure.anim{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 0 10px;overflow:hidden}
+.notes figure.anim svg{display:block;width:100%;height:auto;color:var(--ink)}
+.ae-ic{animation:aePulse 2.4s ease-in-out infinite;transform-origin:center}.ae-oc{animation:aePulse 3.6s ease-in-out infinite reverse}
+@keyframes aePulse{50%{opacity:.78}}
+.ae-conv{animation:aeSpin 18s linear infinite;transform-origin:0 0}@keyframes aeSpin{to{transform:rotate(360deg)}}
+.ae-l{opacity:0;animation:aeIn .8s ease forwards;animation-delay:var(--d)}@keyframes aeIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.at-plane{animation:atFly 9s linear infinite}@keyframes atFly{from{transform:translateX(-80px)}to{transform:translateX(700px)}}
+.at-cloud{animation:atCloud 22s linear infinite}@keyframes atCloud{from{transform:translateX(200px)}to{transform:translateX(-560px)}}
+.at-oz{animation:aePulse 3s ease-in-out infinite}
+.at-met{stroke-dasharray:70;stroke-dashoffset:70;animation:atMet 2.6s ease-in infinite}@keyframes atMet{0%{stroke-dashoffset:70;opacity:0}20%{opacity:1}60%{stroke-dashoffset:-70;opacity:0}100%{opacity:0}}
+.at-aur{animation:atAur 4s ease-in-out infinite}@keyframes atAur{50%{opacity:.15;transform:translateY(6px)}}
+.at-sat{offset-path:path("M-30 40 C 200 0, 440 0, 680 40");animation:atSat 12s linear infinite}@keyframes atSat{to{offset-distance:100%}}
+.rc-a path{stroke-dasharray:10 8;animation:rcFlow 1.4s linear infinite}@keyframes rcFlow{to{stroke-dashoffset:-36}}
+.rc-n{animation:aePulse 4s ease-in-out infinite}
+.vol-lava{animation:volLava 3s ease-in-out infinite}.vol-lava.v2{animation-delay:1.2s}@keyframes volLava{0%,100%{opacity:.55}50%{opacity:1}}
+.vol-pipe{animation:aePulse 1.6s ease-in-out infinite}.vol-pluton,.vol-dyke,.vol-sill{animation:volCool 6s ease-in-out infinite}@keyframes volCool{50%{fill:#8d6e63}}
+.vol-smoke circle{animation:volSmoke 4s ease-out infinite}.vol-smoke circle:nth-child(2){animation-delay:1.3s}.vol-smoke circle:nth-child(3){animation-delay:2.6s}
+@keyframes volSmoke{from{transform:translateY(20px);opacity:.9}to{transform:translateY(-30px);opacity:0}}
+.st-sand{animation:stFall 6s ease-in infinite}.st-silt{animation:stFall2 6s ease-in infinite}.st-clay{animation:stFall3 6s linear infinite}
+@keyframes stFall{0%{transform:translateY(0)}25%,100%{transform:translateY(205px)}}@keyframes stFall2{0%{transform:translateY(0)}70%,100%{transform:translateY(180px)}}@keyframes stFall3{0%{transform:translateY(0)}100%{transform:translateY(14px)}}
+.an-mohs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;padding:16px;align-items:end;height:230px}
+.mh{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:4px;height:calc(34% + var(--i) * 7.3%);background:linear-gradient(180deg,#e9b949,#8d5a34);border-radius:10px 10px 4px 4px;color:#fff;padding:6px 2px;transform-origin:bottom;animation:mhGrow .8s ease both;animation-delay:calc(var(--i)*.12s)}
+.mh b{font:700 20px "Zilla Slab",serif}.mh span{font-size:11px;writing-mode:vertical-rl;transform:rotate(180deg)}
+@keyframes mhGrow{from{transform:scaleY(0)}to{transform:none}}
+.an-ph{position:relative;display:grid;grid-template-columns:repeat(11,1fr);gap:3px;padding:16px 16px 40px}
+.phc{background:var(--c);color:#fff;border-radius:10px;padding:10px 4px;text-align:center;animation:aeIn .6s ease both;animation-delay:calc(var(--i)*.08s)}
+.phc b{display:block;font-size:12.5px}.phc span{display:block;font-size:11px;line-height:1.2;margin-top:4px}
+.ph-needle{position:absolute;bottom:10px;left:calc(16px + (100% - 32px) * 6.5 / 11);width:calc((100% - 32px) * 1.4 / 11);height:22px;border-radius:999px;background:#ffd76a;border:2px solid #2a1d13;animation:phMove 5s ease-in-out infinite}
+@keyframes phMove{0%,100%{transform:translateX(-30%)}50%{transform:translateX(30%)}}
+@media(max-width:640px){.an-ph{grid-template-columns:repeat(4,1fr)}.ph-needle{display:none}.an-mohs{height:200px;padding:10px}.mh span{font-size:10px}}
+.mic-ions .mi{transform:rotate(var(--a));animation:micOrbit 14s linear infinite}@keyframes micOrbit{from{transform:rotate(var(--a))}to{transform:rotate(calc(var(--a) + 360deg))}}
+.an-tl{position:relative;margin:20px 0;padding-left:28px}.an-tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:4px;border-radius:4px;background:linear-gradient(#8d5a34,#2e7d32,#e9b949)}
+.tl-i{position:relative;margin:0 0 14px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;animation:aeIn .6s ease both;animation-delay:calc(var(--i)*.15s)}
+.tl-i::before{content:"";position:absolute;left:-26px;top:16px;width:14px;height:14px;border-radius:50%;background:#e9b949;border:3px solid var(--bg)}
+.tl-y{display:inline-block;font-size:12.5px;font-weight:800;color:#fff;background:#8d5a34;border-radius:999px;padding:2px 10px;margin-right:8px}.tl-i p{margin:4px 0 0}
+.an-bars{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:18px 0}.ab-t{font-weight:700;margin:0 0 10px}
+.ab-r{display:grid;grid-template-columns:minmax(110px,190px) 1fr 90px;gap:10px;align-items:center;margin:8px 0}.ab-r span{font-size:14.5px}
+.ab-r i{display:block;height:16px;border-radius:8px;background:linear-gradient(90deg,#2e7d32,#e9b949);width:var(--w);transform-origin:left;animation:syGrow 1s ease both;animation-delay:calc(var(--i)*.12s)}.ab-r b{font-size:14px}
+@media(prefers-reduced-motion:reduce){.an-earth *,.an-atm *,.an-rc *,.an-vol *,.an-set *,.mh,.phc,.ph-needle,.mi,.tl-i,.ab-r i,.sy-stack>div{animation:none!important}.ae-l{opacity:1}}
 /* ===== Teacher profile (hero, top-right) ===== */
 .hero.photo .hgrid{grid-template-columns:minmax(0,1.25fr) minmax(0,.95fr);align-items:start}
 .prof{justify-self:end;align-self:start;max-width:480px;color:#fff;background:#0f1d0bb8;border:1px solid #ffffff38;border-radius:24px;padding:20px;backdrop-filter:blur(12px);box-shadow:0 24px 60px #0007;animation:profIn 1s cubic-bezier(.2,.8,.2,1) .3s both}
@@ -523,7 +610,7 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <div class="progress" id="prog"></div>
 <header class="top"><div class="in">
 <div class="brand"><img class="brand-logo" src="photos/krushisamarpan-logo.png" alt="KrushiSamarpan Foundation logo"><span><b>Crop Production Technologies</b></span></div>
-<nav class="main" id="nav"><a href="#home" data-v="home">Course</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#notes" data-v="notes">Notes</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
+<nav class="main" id="nav"><a href="#home" data-v="home">Course</a><a href="#syllabus" data-v="syllabus">Syllabus</a><a href="#notes" data-v="notes">Notes</a><a href="#assignments" data-v="assignments">Assignments</a><a href="#beyond" data-v="beyond">Beyond</a></nav>
 <div class="search"><input id="q" type="search" placeholder="Search all notes" aria-label="Search Unit I notes" autocomplete="off"><div class="results" id="res"></div></div>
 </div></header>
 
@@ -576,7 +663,12 @@ const LB=[
 ["bx-05","Beyond","Organic and Natural Farming","Certification, PKVY, Jeevamrut and the natural farming mission."],
 ["bx-06","Beyond","Digital Agriculture and AI","e-NAM, Agristack, AI diagnosis, blockchain traceability and agri-startups."]];
 const UNITS={u1:{key:"unit-1",name:"Unit I – Soil Science",co:"CO1",list:()=>L},u2:{key:"unit-2",name:"Unit II – Agronomy",co:"CO2",list:()=>L2},u3:{key:"unit-3",name:"Unit III – Horticulture",co:"CO3",list:()=>L3},bx:{key:"beyond",name:"Beyond the syllabus",co:"CO4",list:()=>LB}};
-const ALL=()=>[...L,...L2,...L3,...LB];
+const AS=[
+["as-01","Unit I","Rocks, minerals, soil separates, Earth and atmosphere","Igneous, sedimentary and metamorphic rocks · metals and non-metals · intrusive and extrusive rocks · clay, silt and sand · minerals, layers of the Earth and atmosphere",5],
+["as-02","Unit I","Ions, soil reaction, colloids, soil pH and soil classification","Classification of ions · factors affecting soil reaction · sources of soil colloids · soil pH classes · pre- and post-Dokuchaev classification",5],
+["as-03","Unit II","Indian agriculture, agronomy and field crops","History of Indian agriculture · importance and scope of agronomy · present scenario of field crops in Maharashtra and India",3]];
+UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
+const ALL=()=>[...L,...L2,...L3,...AS,...LB];
 const uOf=id=>UNITS[id.slice(0,2)];
 const DECKS=[];const NEWD=28;
 const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-02",2,"The rock cycle"],["u1-02",3,"Extrusive igneous rocks"],["u1-02",4,"Intrusive igneous rocks"],["u1-02",5,"Sedimentary rocks by grain size"],["u1-02",6,"Metamorphism – old and new rock"],["u1-03",7,"Three types of weathering"],["u1-03",8,"Chemical weathering on rock"],["u1-05",9,"A typical soil profile"],["u1-05",10,"Real soil pits showing horizons"],["u1-06",11,"Major soil types of Maharashtra"],["u1-06",12,"The five soils of Maharashtra"],["u1-07",13,"Textural triangle"],["u1-07",14,"Types of soil structure"],["u1-07",15,"Texture, bulk density and pore space"],["u1-07",16,"Soil colours and their meaning"],["u1-07",17,"Atterberg limits"],["u1-08",18,"Strength of adsorption on colloids"],["u1-08",19,"CEC of soil components"],["u1-09",20,"1:1, 2:1 and 2:1:1 clays"],["u1-10",21,"The pH scale"],["u1-10",22,"Active, exchangeable and residual acidity"],["u1-10",23,"Nutrient availability vs soil pH"]];
@@ -690,22 +782,47 @@ function home(){
 `;
 }
 function pSyllabus(){
- return ` <section class="band alt" id="s-syllabus"><div class="in"><p class="jr-kick">Syllabus</p><h2>Lecture-wise topics and weightage</h2>
-  <div class="hsyl">${SYL.map((u,k)=>`<div class="hsu" style="--c:${['#b5651d','#2e7d32','#e8590c'][k]}"><div class="hsu-h"><b>Unit ${u[0]} – ${u[1]}</b><span>${u[2]} %</span></div><div class="bar"><i style="width:${u[2]/40*100}%"></i></div><ol>${u[4].map(r=>`<li><span class="lec">Lec ${r[0]}</span> ${r[1]}</li>`).join('')}</ol></div>`).join('')}</div>
-  <h2 style="margin-top:1.2em">Course outcomes</h2><div class="cos">${CO.map((c,i)=>`<div class="co" style="--p:${(i+1)*25}"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--line)" stroke-width="6"/><circle class="ring" cx="32" cy="32" r="27" fill="none" stroke="var(--leaf)" stroke-width="6" pathLength="100" stroke-dasharray="${(i+1)*25} 100" transform="rotate(-90 32 32)"/><text x="32" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">${c[0]}</text></svg><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div>
-  <h2 style="margin-top:1.2em">CO–PO articulation matrix</h2><div class="scroll"><table class="mx"><thead><tr><th>CO / PO</th>${[1,2,3,4,5,6,7,8,9,10,11,12].map(n=>`<th>${n}</th>`).join('')}<th>PSO1</th><th>PSO2</th><th>BTL</th></tr></thead><tbody>${MX.map(r=>`<tr>${r.map((v,i)=>i==0?`<td>${v}</td>`:i==15?`<td>${v}</td>`:`<td class="${v?'m'+v:''}">${v||'–'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-  <p class="muted">3 – high, 2 – medium, 1 – low contribution · BTL – Bloom's Taxonomy Level</p>
-  <div class="books2"><div class="card"><h3>Text books</h3><ol>${TB.map(b=>`<li>${b}</li>`).join('')}</ol></div><div class="card"><h3>Reference books</h3><ol>${RB.map(b=>`<li>${b}</li>`).join('')}</ol></div></div></div></section>`;
+ const C=['#b5651d','#2e7d32','#e8590c'],R=['I','II','III'];
+ const lr=u=>`${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}`;
+ return `<section class="phead band sy-head"><div class="in"><h1>Syllabus</h1><p>Three units · 30 lectures · topic-wise weightage, course outcomes, CO–PO mapping and suggested readings</p>
+  <div class="sy-stack">${SYL.map((u,k)=>`<div style="--w:${u[2]};--c:${C[k]};--i:${k}"><b>${u[2]} %</b><span>Unit ${u[0]} · ${u[1]}</span></div>`).join('')}</div></div></section>
+ <section class="band"><div class="in"><div class="sy-units">${SYL.map((u,k)=>`<article class="sy-u" style="--c:${C[k]}">
+  <header><span class="sy-r">${R[k]}</span><div><h2>${u[1]}</h2><p>Lectures ${lr(u)} · ${u[4].length} topics · ${UNITS['u'+(k+1)].co}</p></div><b class="sy-w">${u[2]}<small>%</small></b></header>
+  <ol class="sy-tl">${u[4].map((r,i)=>`<li style="--i:${i}"><span class="sy-l">Lec<br><b>${r[0]}</b></span><p>${r[1]}</p><span class="sy-p"><b>${r[2]} %</b><i style="--x:${r[2]*10}%"></i></span></li>`).join('')}</ol></article>`).join('')}</div></div></section>
+ <section class="band alt"><div class="in"><h2>Course outcomes</h2><div class="sy-cos">${CO.map((c,i)=>`<div class="sy-co" style="--c:${['#b5651d','#2e7d32','#e8590c','#1565c0'][i]}"><b>${c[0]}</b><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div>
+  <h2 style="margin-top:1.4em">CO–PO articulation matrix</h2><div class="scroll"><table class="sy-mx"><thead><tr><th>CO / PO</th>${[1,2,3,4,5,6,7,8,9,10,11,12].map(n=>`<th>PO${n}</th>`).join('')}<th>PSO1</th><th>PSO2</th><th>BTL</th></tr></thead><tbody>${MX.map(r=>`<tr>${r.map((v,i)=>i==0?`<th>${v}</th>`:i<15?`<td class="hm${v||0}">${v||'–'}</td>`:`<td class="btl">${v}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  <p class="sy-leg"><span><i class="hm3"></i>3 High</span><span><i class="hm2"></i>2 Medium</span><span><i class="hm1"></i>1 Low</span><span>BTL – Bloom's Taxonomy Level</span></p></div></section>
+ <section class="band"><div class="in"><h2>Suggested readings</h2><div class="sy-books"><div><h3>📗 Text books</h3><ol>${TB.map(b=>`<li>${b}</li>`).join('')}</ol></div><div><h3>📘 Reference books</h3><ol>${RB.map(b=>`<li>${b}</li>`).join('')}</ol></div></div></div></section>`;
 }
 function pNotes(){
  return ` <section class="band jr" id="s-notes"><div class="in"><p class="jr-kick">Notes</p><h2 class="jr-title">Three units, <span>one journey</span></h2>
   <div class="jr-path"><svg class="jr-line" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 90 50, 10 100, 50 150 S 90 250, 50 300" pathLength="100"/></svg>
-  ${[["u1","photos/soil.jpg","#b5651d","🪨",L],["u2","photos/wheat.jpg","#2e7d32","🌾",L2],["u3","photos/mango.jpg","#e8590c","🥭",L3]].map(([c,img,col,ic,LL],k)=>`<div class="jr-stop${k%2?' jr-flip':''}" id="n-${c}" style="--jc:${col}"><div class="jr-pic"><img src="${img}" alt="" loading="lazy"><span class="jr-num">${k+1}</span></div><div class="jr-body"><h3>${ic} ${UNITS[c].name}</h3><ol class="jr-lessons">${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span><span>${l[2]}<small>Lec ${l[1]}</small></span></a></li>`).join('')}</ol></div></div>`).join('')}</div></div></section>`;
+  ${[["u1","photos/soil.jpg","#b5651d","🪨",L],["u2","photos/wheat.jpg","#2e7d32","🌾",L2],["u3","photos/mango.jpg","#e8590c","🥭",L3]].map(([c,img,col,ic,LL],k)=>`<div class="jr-stop${k%2?' jr-flip':''}" id="n-${c}" style="--jc:${col}"><div class="jr-pic"><img src="${img}" alt="" loading="lazy"><span class="jr-num">${k+1}</span></div><div class="jr-body"><h3>${ic} ${UNITS[c].name}</h3><p class="jr-meta"><b>${LL.length} lessons</b> · Lectures ${SYL[k][4][0][0].split("–")[0]}–${SYL[k][4].at(-1)[0].split("–").at(-1)} · ${SYL[k][2]} % weightage</p><ol class="jr-lessons">${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span><span>${l[2]}<small>Lec ${l[1]}</small></span></a></li>`).join('')}</ol></div></div>`).join('')}</div></div></section>`;
+}
+function pAssign(){
+ return `<section class="phead band"><div class="in"><h1>Assignments</h1><p>${AS.length} assignments · ${AS.reduce((a,x)=>a+x[4],0)} questions · each with detailed scientific answers, figures, photographs and animated diagrams</p></div></section>
+ <section class="band"><div class="in"><div class="as-grid">${AS.map((a,k)=>`<a class="as-c" href="#${a[0]}" style="--c:${['#b5651d','#6a1b9a','#2e7d32'][k]}"><span class="as-n">${k+1}</span><div><span class="as-tag">${a[1]} · ${a[4]} questions</span><h3>${a[2]}</h3><p>${a[3]}</p><span class="as-go">Open questions &amp; answers →</span></div></a>`).join('')}</div></div></section>`;
 }
 function pBeyond(){
  return ` <section class="band hbeyond" id="s-beyond"><div class="in"><p class="jr-kick">Beyond the syllabus</p><h2>Where crop production is heading</h2>
-  <div class="hbx">${LB.map((l,k)=>`<a class="hbx-c" href="#${l[0]}"><span class="hbx-i">${['🛰️','🏠','🧪','🌡️','🌿','📱'][k]}</span><h3>${l[2]}</h3><p>${l[3]}</p><span class="go">Read →</span></a>`).join('')}</div></div></section>`;
+  <div class="hbx">${LB.map((l,k)=>`<a class="hbx-c" href="#${l[0]}"><span class="hbx-i">${['🛰️','🏠','🧪','🌡️','🌿','📱'][k]}</span><h3>${l[2]}</h3><p>${l[3]}</p><span class="go">Read →</span></a>`).join('')}</div></div></section>
+ <section class="band"><div class="in"><h2>Connect with KrushiSamarpan</h2><p class="muted">Articles, videos, farmer groups and updates by Dr. Vinayak B. Shinde and KrushiSamarpan Foundation.</p>
+  <div class="cx-grid">${[["https://krushisamarpan.blogspot.com/","Blog","KrushiSamarpan Blog","Articles on crops, soils and horticulture","#f57c00","✍️"],
+   ["https://www.youtube.com/c/KrushiSamarpanGroup","YouTube","KrushiSamarpan Group","Video lectures and field demonstrations","#e53935","▶"],
+   ["https://www.facebook.com/KrushiSamarpanFoundation/","Facebook page","KrushiSamarpan Foundation","News, events and updates","#1877f2","f"],
+   ["https://www.facebook.com/groups/krushisamarpan/","Facebook group","KrushiSamarpan community","Discussion group for farmers and students","#3b5998","👥"],
+   ["https://telegram.me/s/krushisamarpan","Telegram","KrushiSamarpan channel","Quick updates and study material","#229ed9","✈"]].map(x=>`<a class="cx" href="${x[0]}" target="_blank" rel="noopener" style="--c:${x[4]}"><span class="cx-i">${x[5]}</span><div><small>${x[1]}</small><b>${x[2]}</b><p>${x[3]}</p></div><span class="cx-go">↗</span></a>`).join('')}</div></div></section>
+ <section class="band alt"><div class="in"><h2>Published articles</h2><p class="muted">Popular articles in English and Marathi – open or download the PDF.</p>
+  <div class="ar-tabs"><button class="on" data-arl="english">English</button><button data-arl="marathi">मराठी (Marathi)</button></div><div id="arlist" class="ar-list"><p class="muted">Loading articles…</p></div></div></section>`;
 }
+const AR_REPO='drvbshinde73-wq/26AE021104-Crop-Production-Technologies';let arLang='english',arCache={};
+async function loadArticles(){const box=document.getElementById('arlist');if(!box)return;
+ document.querySelectorAll('[data-arl]').forEach(b=>b.classList.toggle('on',b.dataset.arl==arLang));
+ try{if(!arCache[arLang]){const r=await fetch(`https://api.github.com/repos/${AR_REPO}/contents/articles/${arLang}`);if(!r.ok)throw 0;arCache[arLang]=(await r.json()).filter(f=>/\.pdf$/i.test(f.name))}
+  const L_=arCache[arLang];if(!document.getElementById('arlist'))return;
+  box.innerHTML=L_.length?L_.map(f=>`<a class="ar" href="articles/${arLang}/${encodeURIComponent(f.name)}" target="_blank" rel="noopener"><span class="ar-i">PDF</span><b>${esc(f.name.replace(/\.pdf$/i,'').replace(/[_-]+/g,' '))}</b><small>${(f.size/1048576).toFixed(1)} MB</small></a>`).join(''):'<p class="muted">No articles added yet in this language.</p>'}
+ catch(e){box.innerHTML='<p class="muted">The article list could not be loaded right now. Please try again in a few minutes.</p>'}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-arl]');if(b){arLang=b.dataset.arl;document.getElementById('arlist').innerHTML='<p class="muted">Loading articles…</p>';loadArticles()}});
 function cinema(){return `<div class="cin" id="cin" tabindex="0" aria-label="Photo slideshow">
  <div class="chipsrow" role="tablist">${THEMES.map(t=>`<button class="fchip ${t[0]=='all'?'on':''}" data-th="${t[0]}">${t[1]}</button>`).join('')}</div>
  <div class="stage"><img id="cimgA" alt=""><img id="cimgB" alt="" class="hide"><div class="cap"><span id="cnum"></span><b id="ctit"></b><a id="clink" href="#home">Open lesson →</a></div>
@@ -740,7 +857,7 @@ function slides(){
 async function getLesson(id){if(!cache[id]){const r=await fetch(`lessons/${id}.html`);if(!r.ok)throw new Error(r.status);cache[id]=await r.text()}return cache[id]}
 async function lesson(id){
  const U=uOf(id),LL=U.list(),i=LL.findIndex(l=>l[0]==id),l=LL[i],p=LL[i-1],n=LL[i+1],dk=DECKS.findIndex(d=>d[4]==id);
- app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb">${U.name} › Lesson ${num(id)}</div><h1>${num(id)}. ${l[2]}</h1><p>${l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name} · ${U.co}</p></div></section>
+ app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb">${U.name} › ${id.startsWith("as")?"Assignment":"Lesson"} ${num(id)}</div><h1>${id.startsWith("as")?"Assignment No. "+num(id)+" – ":num(id)+". "}${l[2]}</h1><p>${id.startsWith("as")?l[4]+" questions with answers · "+l[1]:l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name}${id.startsWith("as")?"":" · "+U.co}</p></div></section>
  <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>In this lesson</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
  let h;try{h=await getLesson(id)}catch(e){document.getElementById('notes').innerHTML='<p class="loading">These notes could not be loaded. Please refresh the page.</p>';return}
  if(location.hash.slice(1)!=id)return;
@@ -758,10 +875,10 @@ function watchToc(hs){io&&io.disconnect();io=new IntersectionObserver(es=>{es.fo
 function route(){
  const v=location.hash.slice(1)||'home';
  let key=v;
- const PG={syllabus:pSyllabus,notes:pNotes,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
- if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`}
+ const PG={syllabus:pSyllabus,notes:pNotes,assignments:pAssign,beyond:pBeyond},UJ={'unit-1':'n-u1','unit-2':'n-u2','unit-3':'n-u3'};
+ if(PG[v]){app.innerHTML=`<div class="view">${PG[v]()}</div>`;if(v=='beyond')loadArticles()}
  else if(UJ[v]){window.pendingSec=UJ[v];history.replaceState(null,'','#notes');app.innerHTML=`<div class="view">${pNotes()}</div>`;key='notes'}
- else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':'notes'}
+ else if(ALL().some(l=>l[0]==v)){lesson(v);key=v.startsWith('bx')?'beyond':v.startsWith('as')?'assignments':'notes'}
  else {app.innerHTML=`<div class="view">${home()}</div>`;key='home'}
  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));cin.th='all';cinInit();
  scrollTo(0,0);
