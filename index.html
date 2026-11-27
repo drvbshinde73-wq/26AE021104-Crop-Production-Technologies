@@ -737,7 +737,7 @@ h1{font-weight:700}
 .notes em,.notes i{color:var(--h4c)}
 .notes th{font-family:"Nunito Sans",system-ui,sans-serif;font-weight:800;letter-spacing:.01em}
 .notes li::marker{color:var(--h3c)}
-.notes p,.notes li{hyphens:auto}
+.notes p,.notes li{hyphens:manual}
 .lesson b,.lesson h3{color:var(--h2c)}
 :lang(mr),.mtag,.mcard .mr{font-family:"Noto Sans Devanagari","Nunito Sans",sans-serif}
 .notes .hook h3{color:#fff}.notes .hook p strong,.notes .hook p b,.notes .hook li b,.notes .hook li strong{color:var(--gold)}.notes figure.vid em,.notes .hook em{color:#f6d78a}
@@ -759,6 +759,15 @@ nav.main a{font-size:13.5px;padding:6px 10px}.brand b{font-size:15.5px}.brand sm
 .as-c h3{font-size:17px}.as-c p{font-size:13.5px}
 .pager a{font-size:14px;padding:12px}
 }
+
+/* ===== Uniform type scale: same matter = same size everywhere ===== */
+:root{--fq:30px;--fh3:21px;--fa:17px;--fc:15px;--fl:13.5px}
+@media(max-width:600px){:root{--fq:20px;--fh3:16.5px;--fa:14.5px;--fc:12.5px;--fl:12px}}
+.notes h2{font-size:var(--fq)!important;font-family:"Fraunces",Georgia,serif!important;line-height:1.2}
+.notes h3,.notes .hook h3{font-size:var(--fh3)!important;font-family:"Fraunces",Georgia,serif!important}
+.notes,.notes p,.notes li,.notes td,.notes th,.notes td p,.notes th p,.notes dt,.notes dd,.notes summary,.notes details p,.notes .fact p,.notes .callout p,.notes .xp p,.notes .hook p,.notes .ab-t,.notes .tl-i p,.notes .equation,.notes table{font-size:var(--fa)!important}
+.notes figcaption,.notes figure.vid figcaption,.notes figure.photo figcaption{font-size:var(--fc)!important;font-family:"Nunito Sans",system-ui,sans-serif!important;font-weight:600!important;line-height:1.45}
+.notes .lab,.notes p.lab,.notes .src,.notes p.src,.notes .ab-n,.notes ol.refs li,.notes .kicker{font-size:var(--fl)!important}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
