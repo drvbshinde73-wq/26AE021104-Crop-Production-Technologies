@@ -401,6 +401,7 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 
 
 
+.bk{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.bk a{font-size:13px;font-weight:700;text-decoration:none;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--leaf);min-height:32px;display:inline-flex;align-items:center}.bk a:hover{border-color:var(--leaf)}
 /* ===== Syllabus page ===== */
 .sy-head p{max-width:760px}
 .sy-stack{display:flex;margin-top:22px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #0004}
@@ -631,33 +632,38 @@ figure img{transition:transform .5s ease}figure:hover img{transform:scale(1.02)}
 <script>
 {
 const L=[
-["u1-01","1–2","Soil – Definition, Composition and Soil Science","What soil is, its four components, chemical make-up and the branches of soil science."],
-["u1-02","1–2","Earth, Rocks and Minerals","Structure of the Earth, the rock cycle, igneous, sedimentary and metamorphic rocks, and soil-forming minerals."],
-["u1-03","1–2","Weathering of Rocks","Physical, chemical and biological weathering and why it matters for farming."],
-["u1-04","1–2","Soil Formation (Pedogenesis)","Jenny's five soil-forming factors and the main pedogenic processes."],
-["u1-05","1–4","Soil Profile and Horizons","Master horizons O, A, E, B, C, R; eluvial and illuvial zones; solum and regolith."],
-["u1-06","3–4","Soil Classification, Soil Taxonomy and Soils of Maharashtra","History of classification, the 12 USDA soil orders and the soils of Maharashtra."],
-["u1-07","5","Physical Properties of Soil","Texture, structure, density, porosity, colour, temperature, consistency and Atterberg limits."],
-["u1-08","6","Chemical Properties of Soil","pH, EC, ion exchange and CEC, organic carbon and nutrient availability."],
-["u1-09","7–8","Soil Colloids","Properties and types of colloids, clay minerals and origin of charge."],
-["u1-10","9","Soil Reaction","The pH scale, sources of acidity and alkalinity, buffering and significance of pH."],
-["u1-11","9","Essential Plant Nutrients","Criteria of essentiality, macro and micronutrients, functions and deficiency symptoms."],
-["u1-12","9","Soil Organic Matter (SOM)","Composition, decomposition, humus, C:N ratio and benefits of organic matter."],
-["u1-13","10","Problematic Soils","Acid, saline, sodic and waterlogged soils – characteristics, causes and reclamation."]];
+["u1-01","1","Soil, Its Composition, Rocks and Minerals","What soil is, its components and chemistry, soil science branches, rocks, rock cycle and soil-forming minerals."],
+["u1-02","2","Weathering and Soil-forming Processes","Physical, chemical and biological weathering; Jenny's factors and pedogenic processes."],
+["u1-03","3","Soil Profile and Horizons","Master horizons, eluviation and illuviation, solum, saprolite and regolith."],
+["u1-04","4","Soil Classification, Soil Taxonomy and Soils of Maharashtra","History of classification, USDA soil orders and the soils of Maharashtra."],
+["u1-05","5","Physical Properties of Soil","Texture, structure, density, porosity, colour, temperature, consistence and Atterberg limits."],
+["u1-06","6","Chemical Properties of Soil","pH, EC, ion exchange, CEC, organic carbon and nutrient availability."],
+["u1-07","7","Soil Colloids – Nature and Properties","What colloids are, their properties and importance."],
+["u1-08","8","Soil Colloids – Types and Origin of Charge","Layer-silicate clays, oxides, allophane, humus and the sources of charge."],
+["u1-09","9","Soil Reaction, Essential Nutrients and Soil Organic Matter","pH and acidity, buffering, essential nutrients and their functions, organic matter and humus."],
+["u1-10","10","Problematic Soils","Saline, sodic, acid, acid sulphate, calcareous and waterlogged soils and their reclamation."]];
 const L2=[
-["u2-01","11","History, Definition, Scope and Importance of Agronomy","Meaning of agronomy, its history in India, scope and relation with other sciences."],
-["u2-02","12","Classification of Field Crops","Economic, seasonal, botanical, photosynthetic and special-purpose groups of field crops."],
-["u2-03","13–14","Crop Seasons, Sowing Methods and Seed Treatment","Kharif, rabi and zaid seasons; sowing methods; seed rate; seed treatment."],
-["u2-04","15","Weather and Crop Growth","Effect of temperature, rainfall, light, humidity and wind on crops."],
-["u2-05","16","Cropping Systems and Crop Rotation","Mono, sequential, relay, mixed and intercropping; LER; principles of rotation."]];
+["u2-11","11","Agronomy – History, Definition, Scope and Importance","Meaning, history in India, scope, importance and principles of agronomy."],
+["u2-12","12","Classification of Field Crops","Economic, seasonal, botanical, physiological and special-purpose groups."],
+["u2-13","13","Crop Seasons of India","Kharif, rabi and zaid seasons and factors deciding time of sowing."],
+["u2-14","14","Sowing Methods, Seed Rate and Seed Treatment","Methods of sowing, seed-rate calculation and seed treatment."],
+["u2-15","15","Weather and Crop Growth","Temperature, rainfall, light, humidity, wind and climate change."],
+["u2-16","16","Cropping Systems and Crop Rotation","Cropping systems, intercropping indices and principles of crop rotation."],
+["u2-17","17","Production Practices of Rice, Wheat, Maize and Sugarcane","Complete packages of practices for the major cereals and sugarcane."],
+["u2-18","18","Production Practices of Soybean, Chickpea and Cotton","Packages of practices for the legumes and cotton of the black soils."]];
 const L3=[
-["u3-01","19","Horticulture – Definition, Importance and Scope","Meaning, importance, status and scope of horticulture in India."],
-["u3-02","20","Branches and Classification of Horticultural Crops","Pomology, olericulture, floriculture and more; classification of fruits, vegetables and flowers."],
-["u3-03","21–22","Site Selection, Layout and Planting of Fruit Crops","Orchard site, planning, layout systems and planting method."],
-["u3-04","23–24","Plant Growth Regulators and Special Practices","Auxins, gibberellins, cytokinins, ethylene, ABA, retardants; pinching, girdling, bahar."],
-["u3-05","25","Training and Pruning","Objectives, training systems and pruning methods in fruit crops."],
-["u3-06","26","Irrigation and Mulching","Irrigation methods, drip and fertigation, scheduling and mulching."],
-["u3-07","27","Harvesting and Post-harvest Practices","Maturity indices, harvesting, handling, storage and reducing losses."]];
+["u3-19","19","Horticulture – Definition, Importance and Scope","Meaning, importance, status, scope and constraints of horticulture."],
+["u3-20","20","Branches of Horticulture and Classification of Crops","Branches and classification of fruits, vegetables, flowers and other crops."],
+["u3-21","21","Site Selection and Planning of Orchards","Site factors, soil and water tests, orchard planning and planting material."],
+["u3-22","22","Orchard Layout and Planting Methods","Layout systems, plant population, pit planting and care of young orchards."],
+["u3-23","23","Plant Growth Regulators","Auxins, gibberellins, cytokinins, ethylene, ABA and growth retardants."],
+["u3-24","24","Special Horticultural Practices","Pinching, disbudding, thinning, girdling, bahar treatment and crop regulation."],
+["u3-25","25","Training and Pruning","Training systems, principles and methods of pruning."],
+["u3-26","26","Irrigation and Mulching","Irrigation methods, drip and fertigation, scheduling and mulching."],
+["u3-27","27","Harvesting and Post-harvest Practices","Maturity indices, harvesting, post-harvest handling and losses."],
+["u3-28","28","Production Practices of Mango, Banana and Coconut","Packages of practices for the major fruit and plantation crops."],
+["u3-29","29","Production Practices of Chilli, Tomato, Rose and Marigold","Nursery, packages of practices and protection of vegetables and flowers."],
+["u3-30","30","Production Practices of Turmeric, Tulsi and Lemongrass","Spice, medicinal and aromatic crops, curing and distillation."]];
 const LB=[
 ["bx-01","Beyond","Precision Agriculture and Drones","GPS, GIS, NDVI, sensors, drones and variable-rate technology."],
 ["bx-02","Beyond","Protected Cultivation and Hydroponics","Polyhouses, shade nets, hydroponics, aeroponics and vertical farming."],
@@ -674,7 +680,7 @@ UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
 const ALL=()=>[...L,...L2,...L3,...AS,...LB];
 const uOf=id=>UNITS[id.slice(0,2)];
 const DECKS=[];const NEWD=28;
-const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-02",2,"The rock cycle"],["u1-02",3,"Extrusive igneous rocks"],["u1-02",4,"Intrusive igneous rocks"],["u1-02",5,"Sedimentary rocks by grain size"],["u1-02",6,"Metamorphism – old and new rock"],["u1-03",7,"Three types of weathering"],["u1-03",8,"Chemical weathering on rock"],["u1-05",9,"A typical soil profile"],["u1-05",10,"Real soil pits showing horizons"],["u1-06",11,"Major soil types of Maharashtra"],["u1-06",12,"The five soils of Maharashtra"],["u1-07",13,"Textural triangle"],["u1-07",14,"Types of soil structure"],["u1-07",15,"Texture, bulk density and pore space"],["u1-07",16,"Soil colours and their meaning"],["u1-07",17,"Atterberg limits"],["u1-08",18,"Strength of adsorption on colloids"],["u1-08",19,"CEC of soil components"],["u1-09",20,"1:1, 2:1 and 2:1:1 clays"],["u1-10",21,"The pH scale"],["u1-10",22,"Active, exchangeable and residual acidity"],["u1-10",23,"Nutrient availability vs soil pH"]];
+const FIG=[["u1-01",1,"Volume composition of an ideal soil"],["u1-01",2,"The rock cycle"],["u1-01",3,"Extrusive igneous rocks"],["u1-01",4,"Intrusive igneous rocks"],["u1-01",5,"Sedimentary rocks by grain size"],["u1-01",6,"Metamorphism – old and new rock"],["u1-02",7,"Three types of weathering"],["u1-02",8,"Chemical weathering on rock"],["u1-03",9,"A typical soil profile"],["u1-03",10,"Real soil pits showing horizons"],["u1-04",11,"Major soil types of Maharashtra"],["u1-04",12,"The five soils of Maharashtra"],["u1-05",13,"Textural triangle"],["u1-05",14,"Types of soil structure"],["u1-05",15,"Texture, bulk density and pore space"],["u1-05",16,"Soil colours and their meaning"],["u1-05",17,"Atterberg limits"],["u1-06",18,"Strength of adsorption on colloids"],["u1-06",19,"CEC of soil components"],["u1-07",20,"1:1, 2:1 and 2:1:1 clays"],["u1-09",21,"The pH scale"],["u1-09",22,"Active, exchangeable and residual acidity"],["u1-09",23,"Nutrient availability vs soil pH"]];
 const SYL=[["I","Soil Science",30,"#8d5a34",[["1–2","Definition and composition of soil; classification of soil-forming rocks; soil-forming processes",4],["3–4","Soil classification; Soil Taxonomy; major soil orders; soils of Maharashtra",4],["5","Physical properties of soil: texture, structure, bulk density, particle density, porosity, consistency, plasticity, etc.",5],["6","Chemical properties of soil: pH, EC, CEC, etc.",5],["7–8","Soil colloids: properties, types, origin of charge and ion exchange",4],["9","Soil reaction and essential nutrients; soil organic matter",4],["10","Problematic soils: characteristics, causes and reclamation",4]]],
 ["II","Agronomy",30,"#2e7d32",[["11","History, definition, scope and importance of agronomy in India",4],["12","Classification of field crops",4],["13–14","Crop seasons in India; sowing methods and seed treatment",6],["15","Effect of weather parameters on crop growth and development",4],["16","Cropping systems and crop rotation",5],["17–18","Production practices of Rice, Wheat, Maize, Sugarcane, Soybean, Chick-pea and Cotton",7]]],
 ["III","Horticulture",40,"#c98a12",[["19","Definition, importance and scope of horticulture in India",4],["20","Branches of horticulture and classification of horticultural crops",4],["21–22","Site selection, layout and planting methods for fruit crops",5],["23–24","Plant growth regulators and special horticultural practices",5],["25","Training and pruning in horticultural crops",4],["26","Methods of irrigation and mulching in horticultural crops",4],["27","Harvesting Methods and Post Harvest Practices",4],["28–30","Production practices of mango, banana, chilli, tomato, rose, marigold, coconut, turmeric, tulshi, lemon grass",10]]]];
@@ -784,6 +790,10 @@ function home(){
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
 `;
 }
+function bookLinks(b){
+ const t=(b.match(/<i>(.*?)<\/i>/)||[,''])[1].replace(/&amp;/g,'&'),a=b.split(/[ ,.(]/)[0],q=encodeURIComponent(t+' '+a);
+ return `<span class="bk"><a href="https://www.google.com/search?tbm=bks&q=${q}" target="_blank" rel="noopener">📖 Preview / e-book</a><a href="https://archive.org/search?query=${encodeURIComponent(t)}" target="_blank" rel="noopener">🏛 Read / borrow online</a><a href="https://www.amazon.in/s?k=${q}&i=stripbooks" target="_blank" rel="noopener">🛒 Buy</a></span>`;
+}
 function pSyllabus(){
  const C=['#b5651d','#2e7d32','#e8590c'],R=['I','II','III'];
  const lr=u=>`${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}`;
@@ -795,12 +805,12 @@ function pSyllabus(){
  <section class="band alt"><div class="in"><h2>Course outcomes</h2><div class="sy-cos">${CO.map((c,i)=>`<div class="sy-co" style="--c:${['#b5651d','#2e7d32','#e8590c','#1565c0'][i]}"><b>${c[0]}</b><p>${c[1].replace(/^To (.)/,(m,a)=>a.toUpperCase())}</p></div>`).join('')}</div>
   <h2 style="margin-top:1.4em">CO–PO articulation matrix</h2><div class="scroll"><table class="sy-mx"><thead><tr><th>CO / PO</th>${[1,2,3,4,5,6,7,8,9,10,11,12].map(n=>`<th>PO${n}</th>`).join('')}<th>PSO1</th><th>PSO2</th><th>BTL</th></tr></thead><tbody>${MX.map(r=>`<tr>${r.map((v,i)=>i==0?`<th>${v}</th>`:i<15?`<td class="hm${v||0}">${v||'–'}</td>`:`<td class="btl">${v}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
   <p class="sy-leg"><span><i class="hm3"></i>3 High</span><span><i class="hm2"></i>2 Medium</span><span><i class="hm1"></i>1 Low</span><span>BTL – Bloom's Taxonomy Level</span></p></div></section>
- <section class="band"><div class="in"><h2>Suggested readings</h2><div class="sy-books"><div><h3>📗 Text books</h3><ol>${TB.map(b=>`<li>${b}</li>`).join('')}</ol></div><div><h3>📘 Reference books</h3><ol>${RB.map(b=>`<li>${b}</li>`).join('')}</ol></div></div></div></section>`;
+ <section class="band"><div class="in"><h2>Suggested readings</h2><div class="sy-books"><div><h3>📗 Text books</h3><ol>${TB.map(b=>`<li>${b}${bookLinks(b)}</li>`).join('')}</ol></div><div><h3>📘 Reference books</h3><ol>${RB.map(b=>`<li>${b}${bookLinks(b)}</li>`).join('')}</ol></div></div></div></section>`;
 }
 function pNotes(){
  return ` <section class="band jr" id="s-notes"><div class="in"><p class="jr-kick">Notes</p><h2 class="jr-title">Three units, <span>one journey</span></h2>
   <div class="jr-path"><svg class="jr-line" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0 C 90 50, 10 100, 50 150 S 90 250, 50 300" pathLength="100"/></svg>
-  ${[["u1","photos/soil.jpg","#b5651d","🪨",L],["u2","photos/wheat.jpg","#2e7d32","🌾",L2],["u3","photos/mango.jpg","#e8590c","🥭",L3]].map(([c,img,col,ic,LL],k)=>`<div class="jr-stop${k%2?' jr-flip':''}" id="n-${c}" style="--jc:${col}"><div class="jr-pic"><img src="${img}" alt="" loading="lazy"><span class="jr-num">${k+1}</span></div><div class="jr-body"><h3>${ic} ${UNITS[c].name}</h3><p class="jr-meta"><b>${LL.length} lessons</b> · Lectures ${SYL[k][4][0][0].split("–")[0]}–${SYL[k][4].at(-1)[0].split("–").at(-1)} · ${SYL[k][2]} % weightage</p><ol class="jr-lessons">${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span><span>${l[2]}<small>Lec ${l[1]}</small></span></a></li>`).join('')}</ol></div></div>`).join('')}</div></div></section>`;
+  ${[["u1","photos/soil.jpg","#b5651d","🪨",L],["u2","photos/wheat.jpg","#2e7d32","🌾",L2],["u3","photos/mango.jpg","#e8590c","🥭",L3]].map(([c,img,col,ic,LL],k)=>`<div class="jr-stop${k%2?' jr-flip':''}" id="n-${c}" style="--jc:${col}"><div class="jr-pic"><img src="${img}" alt="" loading="lazy"><span class="jr-num">${k+1}</span></div><div class="jr-body"><h3>${ic} ${UNITS[c].name}</h3><p class="jr-meta"><b>${LL.length} lectures</b> (${LL[0][1]}–${LL.at(-1)[1]}) · ${SYL[k][2]} % weightage</p><ol class="jr-lessons">${LL.map(l=>`<li><a href="#${l[0]}"><span class="sn">${num(l[0])}</span><span>${l[2]}</span></a></li>`).join('')}</ol></div></div>`).join('')}</div></div></section>`;
 }
 function pAssign(){
  return `<section class="phead band"><div class="in"><h1>Assignments</h1><p>${AS.length} assignments · ${AS.reduce((a,x)=>a+x[4],0)} questions · each with detailed scientific answers, figures, photographs and animated diagrams</p></div></section>
@@ -816,7 +826,7 @@ function pBeyond(){
 
 function cinema(){return `<div class="cin" id="cin" tabindex="0" aria-label="Photo slideshow">
  <div class="chipsrow" role="tablist">${THEMES.map(t=>`<button class="fchip ${t[0]=='all'?'on':''}" data-th="${t[0]}">${t[1]}</button>`).join('')}</div>
- <div class="stage"><img id="cimgA" alt=""><img id="cimgB" alt="" class="hide"><div class="cap"><span id="cnum"></span><b id="ctit"></b><a id="clink" href="#home">Open lesson →</a></div>
+ <div class="stage"><img id="cimgA" alt=""><img id="cimgB" alt="" class="hide"><div class="cap"><span id="cnum"></span><b id="ctit"></b><a id="clink" href="#home">Open lecture →</a></div>
   <button class="nav prev" data-cin="-1" aria-label="Previous picture">‹</button><button class="nav next" data-cin="1" aria-label="Next picture">›</button><div class="pbar"><i id="cbar"></i></div><button class="play" id="cplay" aria-label="Pause slideshow">Pause</button></div>
  <div class="strip" id="cstrip"></div></div>`}
 let cin={list:FIG,i:0,t:null,A:true,paused:false};
@@ -824,7 +834,7 @@ function cinInit(){const st=document.getElementById('cin');if(!st)return;cin.lis
  document.getElementById('cstrip').innerHTML=cin.list.map((f,k)=>`<button data-ci="${k}" aria-label="${esc(f[2])}"><img loading="lazy" src="${fig(f[1])}" alt=""></button>`).join('');cinShow(0,true)}
 function cinShow(k,first){const n=cin.list.length;cin.i=(k+n)%n;const f=cin.list[cin.i];const a=document.getElementById(cin.A?'cimgA':'cimgB'),b=document.getElementById(cin.A?'cimgB':'cimgA');if(!a)return;
  b.src=fig(f[1]);b.alt=f[2];b.classList.remove('hide');b.classList.remove('kb');void b.offsetWidth;b.classList.add('kb');a.classList.add('hide');cin.A=!cin.A;
- document.getElementById('ctit').textContent=f[2];document.getElementById('cnum').textContent=`${cin.i+1} / ${n} · Lesson ${num(f[0])}`;document.getElementById('clink').href='#'+f[0];
+ document.getElementById('ctit').textContent=f[2];document.getElementById('cnum').textContent=`${cin.i+1} / ${n} · Lecture ${num(f[0])}`;document.getElementById('clink').href='#'+f[0];
  document.querySelectorAll('#cstrip button').forEach((x,j)=>{x.classList.toggle('on',j==cin.i);if(j==cin.i&&!first){x.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}});
  const bar=document.getElementById('cbar');bar.classList.remove('run');void bar.offsetWidth;if(!cin.paused&&!RM)bar.classList.add('run');
  clearTimeout(cin.t);if(!cin.paused&&!RM)cin.t=setTimeout(()=>{if(document.getElementById('cin'))cinShow(cin.i+1)},5500)}
@@ -836,25 +846,25 @@ document.addEventListener('click',e=>{const c=e.target.closest('[data-cin]');if(
 document.addEventListener('keydown',e=>{if(e.target.id=='cin'&&(e.key=='ArrowRight'||e.key=='ArrowLeft')){e.preventDefault();cinShow(cin.i+(e.key=='ArrowRight'?1:-1))}});
 document.addEventListener('mousemove',e=>{const h=document.getElementById('hero');if(!h||RM)return;const ar=h.querySelector('.art');if(ar)ar.style.transform=`translate(${(e.clientX/innerWidth-.5)*-12}px,${(e.clientY/innerHeight-.5)*-8}px)`;const r=h.getBoundingClientRect();if(e.clientY>r.bottom)return;const dx=(e.clientX/innerWidth-.5),dy=(e.clientY/innerHeight-.5);h.style.setProperty('--mx',dx);h.style.setProperty('--my',dy)},{passive:true});
 
-function gallery(list){return `<div class="gal">${list.map(f=>`<button data-fig="${f[1]}" data-cap="${esc(f[2])}" data-go="${f[0]}"><img loading="lazy" src="${fig(f[1])}" alt="${esc(f[2])}"><span>${esc(f[2])} · Lesson ${num(f[0])}</span></button>`).join('')}</div>`}
+function gallery(list){return `<div class="gal">${list.map(f=>`<button data-fig="${f[1]}" data-cap="${esc(f[2])}" data-go="${f[0]}"><img loading="lazy" src="${fig(f[1])}" alt="${esc(f[2])}"><span>${esc(f[2])} · Lecture ${num(f[0])}</span></button>`).join('')}</div>`}
 function deckHtml(d,i){return `<div class="deck" id="deck${i}" tabindex="0" aria-label="${esc(d[1])} slides">${Array.from({length:d[3]},(_,k)=>`<img loading="lazy" src="slides/${d[0]}/s-${String(k+1).padStart(2,'0')}.jpg" alt="${esc(d[1])} – slide ${k+1}">`).join('')}</div>
  <div class="deckbar"><button data-dk="${i}" data-dir="-1" aria-label="Previous slide">‹</button><button data-dk="${i}" data-dir="1" aria-label="Next slide">›</button><span class="muted" id="cnt${i}">Slide 1 of ${d[3]}</span><button data-fs="${i}" style="padding:0 16px">Full screen</button></div>`}
 let curDeck=0;
 function slides(){
  return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Slides</div><h1>Lecture slides</h1><p>Unit I slide decks. Swipe, use the arrow buttons or your keyboard's ← → keys.</p></div></section>
  <section class="band"><div class="in"><div class="tabs" id="tabs">${DECKS.map((d,i)=>`<button data-tab="${i}" class="${i==curDeck?'on':''}">${d[1]} <span class="muted">· ${d[2]} · ${d[3]} slides</span></button>`).join('')}</div>
- <div id="deckbox">${deckHtml(DECKS[curDeck],curDeck)}</div><p><a href="#${DECKS[curDeck][4]}" id="decklink">Read the related lesson: ${L.find(l=>l[0]==DECKS[curDeck][4])[2]}</a></p></div></section>`;
+ <div id="deckbox">${deckHtml(DECKS[curDeck],curDeck)}</div><p><a href="#${DECKS[curDeck][4]}" id="decklink">Read the related lecture: ${L.find(l=>l[0]==DECKS[curDeck][4])[2]}</a></p></div></section>`;
 }
 async function getLesson(id){if(!cache[id]){const r=await fetch(`lessons/${id}.html`);if(!r.ok)throw new Error(r.status);cache[id]=await r.text()}return cache[id]}
 async function lesson(id){
  const U=uOf(id),LL=U.list(),i=LL.findIndex(l=>l[0]==id),l=LL[i],p=LL[i-1],n=LL[i+1],dk=DECKS.findIndex(d=>d[4]==id);
- app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb">${U.name} › ${id.startsWith("as")?"Assignment":"Lesson"} ${num(id)}</div><h1>${id.startsWith("as")?"Assignment No. "+num(id)+" – ":num(id)+". "}${l[2]}</h1><p>${id.startsWith("as")?l[4]+" questions with answers · "+l[1]:l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name}${id.startsWith("as")?"":" · "+U.co}</p></div></section>
- <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>In this lesson</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
+ app.innerHTML=`<div class="view"><section class="phead band"><div class="in"><div class="crumb">${U.name} › ${id.startsWith("as")?"Assignment":id.startsWith("bx")?"Topic":"Lecture"} ${num(id)}</div><h1>${id.startsWith("as")?"Assignment No. "+num(id)+" – ":num(id)+". "}${l[2]}</h1><p>${id.startsWith("as")?l[4]+" questions with answers · "+l[1]:l[1]=="Beyond"?"Beyond the syllabus":"Lecture "+l[1]} · ${U.name}${id.startsWith("as")?"":" · "+U.co}</p></div></section>
+ <div class="reader"><details class="toc" id="tocbox" ${innerWidth>900?"open":""}><summary><b>Contents</b></summary><ol id="toc"></ol></details><article class="notes" id="notes"><p class="loading">Loading the notes…</p></article></div></div>`;
  let h;try{h=await getLesson(id)}catch(e){document.getElementById('notes').innerHTML='<p class="loading">These notes could not be loaded. Please refresh the page.</p>';return}
  if(location.hash.slice(1)!=id)return;
  const nt=document.getElementById('notes');
  nt.innerHTML=h+(dk>=0?`<h2 id="slides-${dk}">Lecture slides – ${esc(DECKS[dk][1])}</h2>${deckHtml(DECKS[dk],dk)}`:'')+
- `<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous lesson</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next lesson →</small>${num(n[0])}. ${n[2]}</a>`:''}</nav>`;
+ `<nav class="pager">${p?`<a href="#${p[0]}"><small>← Previous</small>${num(p[0])}. ${p[2]}</a>`:''}${n?`<a class="nx" href="#${n[0]}"><small>Next →</small>${num(n[0])}. ${n[2]}</a>`:''}</nav>`;
  nt.querySelectorAll('.table-wrap table').forEach(t=>{if(t.rows[0]&&t.rows[0].cells.length<=4)t.classList.add('stack')});
  const hs=[...nt.querySelectorAll('h2[id]')];
  document.getElementById('toc').innerHTML=hs.map(x=>`<li><a href="#${id}" data-to="${x.id}">${esc(x.textContent)}</a></li>`).join('');
@@ -881,13 +891,13 @@ document.addEventListener('click',e=>{
  const a=e.target.closest('[data-to]');if(a){e.preventDefault();document.getElementById(a.dataset.to)?.scrollIntoView({behavior:'smooth'});return}
  const b=e.target.closest('[data-dk]');if(b){slideBy(b.dataset.dk,+b.dataset.dir);return}
  const fsb=e.target.closest('[data-fs]');if(fsb){const d=document.getElementById('deck'+fsb.dataset.fs);try{d.requestFullscreen&&d.requestFullscreen().catch(()=>{})}catch(_){}return}
- const t=e.target.closest('[data-tab]');if(t){curDeck=+t.dataset.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x==t));document.getElementById('deckbox').innerHTML=deckHtml(DECKS[curDeck],curDeck);const dl=document.getElementById('decklink');dl.href='#'+DECKS[curDeck][4];dl.textContent='Read the related lesson: '+L.find(l=>l[0]==DECKS[curDeck][4])[2];return}
- const g=e.target.closest('[data-fig]');if(g){openLb(fig(g.dataset.fig),g.dataset.cap+' — Lesson '+num(g.dataset.go),g.dataset.go);return}
+ const t=e.target.closest('[data-tab]');if(t){curDeck=+t.dataset.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x==t));document.getElementById('deckbox').innerHTML=deckHtml(DECKS[curDeck],curDeck);const dl=document.getElementById('decklink');dl.href='#'+DECKS[curDeck][4];dl.textContent='Read the related lecture: '+L.find(l=>l[0]==DECKS[curDeck][4])[2];return}
+ const g=e.target.closest('[data-fig]');if(g){openLb(fig(g.dataset.fig),g.dataset.cap+' — Lecture '+num(g.dataset.go),g.dataset.go);return}
  if(e.target.closest('.credit,.vcard'))return;const f=e.target.closest('.notes figure:not(.vid)');if(f){const im=f.querySelector('img');if(im)openLb(im.getAttribute('src'),f.querySelector('figcaption')?.textContent||'');return}
  if(e.target.closest('#lb')){if(e.target.id=='lbgo')return;document.getElementById('lb').classList.remove('show');return}
  if(!e.target.closest('.search'))res.classList.remove('show');
 });
-function openLb(src,cap,go){document.getElementById('lbimg').src=src;document.getElementById('lbcap').innerHTML=esc(cap)+(go?` · <a id="lbgo" href="#${go}" style="color:#e9b949">Open lesson</a>`:'');document.getElementById('lb').classList.add('show')}
+function openLb(src,cap,go){document.getElementById('lbimg').src=src;document.getElementById('lbcap').innerHTML=esc(cap)+(go?` · <a id="lbgo" href="#${go}" style="color:#e9b949">Open lecture</a>`:'');document.getElementById('lb').classList.add('show')}
 document.addEventListener('keydown',e=>{
  if(e.key=='Escape'){document.getElementById('lb').classList.remove('show');res.classList.remove('show')}
  if(e.target.matches('input'))return;
@@ -904,7 +914,7 @@ q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(async()=>{c
   let snip=i>=0?t.slice(Math.max(0,i-50),i+s.length+70):l[3];const k=snip.toLowerCase().indexOf(s);
   snip=k>=0?esc(snip.slice(0,k))+'<mark>'+esc(snip.slice(k,k+s.length))+'</mark>'+esc(snip.slice(k+s.length)):esc(snip);
   out.push(`<a href="#${l[0]}"><b>${uOf(l[0]).name.split(' –')[0]} · ${num(l[0])}. ${esc(l[2])}</b><small>…${snip}…</small></a>`)}
- res.innerHTML=out.length?out.join(''):`<a><small>No lesson mentions “${esc(q.value.trim())}”.</small></a>`;res.classList.add('show')},180)});
+ res.innerHTML=out.length?out.join(''):`<a><small>No lecture mentions “${esc(q.value.trim())}”.</small></a>`;res.classList.add('show')},180)});
 res.addEventListener('click',e=>{if(e.target.closest('a[href]')){res.classList.remove('show');q.value=''}});
 addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('totop').classList.toggle('show',h.scrollTop>700);document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'},{passive:true});
 
