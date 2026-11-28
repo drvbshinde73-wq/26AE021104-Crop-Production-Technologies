@@ -853,8 +853,8 @@ const L2=[
 ["u2-14","14","Sowing Methods, Seed Rate and Seed Treatment","Methods of sowing, germination, seed-rate calculation and seed treatment."],
 ["u2-15","15","Weather and Crop Growth","Temperature, solar radiation, photoperiod, rainfall, humidity, wind, CO₂ and C₃/C₄/CAM plants."],
 ["u2-16","16","Cropping Systems and Crop Rotation","Classification of cropping systems, special-purpose crops, intercropping indices, crop rotation and role of legumes."],
-["u2-17","17","Production Practices of Rice, Wheat, Maize and Sugarcane","Complete packages of practices for the major cereals and sugarcane."],
-["u2-18","18","Production Practices of Soybean, Chickpea and Cotton","Packages of practices for the legumes and cotton of the black soils."]];
+["u2-17","17","Production Practices of Rice, Wheat, Maize and Sugarcane","Crop profiles and complete packages of practices – varieties, nutrients, water, weeds, IPM, IDM, disorders, harvest – of rice, wheat, maize and sugarcane."],
+["u2-18","18","Production Practices of Soybean, Chickpea and Cotton","Crop profiles and complete packages of practices of soybean, chickpea and cotton – the black-soil crops of Maharashtra."]];
 const L3=[
 ["u3-19","19","Horticulture – Definition, Importance and Scope","Meaning, importance, status, scope and constraints of horticulture."],
 ["u3-20","20","Branches of Horticulture and Classification of Crops","Branches and classification of fruits, vegetables, flowers and other crops."],
@@ -883,7 +883,7 @@ const AS=[
 ["as-04","Unit I","Solved MSE paper – soil properties, classification and nutrients","Soil pH, EC and CEC · soil orders · rocks · volumetric composition · soil structure · saline and sodic soils · colloids · essential nutrients · bulk vs particle density",9]];
 UNITS.as={key:"assignments",name:"Assignments",co:"CO1–CO2",list:()=>AS};
 const ALL=()=>[...L,...L2,...L3,...AS,...LB];
-const LOCKED=new Set(["u2-17","u2-18","u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
+const LOCKED=new Set(["u3-19","u3-20","u3-21","u3-22","u3-23","u3-24","u3-25","u3-26","u3-27","u3-28","u3-29","u3-30"]);
 const isLk=id=>LOCKED.has(id)&&!cache[id];
 const LKI='<svg viewBox="0 0 24 24" aria-hidden="true" class="lki"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="4" y="10" width="16" height="11" rx="3" fill="currentColor"/></svg>';
 async function decryptLesson(id,pw){const r=await fetch(`lessons/${id}.lock`);if(!r.ok)throw new Error('missing');const j=await r.json(),b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
