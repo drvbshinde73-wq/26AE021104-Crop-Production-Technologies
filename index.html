@@ -815,6 +815,20 @@ a.sy-l{text-decoration:none;color:inherit;cursor:pointer}a.sy-l:hover{filter:bri
 .hbtn.pri{background:var(--gold);border-color:var(--gold);color:#2b1d0e}
 .hbtn:hover{transform:translateY(-2px);background:rgba(255,255,255,.15)}.hbtn.pri:hover{background:#f6cf6a}
 @media(max-width:900px){.hero .hx{display:none}.hero.photo .txt .hlead{font-size:16px;margin-bottom:14px}.hbtn{padding:9px 16px;font-size:14px}}
+
+/* crop tabs */
+.notes .ctabs{position:sticky;top:var(--toph,70px);z-index:6;display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:10px 4px;margin:26px 0 8px;background:var(--bg,#fffdf8);border-bottom:2px solid var(--line)}
+.notes .ctabs::-webkit-scrollbar{display:none}
+.notes .ctabs button{flex:none;font:inherit;font-weight:800;font-size:var(--fa);padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card,#fff);color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.notes .ctabs button:hover{transform:translateY(-1px)}
+.notes .ctabs button.on{background:#2e7d32;border-color:#2e7d32;color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3)}
+.notes .ctab-p{animation:ctIn .35s ease}@keyframes ctIn{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.notes .ctab-p[hidden]{display:none!important}
+.notes .ctab-next{text-align:right;margin:26px 0 10px}.notes .ctab-next button{font:inherit;font-weight:800;padding:10px 18px;border-radius:999px;border:0;background:var(--gold);color:#2b1d0e;cursor:pointer}
+.notes .xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:12px 0 20px}
+.notes .xcard{border:1px solid var(--line);border-left:4px solid #2e7d32;border-radius:14px;padding:14px 16px;background:var(--card,#fff)}
+.notes .xcard h4{margin:0 0 8px!important;color:var(--h2c)!important}.notes .xcard p{margin:6px 0}
+@media(max-width:600px){.notes .ctabs button{padding:8px 14px}.notes .xgrid{grid-template-columns:1fr}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -995,7 +1009,7 @@ function home(){
  </div>
  <ul class="hx hfeat"><li>🎞️ Animated diagrams</li><li>📷 Real field photos</li><li>🧮 Worked examples</li><li>📝 ESE questions with answer points</li><li>✅ Solved assignments</li><li>🔎 Search every note</li></ul>
  <div class="hcta"><a class="hbtn pri" href="#unit-1">Start reading – Unit I →</a><a class="hbtn" href="#syllabus">Explore the syllabus</a></div></div><aside class="prof" aria-label="Course teacher">
-  <div class="prof-top"><img class="prof-pic" src="photos/dr-vinayak-shinde.jpg" alt="Dr. Vinayak B. Shinde"><div><p class="prof-k">Course teacher</p><h2 class="prof-name">Dr. Vinayak B. Shinde</h2><p class="prof-role">Assistant Professor – Agricultural Sciences<br>Deputy Controller of Examinations<br>Ph.D Guide – Agri. Business Management<br>D Y Patil Agriculture &amp; Technical University, Talsande, Kolhapur</p></div></div>
+  <div class="prof-top"><img class="prof-pic" src="photos/dr-vinayak-shinde.jpg" alt="Dr. Vinayak Bhausaheb Shinde"><div><p class="prof-k">Course teacher</p><h2 class="prof-name">Dr. Vinayak Bhausaheb Shinde</h2><p class="prof-role">Assistant Professor – Agricultural Sciences<br>Deputy Controller of Examinations<br>Ph.D Guide – Agri. Business Management<br>D Y Patil Agriculture &amp; Technical University, Talsande, Kolhapur</p></div></div>
   <p class="prof-q">M.Sc. Horticulture (Fruit Science), Ph.D<br>PGDAEM, Diploma in Agro-Journalism<br>Founder-President, KrushiSamarpan Foundation<br>Secretary, ROMIF India, Ahilyanagar District</p>
   <p class="prof-award">🏅 Honoured by the <b>Prime Minister of India</b>, the <b>Chief Minister of Maharashtra</b> and with an <b>international award</b> for agricultural education, research &amp; extension</p>
   <ul class="prof-stats"><li><b>12+</b>years' experience</li><li><b>81</b>awards</li><li><b>3</b>patents</li><li><b>26</b>research papers</li><li><b>23</b>books &amp; chapters</li><li><b>300+</b>popular articles</li><li><b>57</b>courses taught</li><li><b>18</b>memberships</li><li><b>5</b>editorial roles</li></ul>
@@ -1079,7 +1093,7 @@ function pAssign(){
 function pBeyond(){
  return ` <section class="band hbeyond" id="s-beyond"><div class="in"><p class="jr-kick">Beyond the syllabus</p><h2>Where crop production is heading</h2>
   <div class="hbx">${LB.map((l,k)=>`<a class="hbx-c" href="#${l[0]}"><span class="hbx-i">${['🛰️','🏠','🧪','🌡️','🌿','📱'][k]}</span><h3>${l[2]}</h3><p>${l[3]}</p><span class="go">Read →</span></a>`).join('')}</div></div></section>
- <section class="band"><div class="in"><h2>Connect with KrushiSamarpan</h2><p class="muted">Articles, videos, farmer groups and updates by Dr. Vinayak B. Shinde and KrushiSamarpan Foundation.</p>
+ <section class="band"><div class="in"><h2>Connect with KrushiSamarpan</h2><p class="muted">Articles, videos, farmer groups and updates by Dr. Vinayak Bhausaheb Shinde and KrushiSamarpan Foundation.</p>
   <div class="cx-grid cx-row">${[["https://www.youtube.com/c/KrushiSamarpanGroup","YouTube","KrushiSamarpan Group","Video lectures and field demonstrations","#e53935","▶"],["https://krushisamarpan.blogspot.com/","Blog","KrushiSamarpan Blog","Articles on crops, soils and horticulture","#f57c00","✍️"],["https://www.facebook.com/groups/krushisamarpan/","Facebook group","KrushiSamarpan community","Discussion group for farmers and students","#3b5998","👥"],["https://www.facebook.com/KrushiSamarpanFoundation/","Facebook page","KrushiSamarpan Foundation","News, events and updates","#1877f2","f"],["https://telegram.me/s/krushisamarpan","Telegram","KrushiSamarpan channel","Quick updates and study material","#229ed9","✈"]].map(x=>`<a class="cx" href="${x[0]}" target="_blank" rel="noopener" style="--c:${x[4]}"><span class="cx-i">${x[5]}</span><div><small>${x[1]}</small><b>${x[2]}</b><p>${x[3]}</p></div><span class="cx-go">↗</span></a>`).join('')}</div><div class="cx-contact"><a href="mailto:drvbshinde73@gmail.com"><span class="cx-i" style="--c:#c62828">✉</span><span><small>Email</small><b>drvbshinde73@gmail.com</b></span></a><a href="https://wa.me/917071777767" target="_blank" rel="noopener"><span class="cx-i" style="--c:#25d366">✆</span><span><small>Contact · WhatsApp</small><b>+91 7071777767</b></span></a></div></div></section>
 `;
 }
@@ -1135,8 +1149,11 @@ async function lesson(id){
  document.getElementById('toc').innerHTML=hs.map(x=>`<li><a href="#${id}" data-to="${x.id}">${esc(x.textContent)}</a></li>`).join('');
  watchToc(hs);
  if(window.initSims)initSims(nt);
- if(window.pendingSec2){const t=window.pendingSec2;window.pendingSec2=null;const el=document.getElementById(t);if(el){requestAnimationFrame(()=>{scrollTo({top:el.getBoundingClientRect().top+scrollY-(document.querySelector('.top')?.offsetHeight||70)-16});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),2600)})}}
+ if(nt.querySelector('.ctabs'))setTab(nt.querySelector('.ctabs button').dataset.t);
+ if(window.pendingSec2){const t=window.pendingSec2;window.pendingSec2=null;const el=document.getElementById(t);showTabFor(el);if(el){requestAnimationFrame(()=>{scrollTo({top:el.getBoundingClientRect().top+scrollY-(document.querySelector('.top')?.offsetHeight||70)-16});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),2600)})}}
 }
+function setTab(t){document.querySelectorAll('.ctab-p').forEach(p=>p.hidden=p.dataset.t!=t);document.querySelectorAll('.ctabs button').forEach(b=>{b.classList.toggle('on',b.dataset.t==t);b.setAttribute('aria-selected',b.dataset.t==t)});document.documentElement.style.setProperty('--toph',(document.querySelector('.top')?.offsetHeight||70)+'px')}
+function showTabFor(el){const p=el&&el.closest&&el.closest('.ctab-p');if(p&&p.hidden)setTab(p.dataset.t)}
 let io;
 function watchToc(hs){io&&io.disconnect();io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('#toc a').forEach(a=>a.classList.toggle('on',a.dataset.to==e.target.id))}})},{rootMargin:'-80px 0px -70% 0px'});hs.forEach(h=>io.observe(h))}
 function passCalc(){const g=id=>document.getElementById(id);if(!g('pcOut'))return;
@@ -1157,12 +1174,13 @@ function route(){
  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v==key));cin.th='all';cinInit();
  scrollTo(0,0);
  passCalc();
- if(window.pendingSec){const t=window.pendingSec;window.pendingSec=null;setTimeout(()=>{const el=document.getElementById(t);el&&el.scrollIntoView()},80)}
+ if(window.pendingSec){const t=window.pendingSec;window.pendingSec=null;setTimeout(()=>{const el=document.getElementById(t);showTabFor(el);el&&el.scrollIntoView()},80)}
 }
 function slideBy(i,dir){const d=document.getElementById('deck'+i);if(!d)return;d.scrollBy({left:dir*d.clientWidth,behavior:'smooth'})}
 document.addEventListener('scroll',e=>{const t=e.target;if(t.classList&&t.classList.contains('deck')){const i=t.id.slice(4),k=Math.round(t.scrollLeft/t.clientWidth)+1,c=document.getElementById('cnt'+i);if(c)c.textContent=`Slide ${k} of ${t.children.length}`}},true);
 document.addEventListener('click',e=>{
- const a=e.target.closest('[data-to]');if(a){e.preventDefault();document.getElementById(a.dataset.to)?.scrollIntoView({behavior:'smooth'});return}
+ const tb=e.target.closest('.ctabs button[data-t],.ctab-next [data-go]');if(tb){setTab(tb.dataset.t||tb.dataset.go);const bar=document.querySelector('.ctabs');if(bar)scrollTo({top:bar.getBoundingClientRect().top+scrollY-(document.querySelector('.top')?.offsetHeight||70)-8,behavior:'smooth'});return}
+ const a=e.target.closest('[data-to]');if(a){e.preventDefault();const el=document.getElementById(a.dataset.to);showTabFor(el);el?.scrollIntoView({behavior:'smooth'});return}
  const b=e.target.closest('[data-dk]');if(b){slideBy(b.dataset.dk,+b.dataset.dir);return}
  const fsb=e.target.closest('[data-fs]');if(fsb){const d=document.getElementById('deck'+fsb.dataset.fs);try{d.requestFullscreen&&d.requestFullscreen().catch(()=>{})}catch(_){}return}
  const t=e.target.closest('[data-tab]');if(t){curDeck=+t.dataset.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x==t));document.getElementById('deckbox').innerHTML=deckHtml(DECKS[curDeck],curDeck);const dl=document.getElementById('decklink');dl.href='#'+DECKS[curDeck][4];dl.textContent='Read the related lecture: '+L.find(l=>l[0]==DECKS[curDeck][4])[2];return}
