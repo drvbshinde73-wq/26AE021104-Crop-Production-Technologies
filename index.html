@@ -795,7 +795,7 @@ a.sy-l{text-decoration:none;color:inherit;cursor:pointer}a.sy-l:hover{filter:bri
 .pc-calc input{width:90px;padding:8px 10px;border-radius:10px;border:0;font:inherit;font-weight:700;text-align:center;color:#1d2b1f}
 .pc-out{background:rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;line-height:1.55}
 .pc-out .big{font-size:1.6em;color:#ffe08a}.pc-out.bad{background:rgba(198,40,40,.55)}
-.pc-tab td,.pc-tab th{text-align:center}
+.pc-tab td,.pc-tab th{text-align:center}#s-pass[hidden]{display:none!important}.pc-x{float:right;border:1px solid var(--line);background:transparent;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;color:inherit}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -979,13 +979,13 @@ function home(){
    <circle cx="100" cy="100" r="70" fill="none" stroke="var(--line)" stroke-width="26"/>
    ${[["ISA",20,0,"#e9b949"],["MSE",30,20,"#2e7d32"],["ESE",50,50,"#8d5a34"]].map(d=>`<circle class="arc" cx="100" cy="100" r="70" fill="none" stroke="${d[3]}" stroke-width="26" pathLength="100" stroke-dasharray="${d[1]-0.8} ${100-d[1]+0.8}" stroke-dashoffset="${25-d[2]}" style="--len:${d[1]}"/>`).join('')}
    <text x="100" y="96" text-anchor="middle" font-size="34" font-weight="700" fill="currentColor" font-family="Fraunces,Georgia,serif">100</text><text x="100" y="120" text-anchor="middle" font-size="13" fill="currentColor">marks, theory</text></svg>
-   <ul class="legend"><li><i style="background:#e9b949"></i><b>ISA</b> In-semester assessment <span>20</span></li><li><i style="background:#2e7d32"></i><b>MSE</b> Mid-semester exam <span>30</span></li><li><i style="background:#8d5a34"></i><b>ESE</b> End-semester exam <span>50</span></li><li class="muted"><a href="#" onclick="document.getElementById('s-pass').scrollIntoView({behavior:'smooth'});return false">See passing criteria ↓</a></li></ul></div>
+   <ul class="legend"><li><i style="background:#e9b949"></i><b>ISA</b> In-semester assessment <span>20</span></li><li><i style="background:#2e7d32"></i><b>MSE</b> Mid-semester exam <span>30</span></li><li><i style="background:#8d5a34"></i><b>ESE</b> End-semester exam <span>50</span></li><li class="muted"><a href="#" onclick="const x=document.getElementById('s-pass');x.hidden=!x.hidden;if(!x.hidden){passCalc();x.scrollIntoView({behavior:'smooth'})}return false">See passing criteria ↓</a></li></ul></div>
   <div><p class="jr-kick">Course details</p><h2>About the course</h2>
    <dl class="cdet"><div><dt>Course code</dt><dd>26AE021104</dd></div><div><dt>Programme</dt><dd>B.Tech Agricultural Engineering</dd></div><div><dt>Syllabus</dt><dd>Version 3.0 · Theory</dd></div><div><dt>L-T-P</dt><dd>2-0-0</dd></div></dl>
    <div class="tiles"><div class="tile"><b data-n="2">2</b><span>credits</span></div><div class="tile"><b data-n="3">3</b><span>units</span></div><div class="tile"><b data-n="30">30</b><span>lectures</span></div></div>
    <p class="muted"><b>Prerequisite:</b> Biology, Chemistry and general agricultural science at the higher-secondary level.</p></div></div></section>
 
- <section class="band" id="s-pass"><div class="in"><p class="jr-kick">Examination</p><h2>Passing criteria</h2>
+ <section class="band" id="s-pass" hidden><div class="in"><p class="jr-kick">Examination</p><h2>Passing criteria <button type="button" class="pc-x" onclick="document.getElementById('s-pass').hidden=true" aria-label="Close">✕</button></h2>
   <div class="pc-grid">
    <ol class="pc-rules">
     <li><b>Term grant</b><span>ISA + MSE must be at least <b>20 out of 50</b> (ISA 20 + MSE 30). Below 20, the term is not granted.</span></li>
