@@ -856,6 +856,12 @@ main .credit,.notes .credit,main .lab,.notes .lab,main .src,.notes .src{font-siz
 .prof-pic{width:150px!important;height:200px!important;object-fit:cover;object-position:center top;border-radius:14px!important}
 @media(max-width:420px){.prof-pic{width:110px!important;height:147px!important}}
 .prof-wa{display:block;margin-top:10px;text-align:center;min-height:40px;line-height:40px;border-radius:999px;background:#25d366;color:#0b2e17!important;font-weight:800;text-decoration:none;font-size:var(--fl)}.prof-wa:hover{filter:brightness(1.08)}
+.notes .ctabs button,.notes .ctab-next button{display:inline-flex;align-items:center;gap:10px}
+.notes .ctabs button{padding:6px 18px 6px 6px}
+.ctab-ic{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);background:#e8f0e3}
+.notes .ctab-next .ctab-ic{width:30px;height:30px}
+.notes .ctabs button.on .ctab-ic{box-shadow:0 0 0 2px #fff}
+@media(max-width:600px){.ctab-ic{width:30px;height:30px}.notes .ctabs button{padding:5px 12px 5px 5px;gap:7px}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
