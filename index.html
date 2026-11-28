@@ -86,6 +86,7 @@ tr.unitrow td{background:color-mix(in srgb,var(--c) 16%,var(--bg));font-weight:7
 .phead{background:var(--deep);color:#f1e7dc;position:relative;overflow:hidden}
 .phead .crumb{font-size:15px;opacity:.85}.phead .crumb a{color:var(--gold)}
 .phead h1{color:#fff;margin-top:8px}
+section.sy-head p.sy-line{white-space:nowrap;max-width:none;overflow:hidden;text-overflow:ellipsis;font-size:clamp(12px,1.75vw,var(--fa))!important}@media(max-width:700px){section.sy-head p.sy-line{white-space:normal}}
 .reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;max-width:1240px;margin:0 auto;padding:32px max(5vw,16px)}
 .toc{position:sticky;top:84px;align-self:start;font-size:15px}
 .toc summary{cursor:pointer;min-height:32px;list-style:none}.toc summary::-webkit-details-marker{display:none}.toc ol{margin-top:8px!important;list-style:none;padding:0;margin:0;border-left:3px solid var(--line)}
@@ -1101,7 +1102,7 @@ function sylLinks(k,t){const m=SYLK[k];if(!m)return t;return m.replace(/\[([^|\]
 function pSyllabus(){
  const C=['#b5651d','#2e7d32','#e8590c'],R=['I','II','III'];
  const lr=u=>`${u[4][0][0].split('–')[0]}–${u[4].at(-1)[0].split('–').at(-1)}`;
- return `<section class="phead band sy-head"><div class="in"><h1>Syllabus</h1><p>Three units · 30 lectures · topic-wise weightage, course outcomes, CO–PO mapping and suggested readings</p>
+ return `<section class="phead band sy-head"><div class="in"><h1>Syllabus</h1><p class="sy-line">Three units · 30 lectures · topic-wise weightage, course outcomes, CO–PO mapping and suggested readings</p>
   <div class="sy-stack">${SYL.map((u,k)=>`<div style="--w:${u[2]};--c:${C[k]};--i:${k}"><b>${u[2]} %</b><span>Unit ${u[0]} · ${u[1]}</span></div>`).join('')}</div></div></section>
  <section class="band"><div class="in"><div class="sy-units">${SYL.map((u,k)=>`<article class="sy-u" style="--c:${C[k]}">
   <header><span class="sy-r">${R[k]}</span><div><h2>${u[1]}</h2><p>Lectures ${lr(u)} · ${u[4].length} lectures · ${UNITS['u'+(k+1)].co}</p></div><b class="sy-w">${u[2]}<small>%</small></b></header>
