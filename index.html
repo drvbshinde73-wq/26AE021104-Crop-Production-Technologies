@@ -1198,7 +1198,7 @@ function deckHtml(d,i){return `<div class="deck" id="deck${i}" tabindex="0" aria
  <div class="deckbar"><button data-dk="${i}" data-dir="-1" aria-label="Previous slide">‹</button><button data-dk="${i}" data-dir="1" aria-label="Next slide">›</button><span class="muted" id="cnt${i}">Slide 1 of ${d[3]}</span><button data-fs="${i}" style="padding:0 16px">Full screen</button></div>`}
 let curDeck=0;
 function slides(){
- return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Slides</div><h1>Lecture slides</h1><p>Unit I slide decks. Swipe, use the arrow buttons or your keyboard's ← → keys.</p></div></section>
+ return `<section class="phead band"><div class="in"><div class="crumb"><a href="#home">Home</a> › Slides</div><h1>Lecture slides</h1><p>Unit I slide decks.</p></div></section>
  <section class="band"><div class="in"><div class="tabs" id="tabs">${DECKS.map((d,i)=>`<button data-tab="${i}" class="${i==curDeck?'on':''}">${d[1]} <span class="muted">· ${d[2]} · ${d[3]} slides</span></button>`).join('')}</div>
  <div id="deckbox">${deckHtml(DECKS[curDeck],curDeck)}</div><p><a href="#${DECKS[curDeck][4]}" id="decklink">Read the related lecture: ${L.find(l=>l[0]==DECKS[curDeck][4])[2]}</a></p></div></section>`;
 }
