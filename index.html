@@ -1020,9 +1020,9 @@ function heroBg(){let b='<svg class="bgart" viewBox="0 0 1440 600" preserveAspec
  return b+'</svg>'}
 
 const FP=(f,w)=>`https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=${w}`;
-const HP=[["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rich, dark soil full of humus","The living skin of the Earth – Unit I",""],["Ploughing_paddy_field_with_oxen,_Umaria_district,_MP,_India.jpg","Preparing the land","Ploughing a paddy field with oxen, Umaria, Madhya Pradesh","Yann"],["Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Field crops","Rice paddy fields in Tamil Nadu – Unit II","KARTY JazZ"],["Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg","Fruit orchards","Mango plantation near Sasan Gir, Gujarat – Unit III",""]];
-const UP=["Child_hand_are_holding_black_garden_soil_in_closeup.jpg","Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg"];
-const HERO=["photos/tea.jpg","photos/terraces.jpg","photos/marigold.jpg","photos/sugarcane.jpg"];
+const HP=[["A_red_soil_crop_field.JPG","Soil – the living skin of the Earth","Red soil crop field, Salem, Tamil Nadu – Unit I","Thamizhpparithi Maari"],["Ploughing_paddy_field_with_oxen,_Umaria_district,_MP,_India.jpg","Preparing the land","Ploughing a paddy field with oxen, Umaria, Madhya Pradesh","Yann"],["Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Field crops","Rice paddy fields in Tamil Nadu – Unit II","KARTY JazZ"],["Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg","Fruit orchards","Mango plantation near Sasan Gir, Gujarat – Unit III",""]];
+const UP=["A_red_soil_crop_field.JPG","Rice_Paddy_Fields_in_Tamil_Nadu.jpg","Mango_Plantation_near_Sasan_Gir,_Gujarat.jpg"];
+const HERO=["photos/tea.jpg","photos/oxen.jpg","photos/sugarcane.jpg","photos/harvest.jpg"];
 function home(){
  return `<section class="hero photo" id="hero"><div class="hslides">${HERO.map((f,i)=>`<img class="hs${i?'':' on'}" src="${f}" alt="" ${i?'loading="lazy"':'fetchpriority="high"'} onerror="this.remove()">`).join('')}</div><div class="hshade"></div>
  <div class="hgrid"><div class="txt"><h1>Crop Production<br>Technologies</h1>
