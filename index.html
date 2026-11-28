@@ -830,6 +830,31 @@ a.sy-l{text-decoration:none;color:inherit;cursor:pointer}a.sy-l:hover{filter:bri
 .notes .xcard{border:1px solid var(--line);border-left:4px solid #2e7d32;border-radius:14px;padding:14px 16px;background:var(--card,#fff)}
 .notes .xcard h4{margin:0 0 8px!important;color:var(--h2c)!important}.notes .xcard p{margin:6px 0}
 @media(max-width:600px){.notes .ctabs button{padding:8px 14px}.notes .xgrid{grid-template-columns:1fr}}
+
+/* ===== Site-wide standard (v3): one text font + one title font, uniform sizes, full images ===== */
+:root{--ft:24px;--fa:17px;--fc:15px;--fl:13.5px}
+@media(max-width:600px){:root{--ft:18px;--fa:14.5px;--fc:12.5px;--fl:12px}}
+body,button,input,select,textarea,.notes figure svg,.notes svg text{font-family:"Nunito Sans","Noto Sans Devanagari",system-ui,sans-serif}
+/* every title (sections, sub-sections, cards) = Fraunces, one size; colour shows the level */
+main h2,main h3,main h4,.notes h2,.notes h3,.notes h4,.notes .hook h3{font-family:"Fraunces",Georgia,serif!important;font-size:var(--ft)!important;font-weight:700!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.notes h2{color:var(--h2c,#7a3b12);padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--h2c,#7a3b12) 30%,transparent)}
+.notes h3{color:var(--h3c,#2e7d32)}
+.notes h4{color:var(--h4c,#1565c0)}
+.notes .hook h3{color:#fff;border:0}
+/* every content text = Nunito Sans, one size */
+main p,main li,main td,main th,main dd,main dt,main summary,main blockquote,.notes,.notes p,.notes li,.notes td,.notes th,.notes dd,.notes dt,.notes summary{font-size:var(--fa)!important}
+main figcaption,.notes figcaption{font-size:var(--fc)!important;font-family:"Nunito Sans",system-ui,sans-serif!important}
+main .credit,.notes .credit,main .lab,.notes .lab,main .src,.notes .src{font-size:var(--fl)!important}
+/* compact chips stay compact */
+.prof-stats li,.hstats li,.ubflow span,.chip,.tag,.mtag,.jr-u,.tl-y,.bk a,.sy-leg,.prof-k,.prof-x{font-size:var(--fl)!important}
+/* images: show the whole picture, never crop */
+.notes figure.photo img,.photos.n1 figure.photo img{aspect-ratio:4/3!important;width:100%;height:auto;object-fit:contain!important;background:#f6f1e8!important;padding:4px;box-sizing:border-box}
+.notes figure.photo:hover img,figure.photo:hover img,.mcard:hover .mph img,.jr-tile:hover img,.vid:hover img{transform:none!important}
+.mph img,.uart img,.pcard img,.jr-tile img,.jr-stimg img,.vid img,.strip img{object-fit:contain!important;background:#f6f1e8;transform:none!important}
+.notes figure.slide img{max-height:none!important}
+/* teacher photo: full portrait */
+.prof-pic{width:150px!important;height:200px!important;object-fit:cover;object-position:center top;border-radius:14px!important}
+@media(max-width:420px){.prof-pic{width:110px!important;height:147px!important}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
