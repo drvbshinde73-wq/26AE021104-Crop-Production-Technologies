@@ -796,6 +796,25 @@ a.sy-l{text-decoration:none;color:inherit;cursor:pointer}a.sy-l:hover{filter:bri
 .pc-out{background:rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;line-height:1.55}
 .pc-out .big{font-size:1.6em;color:#ffe08a}.pc-out.bad{background:rgba(198,40,40,.55)}
 .pc-tab td,.pc-tab th{text-align:center}#s-pass[hidden]{display:none!important}.pc-x{float:right;border:1px solid var(--line);background:transparent;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;color:inherit}
+
+/* hero intro extension */
+.hero.photo .txt .hlead{font-size:clamp(18px,1.45vw,21px);line-height:1.55;max-width:600px;margin:0 0 12px}
+.hero.photo .txt .hmore{font-size:15.5px;line-height:1.6;max-width:600px;color:#e9e1d4;margin:0 0 14px}
+.hq{display:grid;gap:8px;max-width:600px;margin:0 0 14px}
+.hqc{display:block;text-decoration:none;color:#fff;padding:8px 14px 9px 16px;border-radius:12px;background:rgba(20,28,16,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);border-left:4px solid var(--c);transition:transform .25s,background .25s;animation:hqIn .7s both}
+.hqc:nth-child(2){animation-delay:.15s}.hqc:nth-child(3){animation-delay:.3s}
+@keyframes hqIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1}}
+.hqc:hover{transform:translateX(6px);background:rgba(20,28,16,.75)}
+.hqn{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.hqc b{display:block;font-family:"Fraunces",Georgia,serif;font-size:16.5px;font-weight:600;margin:1px 0}
+.hqc small{font-size:12.5px;color:#d9d0c2}.hqn{font-size:11px!important}
+.hfeat{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0 0 16px;max-width:620px}
+.hfeat li{font-size:12.5px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff}
+.hcta{display:flex;gap:10px;flex-wrap:wrap}
+.hbtn{display:inline-block;padding:11px 20px;border-radius:999px;font-weight:800;text-decoration:none;color:#fff;border:1.5px solid rgba(255,255,255,.6);transition:transform .2s,background .2s}
+.hbtn.pri{background:var(--gold);border-color:var(--gold);color:#2b1d0e}
+.hbtn:hover{transform:translateY(-2px);background:rgba(255,255,255,.15)}.hbtn.pri:hover{background:#f6cf6a}
+@media(max-width:900px){.hero .hx{display:none}.hero.photo .txt .hlead{font-size:16px;margin-bottom:14px}.hbtn{padding:9px 16px;font-size:14px}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -967,7 +986,15 @@ const HERO=["photos/tea.jpg","photos/terraces.jpg","photos/marigold.jpg","photos
 function home(){
  return `<section class="hero photo" id="hero"><div class="hslides">${HERO.map((f,i)=>`<img class="hs${i?'':' on'}" src="${f}" alt="" ${i?'loading="lazy"':'fetchpriority="high"'} onerror="this.remove()">`).join('')}</div><div class="hshade"></div>
  <div class="hgrid"><div class="txt"><h1>Crop Production<br>Technologies</h1>
- <p>From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p></div><aside class="prof" aria-label="Course teacher">
+ <p class="hlead">From the rock beneath our feet to the crop in the field – soil science, agronomy and horticulture for sustainable crop production.</p>
+ <p class="hx hmore">30 lectures that follow a crop’s whole story – from rock to living soil, from seed to harvest, from orchard to market – told with animations, real Maharashtra examples and exam-ready questions.</p>
+ <div class="hx hq">
+  <a class="hqc" href="#unit-1" style="--c:#c98a5a"><span class="hqn">Unit I · Soil Science · 10 lectures</span><b>Why is Deccan soil black – and why does it crack in summer?</b></a>
+  <a class="hqc" href="#unit-2" style="--c:#66bb6a"><span class="hqn">Unit II · Agronomy · 8 lectures</span><b>Why is wheat sown in November, not with the June rain?</b></a>
+  <a class="hqc" href="#unit-3" style="--c:#f2b33d"><span class="hqn">Unit III · Horticulture · 12 lectures</span><b>How can one coconut garden grow four crops at once?</b></a>
+ </div>
+ <ul class="hx hfeat"><li>🎞️ Animated diagrams</li><li>📷 Real field photos</li><li>🧮 Worked examples</li><li>📝 ESE questions with answer points</li><li>✅ Solved assignments</li><li>🔎 Search every note</li></ul>
+ <div class="hcta"><a class="hbtn pri" href="#unit-1">Start reading – Unit I →</a><a class="hbtn" href="#syllabus">Explore the syllabus</a></div></div><aside class="prof" aria-label="Course teacher">
   <div class="prof-top"><img class="prof-pic" src="photos/dr-vinayak-shinde.jpg" alt="Dr. Vinayak B. Shinde"><div><p class="prof-k">Course teacher</p><h2 class="prof-name">Dr. Vinayak B. Shinde</h2><p class="prof-role">Assistant Professor – Agricultural Sciences<br>Deputy Controller of Examinations<br>Ph.D Guide – Agri. Business Management<br>D Y Patil Agriculture &amp; Technical University, Talsande, Kolhapur</p></div></div>
   <p class="prof-q">M.Sc. Horticulture (Fruit Science), Ph.D<br>PGDAEM, Diploma in Agro-Journalism<br>Founder-President, KrushiSamarpan Foundation<br>Secretary, ROMIF India, Ahilyanagar District</p>
   <p class="prof-award">🏅 Honoured by the <b>Prime Minister of India</b>, the <b>Chief Minister of Maharashtra</b> and with an <b>international award</b> for agricultural education, research &amp; extension</p>
