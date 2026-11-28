@@ -820,6 +820,10 @@ a.sy-l{text-decoration:none;color:inherit;cursor:pointer}a.sy-l:hover{filter:bri
 .notes .ctabs-lab{margin:26px 0 0;font-weight:800;font-size:var(--fl);letter-spacing:.08em;text-transform:uppercase;color:var(--h3c)}
 .notes .ctabs{position:sticky;top:var(--toph,70px);z-index:6;display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:10px 4px;margin:6px 0 8px;background:var(--bg,#fffdf8);border-bottom:2px solid var(--line)}
 .notes .ctabs::-webkit-scrollbar{display:none}
+.notes .ptabs{position:sticky;top:var(--toph,70px);z-index:6;display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:10px 4px;margin:6px 0 8px;background:var(--bg,#fffdf8);border-bottom:2px solid var(--line)}.notes .ptabs::-webkit-scrollbar{display:none}
+.notes .ptabs button{flex:none;font:inherit;font-weight:800;font-size:var(--fa);display:inline-flex;align-items:center;gap:10px;padding:6px 18px 6px 6px;border-radius:999px;border:1.5px solid var(--line);background:var(--card,#fff);color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .2s}.notes .ptabs button.all{padding:10px 20px}
+.notes .ptabs button:hover{transform:translateY(-1px)}.notes .ptabs button.on{background:var(--pc,#2e7d32);border-color:var(--pc,#2e7d32);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.18)}.notes .ptabs button.on .ctab-ic{box-shadow:0 0 0 2px #fff}
+@media(max-width:600px){.notes .ptabs button{padding:5px 12px 5px 5px;gap:7px}.notes .ptabs button.all{padding:8px 14px}}
 .notes .ctabs button{flex:none;font:inherit;font-weight:800;font-size:var(--fa);padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card,#fff);color:inherit;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .notes .ctabs button:hover{transform:translateY(-1px)}
 .notes .ctabs button.on{background:#2e7d32;border-color:#2e7d32;color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3)}
@@ -1195,6 +1199,7 @@ async function lesson(id){
 }
 function setTab(t){document.querySelectorAll('.ctab-p').forEach(p=>p.hidden=p.dataset.t!=t);document.querySelectorAll('.ctabs button').forEach(b=>{b.classList.toggle('on',b.dataset.t==t);b.setAttribute('aria-selected',b.dataset.t==t)});document.documentElement.style.setProperty('--toph',(document.querySelector('.top')?.offsetHeight||70)+'px')}
 function showTabFor(el){const p=el&&el.closest&&el.closest('.ctab-p');if(p&&p.hidden)setTab(p.dataset.t)}
+function setPTab(btn){const g=btn.closest('.pgroup');if(!g)return;g.querySelectorAll(':scope>.ptab-p').forEach(p=>p.hidden=p.dataset.p!=btn.dataset.p);g.querySelectorAll(':scope>.ptabs button').forEach(b=>{const on=b===btn;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)})}
 let io;
 function watchToc(hs){io&&io.disconnect();io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('#toc a').forEach(a=>a.classList.toggle('on',a.dataset.to==e.target.id))}})},{rootMargin:'-80px 0px -70% 0px'});hs.forEach(h=>io.observe(h))}
 function passCalc(){const g=id=>document.getElementById(id);if(!g('pcOut'))return;
@@ -1220,6 +1225,7 @@ function route(){
 function slideBy(i,dir){const d=document.getElementById('deck'+i);if(!d)return;d.scrollBy({left:dir*d.clientWidth,behavior:'smooth'})}
 document.addEventListener('scroll',e=>{const t=e.target;if(t.classList&&t.classList.contains('deck')){const i=t.id.slice(4),k=Math.round(t.scrollLeft/t.clientWidth)+1,c=document.getElementById('cnt'+i);if(c)c.textContent=`Slide ${k} of ${t.children.length}`}},true);
 document.addEventListener('click',e=>{
+ const pt=e.target.closest('.ptabs button[data-p]');if(pt){setPTab(pt);return}
  const tb=e.target.closest('.ctabs button[data-t],.ctab-next [data-go]');if(tb){setTab(tb.dataset.t||tb.dataset.go);const bar=document.querySelector('.ctabs');if(bar)scrollTo({top:bar.getBoundingClientRect().top+scrollY-(document.querySelector('.top')?.offsetHeight||70)-8,behavior:'smooth'});return}
  const a=e.target.closest('[data-to]');if(a){e.preventDefault();const el=document.getElementById(a.dataset.to);showTabFor(el);el?.scrollIntoView({behavior:'smooth'});return}
  const b=e.target.closest('[data-dk]');if(b){slideBy(b.dataset.dk,+b.dataset.dir);return}
